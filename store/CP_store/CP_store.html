@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航</title>
+    <link rel="stylesheet" type="text/css" href="CP_store.css">
+    <script src="vue2.js"></script>
+</head>
+<body>
+    <div id="app_ui">
+        <table class="main">
+            <tr style="background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%)">
+                <div class="card">
+                    <td style="width: 25px;height: 20px;background-color: rgb(0, 0, 0);" class="card2"><h2 style="color:aliceblue">UI库</h2></td>
+                </div>
+                <td rowspan="0" style="background-image: linear-gradient(163deg, #000000 0%, #000000 100%)">
+                    <iframe id="iframe2" 
+                        src="https://element.eleme.cn/#/zh-CN" 
+                        frameborder="0" 
+                        height="700px" 
+                        width="100%"></iframe>
+                    <iframe id="iframe1" 
+                        name="IFrame" 
+                        frameborder="0" 
+                        height="700px" 
+                        width="100%" 
+                        style="display: none;"></iframe>
+                </td>
+            </tr>
+            <tr class="card" style="height:min-content;">
+                <td style="width: 25px;height: auto;" class="card2">
+                    <table>
+                        <tr v-for="(v,k) in uisa" class="card1">
+                            <td style="border: 0ch;height: 20px;" class="card2">
+                                <a :href="v">
+                                    <input 
+                                        type="button" 
+                                        :value="k"
+                                        class="input1">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="card">
+                <td style="width: 25px;height: auto;" class="card2">
+                    <table>
+                        <tr v-for="(v,k) in uis" class="card1">
+                            <td style="border: 0ch;height: 20px;" class="card2">
+                                <a :href="v"
+                                    target="IFrame">
+                                    <input 
+                                        type="button" 
+                                        :value="k"
+                                        class="input2"
+                                        onclick="iframeLoad()">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+
+        function iframeLoad()
+        {
+            document.getElementById("iframe2").style.display="none"
+            document.getElementById("iframe1").style.display="block"
+        }
+
+        new Vue ({
+            el: "#app_ui",
+            data: {
+                wlh: 'window.location.href=',
+                // UI库
+                uis: {
+                    'Element UI':'https://element.eleme.cn/#/zh-CN',
+                    'vuetify':'https://vuetifyjs.com/zh-Hans/',
+                    'Ant Design':'https://ant.design/index-cn/',
+                    'Vant UI':'https://vant-ui.github.io/vant/#/zh-CN/',
+                    'WEUI':'https://codesearch.aixcoder.com/#/',
+                },
+                // 无法通过iframe的标签
+                uisa: {
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

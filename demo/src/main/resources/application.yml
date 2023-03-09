@@ -1,0 +1,14 @@
+
+
+# 连接数据量
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db #?serverTimezone=GMT%2B8&characterEncoding=utf-8
+    username: root
+    password: Dxj101&D.
+    # Dxj101&D.
+
+server:
+  port: 80
