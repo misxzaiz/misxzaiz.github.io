@@ -1,0 +1,15 @@
+.laside {
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+.raside {
+    width: 15%;
+    height: 100%;
+    float: right;
+}
+.main {
+    width: 65%;
+    height: 100%;
+    float: right;
+}
