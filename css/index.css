@@ -1,15 +1,39 @@
+a {
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+}
+
+.XiaoZaiz {
+    color: rgb(255, 255, 255);
+	background-color: black;
+	padding: 20px;
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 100px;
+	height: 20px;
+	text-align: center;
+	font-size: x-large;
+}
+
+.floatleft {
+    float: left;
+    width: 10%;
+}
+
+.floatright {
+    float: right;
+    width: 10%;
+}
+
 .laside {
-    width: 15%;
-    height: 100%;
+    width: 20%;
     float: left;
 }
 .raside {
     width: 15%;
-    height: 100%;
     float: right;
 }
 .main {
     width: 65%;
-    height: 100%;
     float: left;
 }
