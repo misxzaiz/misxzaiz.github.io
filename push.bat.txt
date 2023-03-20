@@ -1,8 +1,7 @@
-chcp 65001
 @echo off
 setlocal enabledelayedexpansion
 
-set /p commit_message="commit： "
+set /p commit_message="请输入 commit 信息： "
 
 git add .
 git commit -m "!commit_message"

@@ -1,8 +1,7 @@
-chcp 65001
 @echo off
 setlocal enabledelayedexpansion
 
-set /p commit_message="commitÔºö "
+set /p commit_message="«Î ‰»Î commit –≈œ¢£∫ "
 
 git add .
 git commit -m "!commit_message"
