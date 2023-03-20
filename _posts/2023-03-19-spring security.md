@@ -1,9 +1,10 @@
 ---
-layout:       post
-title:        "Spring Security"
-author:       "XiaoZaiz"
-header-style: text
-catalog:      true
+layout:			post
+title:			"Spring Security"
+subtitle: 		"spring security 总结"
+author:			"XiaoZaiz"
+header-style: 	text
+catalog:      	true
 tags:
     - Java
     - Spring
