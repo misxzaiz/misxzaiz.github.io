@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>网站列表</title>
     <style>
-      /* 页面样式 */
       body {
+        background-color: #f5f5f5;
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+        font-size: 16px;
+        line-height: 1.5;
       }
-      .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-      }
+      
       h1 {
+        margin: 0;
+        padding: 20px;
         text-align: center;
-        margin-bottom: 30px;
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
       }
+      
       ul {
-        list-style-type: none;
         margin: 0;
         padding: 0;
+        list-style: none;
       }
+      
       li {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
+        background-color: #fff;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
       }
-      .site-icon {
-        width: 80px;
-        height: 80px;
-        margin-right: 20px;
+
+      li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       }
-      .site-name {
-        font-size: 24px;
+      
+      .site-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      .site-title {
+        margin: 0;
+        padding: 10px;
         font-weight: bold;
-        margin: 0;
+        color: #333;
       }
+      
       .site-description {
-        font-size: 18px;
-        color: #666;
         margin: 0;
+        padding: 10px;
+        color: #999;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>网站列表</h1>
-      <ul>
-        <li>
-          <img src="https://via.placeholder.com/80x80" alt="Site Icon" class="site-icon">
-          <div>
-            <h2 class="site-name">网站名字</h2>
-            <p class="site-description">这里是网站描述...</p>
-          </div>
-        </li>
-        <li>
-          <img src="https://via.placeholder.com/80x80" alt="Site Icon" class="site-icon">
-          <div>
-            <h2 class="site-name">网站名字</h2>
-            <p class="site-description">这里是网站描述...</p>
-          </div>
-        </li>
-        <!-- 在此添加更多的网站 -->
-      </ul>
-    </div>
+    <h1>网站列表</h1>
+    <ul>
+      <li>
+        <a href="https://rightbrain.art/store">AI绘画</a>
+      </li>
+      <li>
+        <a href="https://www.aiai.zone/">AIAI</a>
+      </li>
+      <li>
+        <a href="https://ai.bo-e.com/">AI.BOE</a>
+      </li>
+    </ul>
   </body>
 </html>
