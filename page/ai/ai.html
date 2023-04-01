@@ -11,14 +11,6 @@
         line-height: 1.5;
       }
       
-      h1 {
-        margin: 0;
-        padding: 20px;
-        text-align: center;
-        background-color: #fff;
-        border-bottom: 1px solid #ddd;
-      }
-      
       ul {
         margin: 0;
         padding: 0;
@@ -32,6 +24,7 @@
         border-radius: 4px;
         overflow: hidden;
         transition: all 0.3s ease-out;
+        cursor: pointer; /* 改变鼠标指针形状 */
       }
 
       li:hover {
@@ -59,16 +52,21 @@
       }
       
       a {
-        text-decoration: none; /* 去掉下划线 */
-        color: black; /* 设置字体颜色为黑色 */
+        display: block; /* 将a标签设为块级元素 */
+        padding: 10px; /* 添加内边距撑满整个li元素 */
+        text-decoration: none;
+        color: black;
       }
     </style>
   </head>
   <body>
-    <h1>网站列表</h1>
     <ul>
-      <li><a href="https://rightbrain.art/store">AI绘画</a></li>
-      <li><a href="https://pandapy.com/">pandapy（GPT）</a></li>
+      <li onclick="location.href='https://rightbrain.art/store'">
+        <a href="#">AI绘画</a>
+      </li>
+      <li onclick="location.href='https://pandapy.com/'">
+        <a href="#">pandapy（GPT）</a>
+      </li>
     </ul>
   </body>
 </html>
