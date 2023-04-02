@@ -3,7 +3,7 @@
         "AI",   
         "API",
         "Cloud",
-        "其他"
+        "奇奇怪怪"
     ],
     "AI": {
         "AI绘画": "https://rightbrain.art/store",
@@ -18,7 +18,7 @@
     "Cloud": {
         "云数据库": "https://planetscale.com/"
     },
-    "其他": {
+    "奇奇怪怪": {
         "随机音乐": "https://misxzaiz.github.io/misxzaiz.github.io/page/page/music/music.html"
     }
 }
