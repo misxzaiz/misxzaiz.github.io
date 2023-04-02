@@ -14,5 +14,15 @@
         <a href="#">API</a>
       </li>
     </ul>
+    <script>
+        fetch("index.json")
+            .then(response => response.json())
+            .then(jsonContent => {
+                console.log(jsonContent);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    </script>
   </body>
 </html>
