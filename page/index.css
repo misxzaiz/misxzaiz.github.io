@@ -13,6 +13,17 @@ a {
     color: black;
 }
 
+/* 鼠标按下时 */
+a:active {
+    transform: translateY(1px); /* 向下移动 1 像素 */
+  }
+  
+/* 获得焦点时（即用户使用 Tab 键或鼠标点击链接） */
+a:focus {
+    outline: none; /* 去掉默认的虚线框 */
+    box-shadow: 0 0 5px #00FFFF; /* 添加一个浅蓝色的阴影效果 */
+}
+
 #navigation {
     display: flex;
 }
