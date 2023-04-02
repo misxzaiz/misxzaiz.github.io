@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<title>Music Player</title>
 </head>
 <body>
+	<div>
+		<h1 id="songname"></h1>
+		<img id="songpic" src="" alt="Song Pic">
+		<h2 id="artistsname"></h2>
+		<audio id="audio" controls autoplay></audio>
+	</div>
 
-    <div id="music">21</div>
+	<script>
+		// 从 API 获取 JSON 数据并解析
+		var request = new XMLHttpRequest();
+		request.open("GET", "https://api.uomg.com/api/rand.music?format=json", true);
+		request.onload = function() {
+			if (request.status == 200) {
+				var data = JSON.parse(request.responseText).data;
+				var songname = data.name;
+				var songurl = data.url;
+				var songpic = data.picurl;
+				var artistsname = data.artistsname;
 
+				// 在 HTML 中显示歌曲信息
+				document.getElementById("songname").innerHTML = songname;
+				document.getElementById("songpic").src = songpic;
+				document.getElementById("artistsname").innerHTML = artistsname;
 
-    <script>
-
-        fetch('https://api.wqwlkj.cn/wqwlapi/wyy_random.php?type=json')
-        .then(response => response.json())
-        .then(data => {
-          alert(data.name)
-        })
-        .catch(error => {
-          console.log('请求出错：', error);
-        });
-    </script>
+				// 播放音乐
+				var audio = document.getElementById("audio");
+				var source = document.createElement("source");
+				source.setAttribute("src", songurl);
+				audio.appendChild(source);
+			}
+			else {
+				console.log("Error: " + request.statusText);
+			}
+		};
+		request.onerror = function() {
+			console.log("Error: Network error.");
+		};
+		request.send();
+	</script>
 </body>
 </html>
