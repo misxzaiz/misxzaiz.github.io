@@ -12,5 +12,8 @@
     },
     "API": {
         "夏柔": "https://api.aa1.cn/"
+    },
+    "Cloud": {
+        "云数据库": "https://planetscale.com/"
     }
 }
