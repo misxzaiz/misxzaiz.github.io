@@ -51,12 +51,5 @@ plugins:
 #   - node_modules/
 #   - vendor/bundle/
 #   - vendor/cache/
-#   - vendor/gems/
+#   - vendor/gems
 #   - vendor/ruby/
-# 目录结构
-source:      .
-destination: ./blog/_site
-plugins:     ./blog/_plugins
-layouts:     ./blog/_layouts
-data_source: ./blog/_data
-collections: null
