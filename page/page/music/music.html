@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="music">1</div>
+    <button onclick="myFunction()">点击我</button>
+
+
+    
+    <script>
+
+        fetch('https://api.wqwlkj.cn/wqwlapi/wyy_random.php?type=jump')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data); // 解析后的对象
+          // 在这里可以使用获取到的数据
+        })
+        .catch(error => {
+          console.log('请求出错：', error);
+        });
+    </script>
+</body>
+</html>

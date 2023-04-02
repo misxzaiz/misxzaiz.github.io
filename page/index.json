@@ -16,5 +16,8 @@
     },
     "Cloud": {
         "云数据库": "https://planetscale.com/"
+    },
+    "其他": {
+        "随机音乐": "https://api.wqwlkj.cn/wqwlapi/wyy_random.php?type=jump"
     }
 }
