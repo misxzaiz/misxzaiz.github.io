@@ -18,8 +18,7 @@
         fetch('https://api.wqwlkj.cn/wqwlapi/wyy_random.php?type=json')
         .then(response => response.json())
         .then(data => {
-          console.log(data); // 解析后的对象
-          // 在这里可以使用获取到的数据
+          alert(data.name)
         })
         .catch(error => {
           console.log('请求出错：', error);
