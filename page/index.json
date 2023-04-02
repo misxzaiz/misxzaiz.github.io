@@ -1,8 +1,8 @@
 {
-    "index": {
-        "AI": "page/ai/ai.html",
-        "API": "page/api/api.html"
-    },
+    "index": [
+        "AI",   
+        "API"
+    ],
     "AI": {
         "AI绘画": "https://rightbrain.art/store",
         "anzz（GPT）": "https://free.anzz.top/",
