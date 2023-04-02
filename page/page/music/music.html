@@ -30,6 +30,8 @@
       <script>
         audio.addEventListener('ended', function () {
             location.reload();
+            const audio = document.getElementById("audio");
+            audio.play();
         });
       </script>
   </body>
