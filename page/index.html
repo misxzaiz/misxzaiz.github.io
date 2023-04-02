@@ -6,23 +6,34 @@
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
-    <ul>
-      <li onclick="location.href='page/ai/ai.html'">
-        <a href="#">AI</a>
-      </li>
-      <li onclick="location.href='page/api/api.html'">
-        <a href="#">API</a>
-      </li>
-    </ul>
+    <ul id='my-list'></ul>
     <script>
-        fetch("index.json")
-            .then(response => response.json())
-            .then(jsonContent => {
-                console.log(jsonContent);
-            })
-            .catch(err => {
-                console.error(err);
-            });
+        fetch('https://misxzaiz.github.io/page/index.json')
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(function(data) {
+            // 获取ul元素
+            let ul = document.getElementById('my-list')
+            for(var key in data.index) {
+                // 创建li元素
+                let li = document.createElement('li');
+                // 创造链接元素
+                let a =  document.createElement('a');
+                a.setAttribute('href',data.index[key]);
+                a.textContent = key;
+                // 将链接元素添加到li中
+                li.appendChild(a);
+                // 将li添加到ul中
+                ul.appendChild(li);
+            }
+        })
+        .catch(function(error) {
+          console.log('There was a problem with the fetch operation:', error.message);
+        });
     </script>
   </body>
 </html>

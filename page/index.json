@@ -2,5 +2,15 @@
     "index": {
         "AI": "page/ai/ai.html",
         "API": "page/api/api.html"
+    },
+    "AI": {
+        "AI绘画": "https://rightbrain.art/store",
+        "anzz（GPT）": "https://free.anzz.top/",
+        "pandapy（GPT）": "https://pandapy.com/",
+        "binjie（GPT）": "https://chat.binjie.site:7777/",
+        "aiai（GPT，飞机）": "https://www.aiai.zone/"
+    },
+    "API": {
+        "夏柔": "https://api.aa1.cn/"
     }
 }
