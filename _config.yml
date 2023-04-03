@@ -1,4 +1,4 @@
-title:              Clean Blog
+title:              Chen Blog
 email:              2840927713@qq.com
 description:        A Blog Theme by Start Bootstrap
 author:             Start Bootstrap
@@ -13,7 +13,7 @@ instagram_username:
 linkedin_username:
 
 # Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+google_analytics:   G-NB1JGLTB6H # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
