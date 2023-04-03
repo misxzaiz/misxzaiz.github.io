@@ -17,7 +17,8 @@
         "夏柔": "https://api.aa1.cn/"
     },
     "Cloud": {
-        "云数据库": "https://planetscale.com/"
+        "云数据库": "https://planetscale.com/",
+        "云邮箱formspree": "https://formspree.io/"
     },
     "Bingo": {
         "随机音乐": "https://misxzaiz.github.io/page/page/music/music.html"
