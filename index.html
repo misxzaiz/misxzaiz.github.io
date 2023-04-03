@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background-image: url('https://source.unsplash.com/random');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        a {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 2px solid white;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: all 0.3s ease-in-out;
-        }
-        
-        a:hover {
-            background-color: white;
-            color: black;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background image and random sentence from API</title>
+  <style>
+    body {
+      background-image: url('https://source.unsplash.com/random');
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #api-response {
+      font-size: 2rem;
+      line-height: 1.6;
+      color: white;
+      text-align: center;
+      margin: 0 auto 1rem;
+      max-width: 80%;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    #api-prompt {
+      font-size: 5rem;
+      color: white;
+      text-align: center;
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 0.5rem 2rem;
+      cursor: pointer;
+    }
+
+    #api-prompt:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
 </head>
 <body>
-    <a href="/posts/">posts</a>
+  <div id="api-response"></div>
+  <div id="api-prompt" onclick="fetchNewQuote()">随机一言</div>
+  <script>
+          // 获取API响应并将其作为文本显示在页面上
+          fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('api-response').innerHTML = data;
+          });
+    function fetchNewQuote() {
+      // 获取API响应并将其作为文本显示在页面上
+      fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('api-response').innerHTML = data;
+        });
+    }
+    document.getElementById('api-response').addEventListener('click', function(event) {
+      if (event.offsetX < this.offsetWidth / 2) {
+        window.location.href = '/posts/';
+      } else {
+        window.location.href = '/page/';
+      }
+    });
+  </script>
 </body>
 </html>
