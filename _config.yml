@@ -1,14 +1,14 @@
-title:              Clean Blog
-email:              your-email@example.com
-description:        A Blog Theme by Start Bootstrap
-author:             Start Bootstrap
+title:              Chen Blog
+email:              2840927713@qq.com
+description:        This is My World!
+author:             Chen
 baseurl:            ""
 url:                "https://misxzaiz.github.io"
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
+twitter_username:   修改为twitter名字
+github_username:    misxzaiz
+facebook_username:  修改为facebook名字
 instagram_username:  
 linkedin_username:
 
