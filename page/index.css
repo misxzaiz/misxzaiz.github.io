@@ -29,6 +29,7 @@
         #index {
             flex: 1;
             padding: 16px;
+            font-weight: bolder;
         }
         #content {
             flex: 3;
