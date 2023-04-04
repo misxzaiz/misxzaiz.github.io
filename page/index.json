@@ -1,6 +1,7 @@
 {
     "index": [
         "AI",   
+        "Math",
         "API",
         "Cloud",
         "Bingo"
@@ -12,6 +13,9 @@
         "binjie（GPT）": "https://chat.binjie.site:7777/",
         "aiai（GPT，飞机）": "https://www.aiai.zone/",
         "蜻蜓问答（GPT）": "https://chat.qingting.work/"
+    },
+    "Math": {
+        "SpssPro": "https://www.spsspro.com/"
     },
     "API": {
         "夏柔": "https://api.aa1.cn/"
