@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AndZaiz</title>
     <style>
-        /* 原有的样式 */
-        body {
+         /* 原有的样式 */
+         body {
             background-color: #f5f5f5;
             font-family: Arial, sans-serif;
             font-size: 16px;
@@ -17,7 +17,7 @@
         a {
             font-size: 22px;
             display: block;
-            padding: 10px 10px 0px 10px;
+            padding: 10px 10px 10px 10px;
             text-decoration: none;
             color: black;
         }
@@ -59,7 +59,6 @@
           
         /* 新添加的样式 */
         .title {
-
             font-size: 32px;
             font-weight: bold;
             margin: 0px;
@@ -75,8 +74,8 @@
 </head>
 <body>
     <!-- 在这里添加标题和描述元素 -->
-    <a href=""><h1 class="title">AndZaiz</h1></a>
-    <p class="description">欢迎来到我们的导航网站！我们为您提供最实用、最全面的导航服务。</p>
+    <a href="/"><h2 class="title">AndZaiz</h2></a>
+    <p class="description">欢迎来到我的导航网站！我为您提供最实用、最全面的导航服务。</p>
 
     <div id="navigation">
         <div id="index"></div>
@@ -90,67 +89,67 @@
         });
         
         function init() {
-          fetch('https://misxzaiz.github.io/page/test/index.json')
-          .then(function(response) {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(function(data) {
-            const indexContainer = document.querySelector('#index');
-            const contentContainer = document.querySelector('#content');
-            let currentIndex = '';
-            Object.keys(data.index).forEach(key => {                    
-              const indexLink = document.createElement('a');
-              indexLink.href = `#${key}`;
-              indexLink.innerHTML = key;
-              indexContainer.appendChild(indexLink);
-            });
-        
-            function generateContent(key) {
-              contentContainer.innerHTML = '';
-              if (Array.isArray(data.index[key])) {
-                return;
+            fetch('https://misxzaiz.github.io/page/test/index.json')
+            .then(function(response) {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
               }
-              Object.entries(data.index[key]).forEach(entry => {
-                const [title, [url, description]] = entry;
-                const link = document.createElement('a');
-                link.className = 'link';
-                link.setAttribute('href', url);
-                link.innerHTML = title;
-                if (description) {
-                  const desc = document.createElement('span');
-                  desc.innerHTML = description;
-                  link.appendChild(desc);
-                }
-                contentContainer.appendChild(link);
+              return response.json();
+            })
+            .then(function(data) {
+              const indexContainer = document.querySelector('#index');
+              const contentContainer = document.querySelector('#content');
+              let currentIndex = '';
+              Object.keys(data.index).forEach(key => {                    
+                const indexLink = document.createElement('a');
+                indexLink.href = `#${key}`;
+                indexLink.innerHTML = key;
+                indexContainer.appendChild(indexLink);
               });
-            }
-        
-            const links = document.querySelectorAll('#index a');
-            links.forEach(link => {
-              link.addEventListener('click', () => {
-                const key = link.textContent.trim();
-                if (key === currentIndex) {
+          
+              function generateContent(key) {
+                contentContainer.innerHTML = '';
+                if (Array.isArray(data.index[key])) {
                   return;
                 }
-                links.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                generateContent(key);
-                currentIndex = key;
+                Object.entries(data.index[key]).forEach(entry => {
+                  const [title, [url, description]] = entry;
+                  const link = document.createElement('a');
+                  link.className = 'link';
+                  link.setAttribute('href', url);
+                  link.innerHTML = title;
+                  if (description) {
+                    const desc = document.createElement('span');
+                    desc.innerHTML = description;
+                    link.appendChild(desc);
+                  }
+                  contentContainer.appendChild(link);
+                });
+              }
+          
+              const links = document.querySelectorAll('#index a');
+              links.forEach(link => {
+                link.addEventListener('click', () => {
+                  const key = link.textContent.trim();
+                  if (key === currentIndex) {
+                    return;
+                  }
+                  links.forEach(l => l.classList.remove('active'));
+                  link.classList.add('active');
+                  generateContent(key);
+                  currentIndex = key;
+                });
               });
+          
+              const firstLink = links[0];
+              firstLink.classList.add('active');
+              generateContent(firstLink.textContent.trim());
+              currentIndex = firstLink.textContent.trim();
+            })
+            .catch(function(error) {
+              console.log('There was a problem with the fetch operation:', error.message);
             });
-        
-            const firstLink = links[0];
-            firstLink.classList.add('active');
-            generateContent(firstLink.textContent.trim());
-            currentIndex = firstLink.textContent.trim();
-          })
-          .catch(function(error) {
-            console.log('There was a problem with the fetch operation:', error.message);
-          });
-        }
+          }
         </script>
 </body>
 </html>
