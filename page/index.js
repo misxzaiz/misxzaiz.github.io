@@ -1,7 +1,4 @@
-        // 绑定页面加载完成事件，当页面加载完成时调用 init() 函数
-        window.addEventListener('load', function() {
-            init();
-        });
+
         // 定义函数：页面加载完成后初始化
         function init() {
             fetch('https://misxzaiz.github.io/page/index.json')
