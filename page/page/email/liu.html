@@ -24,10 +24,18 @@
             return ua.indexOf('micromessenger') !== -1;
         }
 
-        // 判断当前浏览器是否支持https，如果支持，就跳转到指定地址
-        if (window.location.protocol === "https:" && !isWechat()) {
-            window.location.href = "http://8.130.73.113:8081";
+        // 判断是否在QQ浏览器中打开
+        function isQQBrowser() {
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf('mqqbrowser') !== -1 || ua.indexOf('qq/') !== -1;
         }
+
+        // 判断当前浏览器类型，并执行相应操作
+        if (window.location.protocol === "https:" && !isWechat() && !isQQBrowser()) {
+            // 在非微信、非QQ浏览器中打开
+            window.location.href = "http://8.130.73.113:8081";
+        } 
+
     </script>
 </head>
 <body>
