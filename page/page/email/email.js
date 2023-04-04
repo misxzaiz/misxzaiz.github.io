@@ -15,11 +15,10 @@
               alert("发送成功，谢谢你的留言!");
               form.reset()
             } else {
-              alert("发送失败，请重试");
+              alert("发送失败，请到Contact（微信）发送");
             }
           }).catch(error => {
-            alert("发送失败，请重试");
+            alert("发送失败，请到Contact（微信）发送");
           });
-          alert("发送完成！")
         }
         form.addEventListener("submit", handleSubmit)
