@@ -63,7 +63,7 @@
         });
         // 定义函数：页面加载完成后初始化
         function init() {
-            fetch('https://misxzaiz.github.io/page/index.json')
+            fetch('https://misxzaiz.github.io/page/test/index.json')
             .then(function(response) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -76,30 +76,24 @@
                 const contentContainer = document.querySelector('#content');
                 let currentIndex = '';
 
-                // 遍历data中的index，生成左侧导航栏
-                Object.keys(data).forEach(key => {
-                    const indexLink = document.createElement('a');
-                    indexLink.href = `#${key}`;
-                    indexLink.innerHTML = key;
-                    indexContainer.appendChild(indexLink);
-                });
-
-                // 根据data中的AI和API数据，生成右侧内容
-                function generateContent(key) {
-                    contentContainer.innerHTML = '';
-                    if (Array.isArray(data[key])) {
-                        return;
-                    }
-                    Object.entries(data[key]).forEach(entry => {
-                        const [title, url] = entry;
-                        const link = document.createElement('a');
-                        link.className = 'link';
-                        link.setAttribute('href', url);
-                        link.innerHTML = title;
-                        contentContainer.appendChild(link);
+                Object.keys(data.index).forEach(key => {
+                    const subnav = document.createElement("div");
+                    const title = document.createElement("h3");
+                    subnav.classList.add("subnav");
+                    title.innerText = key;
+                    subnav.appendChild(title);
+                  
+                    const items = data.index[key];
+                  
+                    Object.keys(items).forEach(subkey => {
+                      const link = document.createElement("a");
+                      link.href = items[subkey];
+                      link.innerText = subkey;
+                      subnav.appendChild(link);
                     });
-                }
-
+                  
+                    nav.appendChild(subnav);
+                  });
                 // 监听导航栏的点击事件，生成对应的右侧内容
                 const links = document.querySelectorAll('#index a');
                 links.forEach(link => {

@@ -1,0 +1,26 @@
+{
+    "index": {
+        "AI": {
+            "AI绘画": "https://rightbrain.art/store",
+            "anzz（GPT）": "https://free.anzz.top/",
+            "pandapy（GPT）": "https://pandapy.com/",
+            "binjie（GPT）": "https://chat.binjie.site:7777/",
+            "aiai（GPT，飞机）": "https://www.aiai.zone/",
+            "蜻蜓问答（GPT）": "https://chat.qingting.work/"
+        },
+        "Math": {
+            "SpssPro": "https://www.spsspro.com/"
+        },
+        "API": {
+            "夏柔": "https://api.aa1.cn/"
+        },
+        "Cloud": {
+            "云数据库": "https://planetscale.com/",
+            "云邮箱formspree": "https://formspree.io/",
+            "网站analytics": "https://analytics.google.com/"
+        },
+        "Bingo": {
+            "随机音乐": "https://misxzaiz.github.io/page/page/music/music.html"
+        }
+    }
+}
