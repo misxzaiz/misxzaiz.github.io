@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我！</title>
+    <link rel="stylesheet" href="email.css">
+</head>
+<body>
+    <div style="max-width: 600px; width: 100%;">
+        <h2 style="font-size:22px; font-weight:bold; margin-bottom:15px;">联系我！</h2>
+        <form id="my-form" action="https://formspree.io/f/mdovwyal" method="POST" style="background-color: #fff; padding: 20px; border-radius: 10px;">
+           <label>内容:</label>
+           <input type="text" name="message" placeholder="请输入你的建议（必选）" />
+           <label for="name">姓名：</label>
+           <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+           <label for="email">邮箱：</label>
+           <input type="text" id="email" name="email" placeholder="请输入您的邮箱" required>
+           <label for="phone">电话：</label>
+           <input type="text" id="phone" name="phone" placeholder="请输入您的电话号码" required> 
+           <button id="my-form-button" type="submit">提交</button>
+           <input type="reset" value="清空">
+           <p id="my-form-status"></p>
+        </form>
+     </div>
+     <script src="email.js"></script>
+</body>
+</html>

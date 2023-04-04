@@ -12,6 +12,8 @@
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.5;
+            display: flex;  /* 添加弹性布局 */
+            flex-direction: column;  /* 设置垂直方向 */
         }
           
         a {
@@ -62,6 +64,7 @@
             font-size: 32px;
             font-weight: bold;
             margin: 0px;
+            text-align: center;  /* 居中文本 */
         }
         .description {
             font-size: 15px;
@@ -69,10 +72,27 @@
             margin: 0px;
             border-bottom: 1px solid #ddd;
             padding: 0px 10px 10px 10px;
+            text-align: center;  /* 居中文本 */
+        }
+          
+        .footer {
+            position: relative; /* 添加相对定位 */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;  /* 置于底部 */
+        }
+        
+        .footer a {
+            margin: 0 20px;
         }
     </style>
 </head>
 <body>
+
     <!-- 在这里添加标题和描述元素 -->
     <a href="/"><h2 class="title">AndZaiz</h2></a>
     <p class="description">欢迎来到我的导航网站！我为您提供最实用、最全面的导航服务。</p>
@@ -82,8 +102,13 @@
         <div id="content"></div>
     </div>
 
+    <div class="footer">
+        <!-- <a href="#top">返回顶部</a> -->
+        <a href="../page/email/email.html">联系我们</a>
+    </div>
 
     <script>
+
         window.addEventListener('load', function() {
           init();
         });
