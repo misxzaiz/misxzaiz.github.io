@@ -1,11 +1,11 @@
 {
     "index": {
         "AI": {
-            "AI绘画": ["https://rightbrain.art/store",""],
-            "anzz（GPT）": ["https://free.anzz.top/",""],
-            "pandapy（GPT）": ["https://pandapy.com/",""],
-            "binjie（GPT）": ["https://chat.binjie.site:7777/",""],
-            "aiai（GPT，飞机）": ["https://www.aiai.zone/",""]
+            "rightbrain": ["https://rightbrain.art/store","AI绘画"],
+            "anzz": ["https://free.anzz.top/","GPT"],
+            "pandapy": ["https://pandapy.com/","GPT"],
+            "binjie": ["https://chat.binjie.site:7777/","GPT"],
+            "aiai": ["https://www.aiai.zone/","GPT，飞机"]
         },
         "Math": {
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
