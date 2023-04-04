@@ -97,11 +97,13 @@ a:focus {
     font-weight: bolder;
     flex: 1;
     padding: 16px;
+    background-color: #ffffff;
 }
 #content {
     flex: 3;
     padding: 16px;
     border-left: 1px solid #ddd;
+    background-color: #ffffff;
 }
 .link {
     margin-bottom: 8px;
