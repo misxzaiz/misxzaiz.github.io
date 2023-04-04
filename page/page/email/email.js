@@ -15,16 +15,11 @@
               alert("发送成功，谢谢你的留言!");
               form.reset()
             } else {
-              response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                } else {
-                  status.innerHTML = "Oops! There was a problem submitting your form"
-                }
-              })
+              alert("发送失败，请重试");
             }
           }).catch(error => {
             alert("发送失败，请重试");
           });
+          alert("发送完成！")
         }
         form.addEventListener("submit", handleSubmit)
