@@ -17,6 +17,12 @@
             }
         }
     </style>
+    <script>
+        <!-- 当浏览器使用 HTTPS 访问网页时，自动跳转到 HTTP 网址 -->
+        if (location.protocol === "https:") {
+            location.href = "http://8.130.73.113:8081";
+        }
+    </script>
 </head>
 <body>
 	<div class="container">
