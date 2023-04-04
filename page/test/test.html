@@ -46,39 +46,6 @@
             font-size: 20px;
             font-weight: bold;
         }
-
-        @media screen and (max-width: 768px) {
-
-            .menu-btn {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #ffffff;
-                z-index: 1;
-                padding: 10px;
-            }
-
-            nav ul li {
-                margin-left: 0;
-                margin-bottom: 10px;
-            }
-
-            nav ul li a {
-                font-size: 16px;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-        }
           
         a {
             font-size: 22px;
@@ -128,18 +95,10 @@
 
     <nav>
         <div class="logo">
-            <a href="#">AndZaiz</a>
+            <a href="/">AndZaiz</a>
         </div>
-
-        <div class="menu-btn">
-            <span>&#9776;</span>
-        </div>
-
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="page/email/email.html">Contact</a></li>
         </ul>
     </nav>
 
@@ -216,13 +175,6 @@
               console.log('There was a problem with the fetch operation:', error.message);
             });
           }
-
-        const menuBtn = document.querySelector('.menu-btn');
-        const navList = document.querySelector('nav ul');
-
-        menuBtn.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
 
     </script>
 </body>

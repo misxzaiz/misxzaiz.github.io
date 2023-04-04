@@ -60,10 +60,3 @@ function init() {
     console.log('There was a problem with the fetch operation:', error.message);
   });
 }
-
-const menuBtn = document.querySelector('.menu-btn');
-const navList = document.querySelector('nav ul');
-
-menuBtn.addEventListener('click', () => {
-  navList.classList.toggle('active');
-});
