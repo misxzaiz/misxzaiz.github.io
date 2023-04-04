@@ -13,7 +13,7 @@
             }
           }).then(response => {
             if (response.ok) {
-              status.innerHTML = "Thanks for your submission!";
+              status.innerHTML = "发送成功，谢谢你的留言!";
               form.reset()
             } else {
               response.json().then(data => {
@@ -25,7 +25,7 @@
               })
             }
           }).catch(error => {
-            status.innerHTML = "Oops! There was a problem submitting your form"
+            status.innerHTML = "发送失败，请重试"
           });
         }
         form.addEventListener("submit", handleSubmit)
