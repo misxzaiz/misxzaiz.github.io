@@ -14,10 +14,10 @@ function init() {
         let currentIndex = '';
 
         // 遍历data中的index，生成左侧导航栏
-        data.index.forEach(item => {
+        Object.keys(data).forEach(key => {
             const indexLink = document.createElement('a');
-            indexLink.href = `#${item}`;
-            indexLink.innerHTML = item;
+            indexLink.href = `#${key}`;
+            indexLink.innerHTML = key;
             indexContainer.appendChild(indexLink);
         });
 
