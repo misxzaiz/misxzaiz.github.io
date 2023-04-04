@@ -16,29 +16,6 @@
             }
         }
     </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(function () {
-            // 监听“发送邮件”按钮点击事件
-            $('#sendBtn').click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: "http://8.130.73.113:8081/send",
-                    data: {
-                        name: $("#name").val(),
-                        contact: $("#contact").val(),
-                        content: $("#content").val(),
-                    },
-                    success: function () {
-                        alert("发送成功");
-                    },
-					error: function(){
-						alert("发送成功");
-					}
-                });
-            });
-        });
-    </script>
 </head>
 <body>
 	<div class="container">
@@ -62,5 +39,28 @@
 			</div>
 		</form>
 	</div>
+    <script src="../../js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // 监听“发送邮件”按钮点击事件
+            $('#sendBtn').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "http://8.130.73.113:8081/send",
+                    data: {
+                        name: $("#name").val(),
+                        contact: $("#contact").val(),
+                        content: $("#content").val(),
+                    },
+                    success: function () {
+                        alert("发送成功");
+                    },
+					error: function(){
+						alert("发送成功");
+					}
+                });
+            });
+        });
+    </script>
 </body>
 </html>
