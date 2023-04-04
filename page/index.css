@@ -5,6 +5,7 @@ body {
     line-height: 1.5;
     display: flex;  /* 添加弹性布局 */
     flex-direction: column;  /* 设置垂直方向 */
+    background-color: #ffffff;
 }
 
 nav {
