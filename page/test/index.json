@@ -1,26 +1,25 @@
 {
     "index": {
         "AI": {
-            "AI绘画": "https://rightbrain.art/store",
-            "anzz（GPT）": "https://free.anzz.top/",
-            "pandapy（GPT）": "https://pandapy.com/",
-            "binjie（GPT）": "https://chat.binjie.site:7777/",
-            "aiai（GPT，飞机）": "https://www.aiai.zone/",
-            "蜻蜓问答（GPT）": "https://chat.qingting.work/"
+            "AI绘画": ["https://rightbrain.art/store",""],
+            "anzz（GPT）": ["https://free.anzz.top/",""],
+            "pandapy（GPT）": ["https://pandapy.com/",""],
+            "binjie（GPT）": ["https://chat.binjie.site:7777/",""],
+            "aiai（GPT，飞机）": ["https://www.aiai.zone/",""]
         },
         "Math": {
-            "SpssPro": "https://www.spsspro.com/"
+            "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         },
         "API": {
-            "夏柔": "https://api.aa1.cn/"
+            "夏柔": ["https://api.aa1.cn/","免费的api"]
         },
         "Cloud": {
-            "云数据库": "https://planetscale.com/",
-            "云邮箱formspree": "https://formspree.io/",
-            "网站analytics": "https://analytics.google.com/"
+            "planetscale": ["https://planetscale.com/","云数据库"],
+            "formspree": ["https://formspree.io/","云邮箱"],
+            "analytics": ["https://analytics.google.com/","网站分析"]
         },
         "Bingo": {
-            "随机音乐": "https://misxzaiz.github.io/page/page/music/music.html"
+            "音乐": ["https://misxzaiz.github.io/page/page/music/music.html","随机音乐播放器"]
         }
     }
 }
