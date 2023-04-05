@@ -39,8 +39,13 @@ nav ul li a {
     font-size: 20px;
     font-weight: bold;
 }
-
+.navigation {
+    margin: 2% 20% 0 20%;
+}
 @media screen and (max-width: 768px) {
+    .navigation {
+        margin: 2% 0% 0% 0%;
+    }
 
     .menu-btn {
         display: block;
