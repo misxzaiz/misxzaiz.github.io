@@ -7,6 +7,9 @@
             "BinJie": ["https://chat.binjie.site:7777/","GPT（推荐）"],
             "AiAi": ["https://www.aiai.zone/","GPT，飞机"]
         },
+        "Learn": {
+            "菜鸟教程": ["https://www.runoob.com","菜鸟教程"]
+        },
         "Math": {
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         },
