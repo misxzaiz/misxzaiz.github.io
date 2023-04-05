@@ -4,8 +4,7 @@
             "RightBrain": ["https://rightbrain.art/store","AI绘画"],
             "Anzz": ["https://free.anzz.top/","GPT"],
             "PanDapy": ["https://pandapy.com/","GPT"],
-            "BinJie": ["https://chat.binjie.site:7777/","GPT"],
-            "AiAi": ["https://www.aiai.zone/","GPT，飞机"]
+            "BinJie": ["https://chat.binjie.site:7777/","GPT（推荐）"],
         },
         "Math": {
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
@@ -14,14 +13,6 @@
             "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"],
             "语雀": ["https://www.yuque.com/dashboard","在线笔记（电脑/手机app、浏览器）"],
             "幕布": ["https://mubu.com/list","在线思维导图（电脑/手机app、浏览器）"]
-        },
-        "API": {
-            "夏柔": ["https://api.aa1.cn/","免费的api"]
-        },
-        "Cloud": {
-            "PlanetScale": ["https://planetscale.com/","云数据库"],
-            "FormSpree": ["https://formspree.io/","云邮箱"],
-            "Analytics": ["https://analytics.google.com/","网站分析"]
         },
         "Bingo": {
             "音乐": ["https://misxzaiz.github.io/page/page/music/music.html","随机音乐播放器"]
