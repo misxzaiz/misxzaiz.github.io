@@ -10,6 +10,9 @@
         "Math": {
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         },
+        "Tool": {
+            "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"]
+        },
         "API": {
             "夏柔": ["https://api.aa1.cn/","免费的api"]
         },
