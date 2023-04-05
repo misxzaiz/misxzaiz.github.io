@@ -11,7 +11,9 @@
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         },
         "Tool": {
-            "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"]
+            "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"],
+            "语雀": ["https://www.yuque.com/","在线笔记"],
+            "幕布": ["https://mubu.com/home","在线思维导图"]
         },
         "API": {
             "夏柔": ["https://api.aa1.cn/","免费的api"]
