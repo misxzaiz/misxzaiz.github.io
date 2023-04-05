@@ -12,8 +12,8 @@
         },
         "Tool": {
             "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"],
-            "语雀": ["https://www.yuque.com/","在线笔记"],
-            "幕布": ["https://mubu.com/home","在线思维导图"]
+            "语雀": ["https://www.yuque.com/dashboard","在线笔记（电脑/手机app、浏览器）"],
+            "幕布": ["https://mubu.com/list","在线思维导图（电脑/手机app、浏览器）"]
         },
         "API": {
             "夏柔": ["https://api.aa1.cn/","免费的api"]
