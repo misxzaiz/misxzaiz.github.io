@@ -67,3 +67,19 @@ const navList = document.querySelector('nav ul');
 menuBtn.addEventListener('click', () => {
   navList.classList.toggle('active');
 });
+
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-NB1JGLTB6H');
+
+// 获取需要添加事件监听器的元素
+var MyIndex = document.getElementById("MyIndex");
+
+// 添加双击事件监听器
+MyIndex.addEventListener("dblclick", function() {
+  // 在这里编写跳转代码
+  window.location.href = "page/index/index.html";
+});

@@ -54,12 +54,7 @@
   <div id="api-response"></div>
   <div id="api-prompt" onclick="fetchNewQuote()">随机一言</div>
   <script>
-          // 获取API响应并将其作为文本显示在页面上
-          fetch('https://v.api.aa1.cn/api/yiyan/index.php')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('api-response').innerHTML = data;
-          });
+    fetchNewQuote()
     function fetchNewQuote() {
       // 获取API响应并将其作为文本显示在页面上
       fetch('https://v.api.aa1.cn/api/yiyan/index.php')
@@ -68,11 +63,34 @@
           document.getElementById('api-response').innerHTML = data;
         });
     }
-    document.getElementById('api-response').addEventListener('click', function(event) {
-      if (event.offsetX < this.offsetWidth / 2) {
-        window.location.href = '/posts/';
+
+
+    // 获取需要添加事件监听器的元素
+    var myDiv = document.getElementById("api-response");
+
+    // 定义状态变量和定时器 ID
+    var isSingleClick = true;
+    var timerId = null;
+
+    // 添加单击事件监听器
+    myDiv.addEventListener("click", function() {
+      if (isSingleClick) {
+        // 如果是单击事件，设置状态变量为 false，启动定时器
+        isSingleClick = false;
+        timerId = setTimeout(function() {
+          // 如果在规定时间内没有再次单击，则执行单击跳转代码
+          window.location.href = "/page";
+          // 执行完跳转后要重置状态变量和定时器 ID
+          isSingleClick = true;
+          timerId = null;
+        }, 300); // 设置定时器时间为 300 毫秒（可根据实际情况调整）
       } else {
-        window.location.href = '/page/';
+        // 如果是双击事件（即在规定时间内再次单击），则清除定时器，执行双击跳转代码
+        clearTimeout(timerId);
+        window.location.href = "/posts";
+        // 执行完跳转后要重置状态变量和定时器 ID
+        isSingleClick = true;
+        timerId = null;
       }
     });
   </script>
