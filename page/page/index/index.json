@@ -7,7 +7,8 @@
             "BinJie": ["https://chat.binjie.site:7777/","GPT（推荐）"],
             "文心一言": ["https://yiyan.baidu.com/","百度的GPT"],
             "AiAi": ["https://www.aiai.zone/","GPT，飞机"],
-            "new Bing": ["https://www.bing.com/","new Bing"]
+            "new Bing": ["https://www.bing.com/","new Bing"],
+            "AiDuTu": ["https://chat.aidutu.cn/","GPT"]
         },
         "Learn": {
             "菜鸟教程": ["https://www.runoob.com","菜鸟教程"]
