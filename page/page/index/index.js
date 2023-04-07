@@ -1,5 +1,5 @@
 function init() {
-  fetch('http://misxzaiz.top/page/page/index/index.json')
+  fetch('https://misxzaiz.top/page/page/index/index.json')
   .then(function(response) {
     if (!response.ok) {
       throw new Error('Network response was not ok');
