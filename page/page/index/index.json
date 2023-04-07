@@ -35,6 +35,10 @@
         },
         "Bingo": {
             "音乐": ["https://misxzaiz.github.io/page/page/music/music.html","随机音乐播放器"]
+        },
+        "Nav": {
+            "CXY521": ["http://www.cxy521.com/ai.html","程序员导航（AI部分）"]
         }
+        
     }
 }
