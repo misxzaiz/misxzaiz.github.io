@@ -57,7 +57,7 @@
     fetchNewQuote()
     function fetchNewQuote() {
       // 获取API响应并将其作为文本显示在页面上
-      fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+      fetch('https://v.api.aa1.cn/api/api-wenan-mingrenmingyan/index.php?aa1=text')
         .then(response => response.text())
         .then(data => {
           document.getElementById('api-response').innerHTML = data;
