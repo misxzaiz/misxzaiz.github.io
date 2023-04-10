@@ -34,6 +34,7 @@
             "Analytics": ["https://analytics.google.com/","网站分析"]
         },
         "Bingo": {
+            "AirPano": ["https://www.airpano.com/","云游世界，360全景"],
             "音乐": ["https://misxzaiz.github.io/page/page/music/music.html","随机音乐播放器"]
         },
         "Nav": {

@@ -1,7 +1,7 @@
 {
     "index": {
         "AI": {
-            "RightBrain": ["https://rightbrain.art/store","AI绘画"],
+            "RightBrain": ["https://rightbrain.art/store","AI绘画（微信小程序：Vega）"],
             "BinJie（旧）": ["https://chat.binjie.site:7777/","将会关闭，如有重要记录，请保存"],
             "BinJie（新）": ["https://chat.binjie.site:7777/","GPT（推荐）"],
             "文心一言": ["https://yiyan.baidu.com/","百度的GPT"]
@@ -10,11 +10,13 @@
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         },
         "Tool": {
-            "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"],
+            "MindShow": ["https://www.mindshow.fun/","PPT生成工具"],
             "语雀": ["https://www.yuque.com/dashboard","在线笔记（电脑/手机app、浏览器）"],
             "幕布": ["https://mubu.com/list","在线思维导图（电脑/手机app、浏览器）"]
         },
         "Bingo": {
+            "孔明灯": ["https://henxiangsi.com/","在线放孔明灯"],
+            "ChiShenMe": ["https://chishenme.xyz/","中午吃什么"]
         }
     }
 }
