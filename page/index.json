@@ -4,7 +4,8 @@
             "RightBrain": ["https://rightbrain.art/store","AI绘画（微信小程序：Vega）"],
             "BinJie（旧）": ["https://chat.binjie.site:7777/","将会关闭，如有重要记录，请保存"],
             "BinJie（新）": ["https://chat.binjie.site:7777/","GPT（推荐）"],
-            "文心一言": ["https://yiyan.baidu.com/","百度的GPT"]
+            "文心一言": ["https://yiyan.baidu.com/","百度的GPT（要申请）"],
+            "通义千问": ["https://tongyi.aliyun.com/","阿里的GPT（要申请）"]
         },
         "Math": {
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
