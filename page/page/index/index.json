@@ -19,7 +19,8 @@
             "幕布": ["https://mubu.com/list","在线思维导图（电脑/手机app、浏览器）"],
             "Cursor": ["https://www.cursor.so/","gpt编辑器"],
             "PhpStudy": ["https://www.xp.cn/","php集成环境"],
-            "宝塔": ["https://www.bt.cn/","服务器管理"]
+            "宝塔": ["https://www.bt.cn/","服务器管理"],
+            "Jotform": ["https://www.jotform.com/myforms/", "页面模板"]
         },
         "API": {
             "夏柔": ["https://api.aa1.cn/","api"],
