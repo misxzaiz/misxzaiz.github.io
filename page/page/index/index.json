@@ -25,7 +25,8 @@
             "夏柔": ["https://api.aa1.cn/","api"],
             "Free-Api": ["https://gitee.com/fahawifi/free-api","api"],
             "TianApi": ["https://www.tianapi.com/","api"],
-            "聚合": ["https://www.juhe.cn/","api"]
+            "聚合": ["https://www.juhe.cn/","api"],
+            "APIspace": ["https://www.apispace.com/","api"]
             
         },
         "Cloud": {
