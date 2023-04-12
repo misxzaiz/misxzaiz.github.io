@@ -2,7 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>查询单词发音</title>
+    
+    <style>
+        /* 手机屏幕样式 */
+@media (max-width: 480px) {
+    h1 {
+      font-size: 24px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    audio {
+      width: 100%;
+    }
+  }
+    </style>
   </head>
   <body>
     <h1>查询单词发音</h1>
@@ -19,4 +52,5 @@
       }
     </script>
   </body>
+
 </html>
