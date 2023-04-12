@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>查询单词发音</title>
+  </head>
+  <body>
+    <h1>查询单词发音</h1>
+    <label for="word">请输入您要查询的单词：</label>
+    <input type="text" id="word">
+    <button onclick="getPronunciation()">查询</button>
+    <div id="pronunciation"></div>
+
+    <script>
+      function getPronunciation() {
+        let word = document.querySelector("#word").value;
+        let audioUrl = `http://dict.youdao.com/dictvoice?type=0&audio=${word}`;
+        document.querySelector("#pronunciation").innerHTML = `<audio controls><source src="${audioUrl}" type="audio/mpeg"></audio>`;
+      }
+    </script>
+  </body>
+</html>
