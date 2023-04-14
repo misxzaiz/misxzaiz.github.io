@@ -1,5 +1,10 @@
 {
     "index": {
+        "常用": {
+            "BinJie": ["https://chat.binjie.site:7777/","GPT（推荐）"],
+            "文心一言": ["https://yiyan.baidu.com/","百度的GPT"],
+            "Zlib": ["https://singlelogin.me", "图书下载"]
+        },
         "AI": {
             "RightBrain": ["https://rightbrain.art/store","AI绘画"],
             "BinJie": ["https://chat.binjie.site:7777/","GPT（推荐）"],
@@ -10,9 +15,6 @@
         "Learn": {
             "菜鸟教程": ["https://www.runoob.com","菜鸟教程"],
             "W3schools": ["https://www.w3schools.cn/default.asp", "w3schools"]
-        },
-        "Math": {
-            "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         },
         "Tool": {
             "SpssPro": ["https://www.mindshow.fun/","PPT生成工具"],
@@ -43,6 +45,9 @@
         },
         "Nav": {
             "CXY521": ["http://www.cxy521.com/ai.html","程序员导航（AI部分）"]
+        },
+        "Math": {
+            "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
         }
         
     }
