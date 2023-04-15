@@ -1,9 +1,11 @@
 {
     "index": {
         "常用": {
-            "BinJie": ["https://chat.binjie.site:7777/","GPT（推荐）"],
+            "BinJie": ["http://chat1.aichatos.com/","GPT（推荐）"],
             "文心一言": ["https://yiyan.baidu.com/","百度的GPT"],
-            "Zlib": ["https://singlelogin.me", "图书下载"]
+            "Zlib": ["https://singlelogin.me", "图书下载"],
+            "AgentGpt": ["https://agentgpt.reworkd.ai/", "AgentGpt"],
+            "Claude": ["https://misxzaiz.slack.com/", "Claude"]
         },
         "AI": {
             "RightBrain": ["https://rightbrain.art/store","AI绘画"],
