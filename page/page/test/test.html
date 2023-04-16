@@ -117,24 +117,24 @@
                 </div>
             </el-tabs>
         </div>
+        
         <div class="card-content">
             <el-card class="word-card" shadow="hover">
                 <div class="card">
                     <div class="card-header word">
-                        {{ word.word }}                            
-                        <a href="#" class="btn btn-primary word-button">下一个</a>
+                        {{ wordData.word }}                            
+                        <button href="#" class="btn btn-primary word-button" @click="getWordData()">下一个</button>
                     </div>
                     <div class="card-body">
                         <div>
-                            <p class="card-text phonetic">{{ word.phonetic }}</p>
-                            <p class="card-text translation">{{ word.translation }}</p>
-                            <p class="card-text example">{{ word.example }}</p>
+                            <p class="card-text phonetic">{{ wordData.accent }}</p>
+                            <p class="card-text translation">{{ wordData.mean_cn }}</p>
+                            <p class="card-text example">{{ wordData.sentence }}</p>
                         </div>
                     </div>
                 </div>
             </el-card>
         </div>
-
 
     </div>
 
@@ -143,21 +143,37 @@
             data() {
                 return {
                     navs: null,
-                    word: {
-                        word: 'good',
-                        phonetic: '/good/',
-                        translation: '好',
-                        example: 'A good life is a collection of happy moments.'
-                    }
+                    wordList: {},
+                    wordIndex: '',
+                    wordData: {}
+                }
+            },
+            methods: {
+                getWordData() { // 将方法名 word 修改为 getWordData
+                    let that = this;
+                    let random = Math.floor(Math.random() * that.wordList.total);
+                    that.wordIndex = that.wordList.list[random];
+                    axios
+                      .get("https://nav.xiaozaiz.xyz/page/json/word/words/" + that.wordIndex + ".json")
+                      .then(function(res) {
+                        that.wordData = res.data;
+                    })
                 }
             },
             mounted() {
-                let that = this
+                let that = this;
                 axios
                     .get("https://nav.xiaozaiz.xyz/page/page/index/index.json")
                     .then(function(res){
                         that.navs = res.data.index
+                    });
+                axios
+                    .get("https://nav.xiaozaiz.xyz/page/json/word/list.json")
+                    .then(function(res) {
+                        that.wordList = res.data;
+                        that.getWordData(); // 调用获取单词数据的方法
                     })
+
             }
         };
         const app = Vue.createApp(App);
