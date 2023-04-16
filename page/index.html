@@ -10,6 +10,7 @@
     <script src="js/vue@3.js"></script>
     <script src="js/element-plus.js"></script>
     <script src="js/axios.min.js"></script>
+    <script src="js/icon-element.js"></script>
     <style>
         .flex-grow {
             flex-grow: 1;
@@ -96,11 +97,11 @@
     <div id="app">
         <div>
             <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" >
-                <el-menu-item index="0"><a href="/" class="logo">AndZaiz</a></el-menu-item>
+                <el-menu-item index="0"><a href="page/index" class="logo">AndZaiz</a></el-menu-item>
                 <div class="flex-grow" ></div>
                 <el-sub-menu index="1">
                     <template #title>Workspace</template>
-                    <el-menu-item index="1-1"><a href="../email/liu.html" style="width: 100%;">联系</a></el-menu-item>
+                    <el-menu-item index="1-1"><a href="page/email/liu.html" style="width: 100%;">联系</a></el-menu-item>
                 </el-sub-menu>
             </el-menu>
         </div>
@@ -130,6 +131,8 @@
                             <p class="card-text phonetic">{{ wordData.accent }}</p>
                             <p class="card-text translation">{{ wordData.mean_cn }}</p>
                             <p class="card-text example">{{ wordData.sentence }}</p>
+                            <p class="card-text example">{{ wordData.sentence_trans }}</p>
+                            <p class="card-text example">{{ wordData.sentence_phrase }}</p>
                         </div>
                     </div>
                 </div>
