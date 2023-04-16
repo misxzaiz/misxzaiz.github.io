@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="/">AndZaiz</a>
+      </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="../email/email.html">Contact（严格）</a></li>
+        <li><a href="../email/liu.html">Contact（通用）</a></li>
+    </ul>
+    </nav>
+    <div id="app">
+        <div>
+            <div v-for="(value, key, index) in navs">
+                <a :href="'#'+key">{{key}}</a>
+            </div>
+        </div>
+        <div>
+            <div v-for="(value, key, index) in navs" :id="key">
+                <div v-for="(v, k, i) in value">
+                    <a :href="v[0]">{{k}}</a>
+                    <span>{{v[1]}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/vue.global.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    navs: null
+                }
+            },
+            mounted() {
+                let that = this
+                axios
+                    .get("https://nav.xiaozaiz.xyz/page/page/index/index.json")
+                    .then(function(res){
+                        that.navs = res.data.index
+                    })
+            }
+        }).mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片示例</title>
+</head>
+  <body>
+    <div id="app">
+      <div v-if="!expanded" class="small-card" v-on:click="expandCard()">
+        <h3>{{ word }}</h3>
+        <p>{{ translation }}</p>
+        <span>{{ phonetic }}</span>
+      </div>
+      <div v-if="expanded" class="large-card">
+        <h2>{{ word }}</h2>
+        <p>{{ translation }}</p>
+        <span>{{ phonetic }}</span>
+        <button v-on:click="collapseCard()">Close</button>
+      </div>
+    </div>
+
+    <!-- 引入 Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // 创建 Vue 实例
+      var app = new Vue({
+        el: '#app',
+        data: {
+          word: 'Word',
+          translation: 'Chinese Translation',
+          phonetic: 'Phonetic Symbols',
+          expanded: false
+        },
+        methods: {
+          expandCard: function() {
+            this.expanded = true;
+          },
+          collapseCard: function() {
+            this.expanded = false;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
