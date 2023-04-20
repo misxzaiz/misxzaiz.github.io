@@ -25,7 +25,8 @@
             "Cursor": ["https://www.cursor.so/","gpt编辑器"],
             "PhpStudy": ["https://www.xp.cn/","php集成环境"],
             "宝塔": ["https://www.bt.cn/","服务器管理"],
-            "Jotform": ["https://www.jotform.com/myforms/", "页面模板"]
+            "Jotform": ["https://www.jotform.com/myforms/", "页面模板"],
+            "Ngrok": ["https://www.ngrok.cc/", "内网穿透"]
         },
         "API": {
             "夏柔": ["https://api.aa1.cn/","api"],
