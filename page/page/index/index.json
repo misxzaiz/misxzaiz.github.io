@@ -5,7 +5,8 @@
             "文心一言": ["https://yiyan.baidu.com/","百度的GPT"],
             "Zlib": ["https://singlelogin.me", "图书下载"],
             "AgentGpt": ["https://agentgpt.reworkd.ai/", "AgentGpt"],
-            "Claude": ["https://misxzaiz.slack.com/", "Claude"]
+            "Claude": ["https://misxzaiz.slack.com/", "Claude"],
+            "MST": ["https://mst.ai/", "AIS"]
         },
         "AI": {
             "RightBrain": ["https://rightbrain.art/store","AI绘画"],
