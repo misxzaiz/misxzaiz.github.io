@@ -6,7 +6,7 @@
             "AiDuTu": ["https://chat.aidutu.cn/","GPT"],
             "文心一言": ["https://yiyan.baidu.com/","百度的GPT（要申请）"],
             "通义千问": ["https://tongyi.aliyun.com/","阿里的GPT（要申请）"],
-            "MST": ["https://mst.ai/", "AIS"],
+            "MST": ["https://mst.ai/", "AIS（基础GPT、AI画图）GPT较慢（要登录）"],
             "RightBrain": ["https://rightbrain.art/store","AI绘画"]
         },
         "Math": {
