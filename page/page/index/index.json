@@ -15,7 +15,8 @@
             "文心一言": ["https://yiyan.baidu.com/","百度的GPT"],
             "new Bing": ["https://www.bing.com/","new Bing"],
             "AiDuTu": ["https://chat.aidutu.cn/","GPT"],
-            "Wiki": ["https://openai.wiki/", "openai.wiki"]
+            "Wiki": ["https://openai.wiki/", "openai.wiki"],
+            "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests"]
         },
         "Learn": {
             "菜鸟教程": ["https://www.runoob.com","菜鸟教程"],
