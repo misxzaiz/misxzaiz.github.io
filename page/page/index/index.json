@@ -8,7 +8,8 @@
             "AgentGpt": ["https://agentgpt.reworkd.ai/", "AgentGpt"],
             "Claude": ["https://misxzaiz.slack.com/", "Claude"],
             "MST": ["https://mst.ai/", "AIS"],
-            "forefront": ["https://chat.forefront.ai/", "forefront"]
+            "forefront": ["https://chat.forefront.ai/", "forefront"],
+            "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理"]
         },
         "AI": {
             "RightBrain": ["https://rightbrain.art/store","AI绘画"],
