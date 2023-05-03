@@ -9,7 +9,8 @@
             "Claude": ["https://misxzaiz.slack.com/", "Claude"],
             "MST": ["https://mst.ai/", "AIS"],
             "forefront": ["https://chat.forefront.ai/", "forefront"],
-            "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理"]
+            "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理"],
+            "MBA智库": ["https://wiki.mbalib.com/", "MBA智库"]
         },
         "AI": {
             "RightBrain": ["https://rightbrain.art/store","AI绘画"],
