@@ -1,16 +1,3 @@
----
-layout:			post
-title:			"JavaScript DOM"
-subtitle: 		"JavaScript DOM"
-author:			"XiaoZaiz"
-header-style: 	text
-catalog:      	true
-tags:
-    - JavaScript
-    - 前端
-    - DOM
----
-
 # DOM 基础
 
 ## 一、DOM

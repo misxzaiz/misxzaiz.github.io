@@ -1,15 +1,3 @@
----
-layout:			post
-title:			"JavaScript 基础"
-subtitle: 		"JavaScript 基础"
-author:			"XiaoZaiz"
-header-style: 	text
-catalog:      	true
-tags:
-    - JavaScript
-    - 前端
----
-
 # JavaScript 基础
 
 ## 一、简介
