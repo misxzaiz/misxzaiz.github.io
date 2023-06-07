@@ -1,6 +1,6 @@
 {
     "index": {
-        "AI": {
+        "常用": {
             "BinJie（新）": ["https://chat.jinshutuan.com/","GPT"],
             "Wuguokai": ["https://chat.wuguokai.cn/", "GPT"],
             "AiDuTu": ["https://chat.aidutu.cn/","GPT"],
@@ -8,6 +8,9 @@
             "通义千问": ["https://tongyi.aliyun.com/","阿里的GPT（要申请）"],
             "MST": ["https://mst.ai/", "AIS（基础GPT、AI画图）GPT较慢（要登录）"],
             "RightBrain": ["https://rightbrain.art/store","AI绘画"]
+        },
+        "面试": {
+            "Java 面试题汇总": ["https://mp.weixin.qq.com/s/MrWFt4jDKRQC3g4TsMde7Q", "Java 面试题汇总"]
         },
         "Math": {
             "SpssPro": ["https://www.spsspro.com/","数学分析工具"]
