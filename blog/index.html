@@ -40,7 +40,6 @@
                     let that = this;
                     axios
                         .get("https://nav.xiaozaiz.xyz/blog/md/"+markdown)
-                        // .get("https://nav.xiaozaiz.xyz/note/2023-03-20-云计算安全.md")
                         .then(function(res){
                             that.markdown = res.data
                             document.getElementById("markdown").innerHTML = marked(res.data)
