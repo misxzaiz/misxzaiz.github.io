@@ -5,42 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="stylesheet" href="css/element.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <script src="js/vue@3.js"></script>
     <script src="js/element-plus.js"></script>
     <script src="js/axios.min.js"></script>
-    <script src="js/icon-element.js"></script>
 </head>
 <body>
     <div id="app">
-        <el-button @click="href('./md/2023-03-20-云计算安全.html')">spring security</el-button>
-        <el-button @click="href('./pages/content/index.html')">Content</el-button>
-        {{content}}
+        <!-- <el-button @click="href('./md/2023-03-20-云计算安全.html')">spring security</el-button> -->
+        <div v-for="(item, index) in contents" :key="index">
+            <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
+        </div>
+        <div>
+            {{markdown}}
+        </div>
     </div>
 
     <script>
         const App = {
             data() {
                 return {
-                    msg: "aa",
-                    content: ""
+                    contents: [],
+                    markdown: null
                 }
             },
             methods: {
                 href(url) {
                     window.location.href=url
+                },
+                getMarkdown(markdown) {
+                    let that = this;
+                    axios
+                        .get("https://nav.xiaozaiz.xyz/blog/md/"+markdown)
+                        .then(function(res){
+                            that.markdown = res.data
+                            console.log(res.data)
+                        })
+                        .catch(function(err){
+                            alert("获取文章列表失败！")
+                        });
                 }
                 
             },
             mounted() {
                 let that = this;
                 axios
-                    .get("https://nav.xiaozaiz.xyz/blog/md/2023-03-20-云计算安全.html")
+                    .get("https://nav.xiaozaiz.xyz/blog/contents.json")
                     .then(function(res){
-                        that.content = res.data
+                        that.contents = res.data.contents
                     })
                     .catch(function(err){
-                        alert("抢卷失败！")
+                        alert("获取文章列表失败！")
                     });
             }
         };

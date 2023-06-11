@@ -1,16 +1,3 @@
----
-layout:			post
-title:			"Spring Security"
-subtitle: 		"spring security 总结"
-author:			"XiaoZaiz"
-header-style: 	text
-catalog:      	true
-tags:
-    - Java
-    - Spring
-    - Security
----
-
 # 一、介绍
 
 功能： [认证（authentication）](https://springdoc.cn/spring-security/features/authentication/index.html)、[授权（authorization）](https://springdoc.cn/spring-security/features/authorization/index.html) 和 [保护](https://springdoc.cn/spring-security/features/exploits/index.html)。
