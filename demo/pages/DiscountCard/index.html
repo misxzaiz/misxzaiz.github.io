@@ -15,17 +15,19 @@
 <body>
     
     <div id="app">
-        {{msg}}
-
+        <el-button>用户1抢卷</el-button>
+        <el-button>用户2抢卷</el-button>
+        <el-button>用户3抢卷</el-button>
+        <el-button>用户4抢卷</el-button>
+        <el-button>用户5抢卷</el-button>
+        <div>优惠卷剩余：{{count}} 张</div>
     </div>
 
-
-    
     <script>
         const App = {
             data() {
                 return {
-                    msg: "aa"
+                    count: 0
                 }
             },
             methods: {
@@ -38,7 +40,6 @@
         const app = Vue.createApp(App);
         app.use(ElementPlus);
         app.mount("#app");
-
     </script>
 </body>
 </html>
