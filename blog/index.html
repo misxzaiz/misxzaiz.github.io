@@ -3,9 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blog</title>
+    <link rel="stylesheet" href="css/element.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/vue@3.js"></script>
+    <script src="js/element-plus.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/icon-element.js"></script>
 </head>
 <body>
-    BLOG
+    <div id="app">
+        <el-button @click="href('./md/2023-03-19-spring security.md')">spring security</el-button>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    msg: "aa"
+                }
+            },
+            methods: {
+                href(url) {
+                    window.location.href=url
+                }
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+
+    </script>
 </body>
 </html>
