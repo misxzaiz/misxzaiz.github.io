@@ -11,33 +11,38 @@
     <script src="js/marked.js"></script>
     <link rel="stylesheet" href="css/highlight.default.min.css">
     <script src="js/highlight.min.js"></script>
+    <style>
+
+    </style>
 </head>
 <body>
     <div id="app">
-        <el-row :gutter="20">
-            <el-col :span="6">
-                <!-- 文章列表 -->
-                <div style="position: fixed; top: 0;">
-                    <div v-for="(item, index) in contents" :key="index">
-                        <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
-                    </div>
-                </div>
 
-            </el-col>
-            <el-col :span="12">
-                <!-- 内容 -->
-                <div id="markdown">
-                </div>
-            </el-col>
-            <el-col :span="6">
-                <div style="position: fixed; top: 0;">
-                    <div v-for="(title, index) in titles" :key="index">
-                        <a :href="'#'+title.title">{{title.title}}</a>
-                    </div>
-                </div>
 
-            </el-col>
-        </el-row>
+
+
+
+        <el-collapse>
+            <el-collapse-item title="文章列表" icon-position="right">
+            <!-- 文章列表 -->
+            <div v-for="(item, index) in contents" :key="index">
+                <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
+            </div>
+            </el-collapse-item>
+        </el-collapse>
+        <el-collapse>
+            <el-collapse-item title="文章索引" icon-position="right">
+            <!-- 文章索引 -->
+            <div v-for="(title, index) in titles" :key="index">
+                <a :href="'#'+title.title">{{title.title}}</a>
+            </div>
+            </el-collapse-item>
+        </el-collapse>
+
+
+        <!-- 内容 -->
+        <div id="markdown">
+        </div>
     </div>
 
     <script>
