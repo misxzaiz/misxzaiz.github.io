@@ -9,18 +9,17 @@
     <script src="js/element-plus.js"></script>
     <script src="js/axios.min.js"></script>
     <script src="js/marked.js"></script>
+    <link rel="stylesheet" href="css/highlight.default.min.css">
+    <script src="js/highlight.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <!-- <el-button @click="href('./md/2023-03-20-云计算安全.html')">spring security</el-button> -->
+        <!-- 文章列表 -->
         <div v-for="(item, index) in contents" :key="index">
             <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
         </div>
-        <div>
-            <!-- {{markdown}} -->
-        </div>
+        <!-- 内容 -->
         <div id="markdown">
-
         </div>
     </div>
 
@@ -28,8 +27,7 @@
         const App = {
             data() {
                 return {
-                    contents: [],
-                    markdown: null
+                    contents: []
                 }
             },
             methods: {
@@ -41,14 +39,13 @@
                     axios
                         .get("https://nav.xiaozaiz.xyz/blog/md/"+markdown)
                         .then(function(res){
-                            that.markdown = res.data
                             document.getElementById("markdown").innerHTML = marked(res.data)
+                            hljs.highlightAll();
                         })
                         .catch(function(err){
-                            alert("获取文章列表失败！")
+                            alert("获取文章失败！")
                         });
                 }
-                
             },
             mounted() {
                 let that = this;
@@ -65,7 +62,6 @@
         const app = Vue.createApp(App);
         app.use(ElementPlus);
         app.mount("#app");
-
     </script>
 </body>
 </html>
