@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="css/highlight.default.min.css">
     <script src="js/highlight.min.js"></script>
     <style>
-#back-to-top {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-}
+
+        /* 回到顶部 */
+        #back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
 
     </style>
 </head>
@@ -67,9 +69,6 @@
                 }
             },
             methods: {
-                href(url) {
-                    window.location.href=url
-                },
                 getMarkdown(markdown) {
                     let that = this;
                     axios
@@ -94,6 +93,7 @@
                         });
                 },
                 backToTop() {
+                    // 回到顶部
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 },
 
