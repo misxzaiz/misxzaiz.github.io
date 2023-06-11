@@ -14,20 +14,38 @@
 </head>
 <body>
     <div id="app">
-        <!-- 文章列表 -->
-        <div v-for="(item, index) in contents" :key="index">
-            <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
-        </div>
-        <!-- 内容 -->
-        <div id="markdown">
-        </div>
+        <el-row :gutter="20">
+            <el-col :span="6">
+                <!-- 文章列表 -->
+                <div style="position: fixed; top: 0;">
+                    <div v-for="(item, index) in contents" :key="index">
+                        <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
+                    </div>
+                </div>
+
+            </el-col>
+            <el-col :span="12">
+                <!-- 内容 -->
+                <div id="markdown">
+                </div>
+            </el-col>
+            <el-col :span="6">
+                <div style="position: fixed; top: 0;">
+                    <div v-for="(title, index) in titles" :key="index">
+                        <a :href="'#'+title.title">{{title.title}}</a>
+                    </div>
+                </div>
+
+            </el-col>
+        </el-row>
     </div>
 
     <script>
         const App = {
             data() {
                 return {
-                    contents: []
+                    contents: [],
+                    titles: [],
                 }
             },
             methods: {
@@ -39,8 +57,19 @@
                     axios
                         .get("https://nav.xiaozaiz.xyz/blog/md/"+markdown)
                         .then(function(res){
+                            let _that = that
+                            // 获取文章内容并使用markjs和highlightjs修饰
                             document.getElementById("markdown").innerHTML = marked(res.data)
                             hljs.highlightAll();
+                            // 获取文章标题
+                            that.titles = []
+                            const headings = document.querySelectorAll('h1,h2')//,h3,h4,h5,h6')
+                            headings.forEach(heading => {
+                                const level = heading.tagName;
+                                const title = heading.textContent;
+                                const titleObj = { level, title }; // 将标题级别和标题内容存储在对象中
+                                _that.titles.push(titleObj); // 将标题对象添加到titles数组中
+                            });
                         })
                         .catch(function(err){
                             alert("获取文章失败！")
