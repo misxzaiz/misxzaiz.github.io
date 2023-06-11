@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/element.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/vue@3.js"></script>
+    <script src="js/element-plus.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/icon-element.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <a href="./pages/DiscountCard/index.html">DiscountCard</a>
+
+    </div>
+
+
+    
+    <script>
+        const App = {
+            data() {
+                return {
+                    msg: "aa"
+                }
+            },
+            methods: {
+
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+
+    </script>
+</body>
+</html>
