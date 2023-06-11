@@ -15,8 +15,7 @@
 <body>
     
     <div id="app">
-        <a href="./pages/DiscountCard/index.html">DiscountCard</a>
-
+        <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
     </div>
 
 
@@ -29,7 +28,9 @@
                 }
             },
             methods: {
-
+                href(url) {
+                    window.location.href=url
+                }
             },
             mounted() {
 
