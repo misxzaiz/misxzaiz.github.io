@@ -15,22 +15,33 @@
     <div id="app">
         <el-button @click="href('./md/2023-03-20-云计算安全.html')">spring security</el-button>
         <el-button @click="href('./pages/content/index.html')">Content</el-button>
+        {{content}}
     </div>
 
     <script>
         const App = {
             data() {
                 return {
-                    msg: "aa"
+                    msg: "aa",
+                    content: ""
                 }
             },
             methods: {
                 href(url) {
                     window.location.href=url
                 }
+                
             },
             mounted() {
-
+                let that = this;
+                axios
+                    .get("https://nav.xiaozaiz.xyz/blog/md/2023-03-20-云计算安全.html")
+                    .then(function(res){
+                        that.content = res.data
+                    })
+                    .catch(function(err){
+                        alert("抢卷失败！")
+                    });
             }
         };
         const app = Vue.createApp(App);
