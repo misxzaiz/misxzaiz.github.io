@@ -18,24 +18,25 @@
 </head>
 <body>
     <div id="app">
-        <el-row>
-            <el-col :xs="24" :sm="5" :order="1" style="padding: 10px;">
+        <el-collapse>
+            <el-collapse-item title="文章列表" icon-position="right">
               <!-- 文章列表 -->
               <div v-for="(item, index) in contents" :key="index">
-                <el-button size="mini" @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
+                <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
               </div>
-            </el-col>
-            <el-col :xs="24" :sm="15" :order="3" style="padding: 10px;">
-              <!-- 内容 -->
-              <div id="markdown"></div> 
-            </el-col>
-            <el-col :xs="24" :sm="4" :order="2" style="padding: 10px;">
+            </el-collapse-item>
+          </el-collapse>
+          <el-collapse>
+            <el-collapse-item title="文章索引" icon-position="right">
               <!-- 文章索引 -->
               <div v-for="(title, index) in titles" :key="index">
                 <a :href="'#'+title.title">{{title.title}}</a>
               </div>
-            </el-col>
-        </el-row>
+            </el-collapse-item>
+          </el-collapse>
+              <!-- 内容 -->
+              <div id="markdown"></div> 
+
 
         <!-- 文章列表 -->
         <!-- <div v-for="(item, index) in contents" :key="index">
