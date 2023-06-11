@@ -128,6 +128,8 @@
         //     s.parentNode.insertBefore(hm, s);
         // })();
     </script>
+    <script src="js/vue@3.js"></script>
+    <script src="js/axios.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1JGLTB6H"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -263,18 +265,46 @@
 
                                     </ul>
                                 </li>
+<!-- 
+                                <div class="sidebar-item">
+                                    <div v-for="(category, categoryName) in navs" :key="categoryName">
+          
+                                        <a href="javascript:;" class="smooth change-href">
+                                            <i class="iconfont icon-shoucang icon-fw icon-lg mr-2"></i>
+                                            <span>{{categoryName}}</span>
+                                            <i class="iconfont icon-arrow-r-m sidebar-more text-sm"></i>
+                                        </a>
+                                        <ul v-for="(content, contentName) in category" :key="contentName">
+                                            <li>
+                                                <a :href="'#'+content.id" class="smooth"><span>{{contentName}}</span></a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+
+                                </div> -->
                                 <li class="sidebar-item">
-                                    <a href="#term-2" class="smooth">
+                                    <a href="#term-common-common" class="smooth">
                                         <i class="iconfont icon-shoucang icon-fw icon-lg mr-2"></i>
                                         <span>常用推荐</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="#term-3-1" class="smooth">
+                                    <!--<a href="javascript:;">-->
+                                    <a href="javascript:;" class="smooth change-href">
                                         <i class="iconfont icon-fw icon-lg mr-2"><svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
                                         </i>
                                         <span>人工智能</span>
+                                        <i class="iconfont icon-arrow-r-m sidebar-more text-sm"></i>
                                     </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#term-ai-gpt" class="smooth"><span>GPT</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#term-ai-drawing" class="smooth"><span>绘画</span></a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="sidebar-item">
                                     <!--<a href="javascript:;">-->
@@ -285,16 +315,16 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#term-3" class="smooth"><span>在线</span></a>
+                                            <a href="#term-video-online" class="smooth"><span>在线</span></a>
                                         </li>
                                         <li>
-                                            <a href="#term-4" class="smooth"><span>下载</span></a>
+                                            <a href="#term-video-download" class="smooth"><span>下载</span></a>
                                         </li>
                                         <li>
-                                            <a href="#term-5" class="smooth"><span>动漫</span></a>
+                                            <a href="#term-video-cartoon" class="smooth"><span>动漫</span></a>
                                         </li>
                                         <li>
-                                            <a href="#term-6" class="smooth"><span>美剧</span></a>
+                                            <a href="#term-video-USA" class="smooth"><span>美剧</span></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -307,13 +337,10 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#term-7" class="smooth"><span>软件博客</span></a>
+                                            <a href="#term-software-blog" class="smooth"><span>软件博客</span></a>
                                         </li>
                                         <li>
-                                            <a href="#term-8" class="smooth"><span>在线工具</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#term-9" class="smooth"><span>网盘资源</span></a>
+                                            <a href="#term-software-online" class="smooth"><span>在线工具</span></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -326,10 +353,10 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="#term-42" class="smooth"><span>资讯</span></a>
+                                            <a href="#term-CommunityCounseling-counseling" class="smooth"><span>资讯</span></a>
                                         </li>
                                         <li>
-                                            <a href="#term-45" class="smooth"><span>社区</span></a>
+                                            <a href="#term-CommunityCounseling-community" class="smooth"><span>社区</span></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -406,13 +433,6 @@
                                             target="_blank" rel="noopener" href="javascript:;">
                                             <i class="iconfont icon-rizhi fa-lg mr-2"></i>
                                             <span>日志</span></a></li>
-
-
-
-
-
-
-
 
                                     <li id="menu-item-284"
                                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-284">
@@ -683,660 +703,50 @@
                     </div>
                 </div>
             </div>
+            <!-- 主要内容区 -->
             <div id="content" class="content-site customize-site">
-                <div class="d-flex flex-fill ">
-                    <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-2"></i>
-                        常用推荐
-                    </h4>
-                    <div class="flex-fill"></div>
-                    <a class='btn-move text-xs' href='#'>more+</a>
-                </div>
-                <div class="row ">
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="../page/index-old.html" target="_blank" data-id="360" data-url="../page/index-old.html"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/wangyiyun.png" data-src="ico/wangyiyun.png"
-                                                onerror="javascript:this.src='ico/wangyiyun.png'" alt="FreeMP3">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>AndZaiz</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">之前的导航页面</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="../page/index-old.html" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
+                <div v-for="(category, categoryName) in navs" :key="categoryName">
+                    <div v-for="(content, contentName) in category" :key="contentName">
+                        <div class="d-flex flex-fill ">
+                            <h4 class="text-gray text-lg mb-4">
+                                <i class="site-tag iconfont icon-tag icon-lg mr-1" :id="content.id"></i>
+                                {{ categoryName }}<span style="color:#f1404b"> · </span>{{ contentName }}
+                            </h4>
+                            <div class="flex-fill"></div>
                         </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://chat.jinshutuan.com/" target="_blank" data-id="360" data-url="https://chat.jinshutuan.com/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>BinJie</strong>
+                        <div class="row">
+                            <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a"  v-for="(item, index) in content.content" :key="index">
+                                <div class="url-body default">
+                                    <a :href="item[1]" target="_blank" data-id="360" :data-url="item[1]"
+                                        class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
+                                        :title="item[2]">
+                                        <div class="card-body">
+                                            <div class="url-content d-flex align-items-center">
+                                                <div
+                                                    class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
+                                                    <img class="lazy" :src="item[3]" :data-src="item[3]"
+                                                        onerror="javascript:this.src='ico/github.png'" :alt="item[0]">
+                                                </div>
+                                                <div class="url-info flex-fill">
+                                                    <div class="text-sm overflowClip_1">
+                                                        <strong>{{item[0]}}</strong>
+                                                    </div>
+                                                    <p class="overflowClip_1 m-0 text-muted text-xs">{{item[2]}}</p>
+                                                </div>
                                             </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">GPT</p>
                                         </div>
-                                    </div>
+                                    </a>
+                                    <a :href="item[1]" class="togo text-center text-muted is-views" data-id="360"
+                                        data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
+                                            class="iconfont icon-goto"></i></a>
                                 </div>
-                            </a>
-                            <a href="https://chat.jinshutuan.com/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://chat.wuguokai.cn/" target="_blank" data-id="360" data-url="https://chat.wuguokai.cn/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>Wuguokai</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">GPT</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://chat.wuguokai.cn/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://chat.aidutu.cn/" target="_blank" data-id="360" data-url="https://chat.aidutu.cn/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>AiDuTu</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">GPT</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://chat.aidutu.cn/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://github.com/" target="_blank" data-id="689" data-url="https://github.com/"
-                                class="card no-c  mb-4 site-689" data-toggle="tooltip" data-placement="bottom"
-                                title="全球最大开源代码平台">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/github.png" data-src="ico/github.png"
-                                                onerror="javascript:this.src='ico/github.png'" alt="GitHub">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>GitHub</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">全球最大开源代码平台</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://github.com/" class="togo text-center text-muted is-views" data-id="689"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://gitee.com/" target="_blank" data-id="15" data-url="https://gitee.com/"
-                                class="card no-c  mb-4 site-15" data-toggle="tooltip" data-placement="bottom"
-                                title="中国最大代码托管平台">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/gitee.png" data-src="ico/gitee.png"
-                                                onerror="javascript:this.src='ico/gitee.png'" alt="Gitee">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>Gitee</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">中国最大代码托管平台</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://gitee.com/" class="togo text-center text-muted is-views" data-id="15"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://upsort.com/dh" target="_blank" data-id="15" data-url="https://upsort.com/dh"
-                                class="card no-c  mb-4 site-15" data-toggle="tooltip" data-placement="bottom"
-                                title="财经导航 有为财经">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/upsort.png" data-src="ico/upsort.png"
-                                                onerror="javascript:this.src='ico/upsort.png'" alt="财经导航">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>财经导航</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">财经导航 有为财经</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://upsort.com/dh" class="togo text-center text-muted is-views" data-id="15"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://www.52pojie.cn/" target="_blank" data-id="732"
-                                data-url="https://www.52pojie.cn/" class="card no-c  mb-4 site-732"
-                                data-toggle="tooltip" data-placement="bottom" title="软件安全与病毒分析前沿，丰富的技术版块">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/52.png" data-src="ico/52.png"
-                                                onerror="javascript:this.src='ico/52.png'" alt="吾爱破解">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>吾爱破解</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">软件安全与病毒分析前沿，丰富的技术版块</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.52pojie.cn/" class="togo text-center text-muted is-views" data-id="732"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://bbs.125.la/" target="_blank" data-id="693" data-url="https://bbs.125.la/"
-                                class="card no-c  mb-4 site-693" data-toggle="tooltip" data-placement="bottom"
-                                title="专业易语言编程学习交流论坛">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/jingyi.png" data-src="ico/jingyi.png"
-                                                onerror="javascript:this.src='ico/jingyi.png'" alt="精易论坛">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>精易论坛</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">专业易语言编程学习交流论坛</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://bbs.125.la/" class="togo text-center text-muted is-views" data-id="693"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://www.mpyit.com/" target="_blank" data-id="684"
-                                data-url="https://www.mpyit.com/" class="card no-c  mb-4 site-684" data-toggle="tooltip"
-                                data-placement="bottom" title="分享优秀好用的软件">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/mpy.png" data-src="ico/mpy.png"
-                                                onerror="javascript:this.src='ico/mpy.png'" alt="殁漂遥">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>殁漂遥</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">
-                                                分享优秀好用的软件</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.mpyit.com/" class="togo text-center text-muted is-views" data-id="684"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://www.iconfont.cn/" target="_blank" data-id="13"
-                                data-url="https://www.iconfont.cn/" class="card no-c  mb-4 site-13"
-                                data-toggle="tooltip" data-placement="bottom" title="矢量图标下载、在线存储、格式转换">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/ailishiliang.png" data-src="ico/ailishiliang.png"
-                                                onerror="javascript:this.src='ico/ailishiliang.png'" alt="阿里图标库">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>阿里图标库</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">矢量图标下载、在线存储、格式转换</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.iconfont.cn/" class="togo text-center text-muted is-views" data-id="13"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://ibaotu.com/" target="_blank" data-id="442" data-url="https://ibaotu.com/"
-                                class="card no-c  mb-4 site-442" data-toggle="tooltip" data-placement="bottom"
-                                title="汇集各种视觉冲击力强的原创广告图片设计">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/baotu.png" data-src="ico/baotu.png"
-                                                onerror="javascript:this.src='ico/baotu.png'" alt="包图网">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>包图网</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">
-                                                汇集各种视觉冲击力强的原创广告图片设计</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://ibaotu.com/" class="togo text-center text-muted is-views" data-id="442"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://www.58pic.com/" target="_blank" data-id="424"
-                                data-url="https://www.58pic.com/" class="card no-c  mb-4 site-424" data-toggle="tooltip"
-                                data-placement="bottom" title="专注正版图片设计素材，拥有800多万张素材">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/qiantu.png" data-src="ico/qiantu.png"
-                                                onerror="javascript:this.src='ico/qiantu.png'" alt="千图网">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>千图网</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">专注正版图片设计素材，拥有800多万张素材</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.58pic.com/" class="togo text-center text-muted is-views" data-id="424"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a  ">
-
-                        <div class="url-body default">
-                            <a href="http://tool.liumingye.cn/music/" target="_blank" data-id="294"
-                                data-url="http://tool.liumingye.cn/music/" class="card no-c  mb-4 site-294"
-                                data-toggle="tooltip" data-placement="bottom" title="支持各大音乐平台搜索、在线播放及下载">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/wangyiyun.png" data-src="ico/wangyiyun.png"
-                                                onerror="javascript:this.src='ico/wangyiyun.png'" alt="FreeMP3">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>FreeMP3</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">支持各大音乐平台搜索、在线播放及下载</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="http://tool.liumingye.cn/music/" class="togo text-center text-muted is-views"
-                                data-id="424" data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a  ">
-
-                        <div class="url-body default">
-                            <a href="http://tool.liumingye.cn/video/" target="_blank" data-id="229"
-                                data-url="http://tool.liumingye.cn/video/" class="card no-c  mb-4 site-229"
-                                data-toggle="tooltip" data-placement="bottom" data-html="true"
-                                title="全网VIP视频解析，满足所有平台VIP视频需求">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/vip.png" data-src="ico/vip.png"
-                                                onerror="javascript:this.src='ico/vip.png'" alt="VIP视频解析">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>VIP视频解析</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">
-                                                全网VIP视频解析，满足所有平台VIP视频需求</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="http://tool.liumingye.cn/video/" class="togo text-center text-muted is-views"
-                                data-id="424" data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-
-                        <div class="url-body default">
-                            <a href="https://photo.zmki.cn/" target="_blank" data-id="14"
-                                data-url="https://photo.zmki.cn/" class="card no-c  mb-4 site-14" data-toggle="tooltip"
-                                data-placement="bottom" title="路途遥远，和你岁月相随">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/xiangce.png" data-src="ico/xiangce.png"
-                                                onerror="javascript:this.src='ico/xiangce.png'" alt="时光相册">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>时光相册</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">路途遥远，和你岁月相随</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://photo.zmki.cn/" class="togo text-center text-muted is-views" data-id="14"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://www.bilibili.com/" target="_blank" data-id="12"
-                                data-url="https://www.bilibili.com/" class="card no-c  mb-4 site-12"
-                                data-toggle="tooltip" data-placement="bottom" title="视频弹幕网站，及时的动漫新番，活跃的ACG氛围">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <img class="lazy" src="ico/bilibili.png" data-src="ico/bilibili.png"
-                                                onerror="javascript:this.src='ico/bilibili.png'" alt="哔哩哔哩">
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>哔哩哔哩</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">视频弹幕网站，及时的动漫新番，活跃的ACG氛围</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.bilibili.com/" class="togo text-center text-muted is-views"
-                                data-id="12" data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-3-1"></i>
-                        人工智能<span style="color:#f1404b"> · </span>AI
-                    </h4>
-                    <div class="flex-fill"></div>
-                    <a class='btn-move text-xs' href=''>more+</a>
-                </div>
-                <div class="row ">
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://chat.jinshutuan.com/" target="_blank" data-id="360" data-url="https://chat.jinshutuan.com/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>BinJie</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">GPT</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://chat.jinshutuan.com/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://chat.wuguokai.cn/" target="_blank" data-id="360" data-url="https://chat.wuguokai.cn/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>Wuguokai</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">GPT</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://chat.wuguokai.cn/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://chat.aidutu.cn/" target="_blank" data-id="360" data-url="https://chat.aidutu.cn/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>AiDuTu</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">GPT</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://chat.aidutu.cn/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://yiyan.baidu.com/" target="_blank" data-id="360" data-url="https://yiyan.baidu.com/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>文心一言</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">百度的GPT（要申请）</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://yiyan.baidu.com/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://tongyi.aliyun.com/" target="_blank" data-id="360" data-url="https://tongyi.aliyun.com/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>通义千问</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">阿里的GPT（要申请）</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://tongyi.aliyun.com/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://rightbrain.art/store" target="_blank" data-id="360" data-url="https://rightbrain.art/store"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>RightBrain</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">AI绘画</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://rightbrain.art/store" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                    <div class="url-card col-6  col-sm-6 col-md-4 col-xl-5a col-xxl-6a   ">
-                        <div class="url-body default">
-                            <a href="https://mst.ai/" target="_blank" data-id="360" data-url="https://mst.ai/"
-                                class="card no-c  mb-4 site-360" data-toggle="tooltip" data-placement="bottom"
-                                title="GPT">
-                                <div class="card-body">
-                                    <div class="url-content d-flex align-items-center">
-                                        <div
-                                            class="url-img rounded-circle mr-2 d-flex align-items-center justify-content-center">
-                                            <svg viewBox="140 140 520 520"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z" fill="var(--gray-900)"></path></svg>
-                                        </div>
-                                        <div class="url-info flex-fill">
-                                            <div class="text-sm overflowClip_1">
-                                                <strong>MST</strong>
-                                            </div>
-                                            <p class="overflowClip_1 m-0 text-muted text-xs">AIS（基础GPT、AI画图）GPT较慢（要登录）</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://mst.ai/" class="togo text-center text-muted is-views" data-id="360"
-                                data-toggle="tooltip" data-placement="right" title="直达" rel="nofollow"><i
-                                    class="iconfont icon-goto"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-fill ">
-                    <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-3"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-video-online"></i>
                         影视资源<span style="color:#f1404b"> · </span>在线
                     </h4>
                     <div class="flex-fill"></div>
@@ -1512,7 +922,7 @@
                 </div>
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-4"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-video-download"></i>
                         影视资源<span style="color:#f1404b"> · </span>下载
                     </h4>
                     <div class="flex-fill"></div>
@@ -1691,7 +1101,7 @@
                 </div>
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-5"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-video-cartoon"></i>
                         影视资源<span style="color:#f1404b"> · </span>动漫
                     </h4>
                     <div class="flex-fill"></div>
@@ -2034,7 +1444,7 @@
                 </div>
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-6"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-video-USA"></i>
                         影视资源<span style="color:#f1404b"> · </span>美剧
                     </h4>
                     <div class="flex-fill"></div>
@@ -2209,7 +1619,7 @@
                 </div>
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-7"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-software-blog"></i>
                         软件工具<span style="color:#f1404b"> · </span>软件博客
                     </h4>
                     <div class="flex-fill"></div>
@@ -2384,7 +1794,7 @@
                 <!-- 软件工具 -->
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-8"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-software-online"></i>
                         软件工具<span style="color:#f1404b"> · </span>在线工具
                     </h4>
                     <div class="flex-fill"></div>
@@ -2860,7 +2270,7 @@
                 <!-- 社区资讯·资讯 -->
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-42"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-CommunityCounseling-counseling"></i>
                         社区资讯<span style="color:#f1404b"> · </span>资讯
                     </h4>
                     <div class="flex-fill"></div>
@@ -3146,7 +2556,7 @@
                 <!-- 社区资讯·社区 -->
                 <div class="d-flex flex-fill ">
                     <h4 class="text-gray text-lg mb-4">
-                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-45"></i>
+                        <i class="site-tag iconfont icon-tag icon-lg mr-1" id="term-CommunityCounseling-community"></i>
                         社区资讯<span style="color:#f1404b"> · </span>社区
                     </h4>
                     <div class="flex-fill"></div>
@@ -3442,6 +2852,129 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    navs: {
+                        "常用推荐": {
+                            "常用推荐": {
+                                "id": "term-common-common",
+                                "content": [
+                                    ["AndZaiz","../page/index-old.html","这是之前导航的页面","./ico/wangyiyun.png"],
+                                    ["BinJie","https://chat.jinshutuan.com/","GPT","./ico/gpt.jpg"],  
+                                    ["Wuguokai","https://chat.wuguokai.cn/","GPT","./ico/gpt.jpg"],  
+                                    ["AiDuTu","https://chat.aidutu.cn/","GPT","./ico/gpt.jpg"],  
+                                    ["GitHub","https://github.com/","全球最大开源代码平台","./ico/github.png"],  
+                                    ["Gitee","https://chat.jinshutuan.com/","中国最大代码托管平台","./ico/gitee.png"],  
+                                    ["财经导航","https://upsort.com/dh","财经导航 有为财经","./ico/upsort.png"],
+                                    ["吾爱破解","https://www.52pojie.cn/","软件安全与病毒分析前沿，丰富的技术版块","./ico/52.png"],  
+                                    ["精易论坛","https://bbs.125.la/","专业易语言编程学习交流论坛","./ico/jingyi.png"],  
+                                    ["殁漂遥","https://www.mpyit.com/","分享优秀好用的软件","./ico/mpy.png"],  
+                                    ["阿里图标库","https://www.iconfont.cn/","矢量图标下载、在线存储、格式转换","./ico/ailishiliang.png"],  
+                                    ["包图网","https://ibaotu.com/","汇集各种视觉冲击力强的原创广告图片设计","./ico/baotu.png"],  
+                                    ["千图网","https://www.58pic.com/","专注正版图片设计素材，拥有800多万张素材","./ico/qiantu.png"],  
+                                    ["FreeMP3","http://tool.liumingye.cn/music/","支持各大音乐平台搜索、在线播放及下载","./ico/wangyiyun.png"],  
+                                    ["VIP视频解析","http://tool.liumingye.cn/video/","全网VIP视频解析，满足所有平台VIP视频需求","./ico/vip.png"],  
+                                    ["时光相册","https://photo.zmki.cn/","路途遥远，和你岁月相随","./ico/xiangce.png"],
+                                    ["哔哩哔哩","https://www.bilibili.com/","视频弹幕网站，及时的动漫新番，活跃的ACG氛围","./ico/bilibili.png"],  
+                                ]
+                            }
+                        },
+                        "人工智能": {
+                            "GPT": {
+                                "id": "term-ai-gpt",
+                                "content": [
+                                    ["BinJie","https://chat.jinshutuan.com/","GPT","./ico/gpt.jpg"],  
+                                    ["Wuguokai","https://chat.wuguokai.cn/","GPT","./ico/gpt.jpg"],  
+                                    ["AiDuTu","https://chat.aidutu.cn/","GPT","./ico/gpt.jpg"],  
+                                    ["文心一言","https://yiyan.baidu.com/","百度的GPT（要申请）","./ico/gpt.jpg"],  
+                                    ["通义千问","https://tongyi.aliyun.com/","阿里的GPT（要申请）","./ico/gpt.jpg"]
+                                ]
+                            },
+                            "绘画": {
+                                "id": "term-ai-drawing",
+                                "content": [
+                                    ["RightBrain","https://rightbrain.art/store","AI绘画","./ico/gpt.jpg"],
+                                    ["MST","https://mst.ai/","AIS（基础GPT、AI画图）GPT较慢（要登录）","./ico/gpt.jpg"]  
+                                ]
+                            }
+                        },
+                        "影视资源": {
+                            "在线": {
+                                "id": "term-video-online",
+                                "content": [
+                                    ["555电影","https://555dy.fun/","在线播放最新热门电影,独播点播电视剧","ico/555dianying.png"],
+                                    ["电影先生","http://dianying.im/","在线播放全网影片，最新剧集聚合平台","ico/dianyingxiansheng.png"],
+                                    ["片库","https://www.btnull.in/","每日收集全网最新的电影、剧集、动漫高清资源","ico/pianku.png"],
+                                    ["片吧影院","https://www.pkmp4.com/","在线点播最新影片，清爽无广告","ico/pianba.png"],
+                                    ["剧迷","https://gmtv1.xyz/","互联网最新电影和电视剧在线观看","ico/gumi.png"],
+                                    ["白嫖者联盟","https://www.bpzhe.com/","中国最大的影视资源聚合搜索引擎","ico/dianyingtaotao.png"]
+                                ]
+                            },
+                            "下载": {
+                                "id": "term-video-download",
+                                "content": [
+                                    ["影音屋","https://www.yingyinwu.com/","原盘高清电影下载，影视内部交流社区","ico/yingyinwu.png"],
+                                    ["BD影视","https://www.bd2020.co/","最新高清电影资源下载","ico/BDyingshi.png"],
+                                    ["MP4电影","https://www.domp4.cc/","最新热门电影下载","ico/mp4.png"],
+                                    ["哔嘀影视","https://www.bdys.me/","全网高清影视在线多通道下载","ico/bidi.png"],
+                                    ["迅雷电影天堂","https://xunlei8.cc/","最新影视剧集迅雷下载和在线播放","ico/xunbo.png"],
+                                    ["悠悠MP4","https://www.uump4.net/","老牌高清电影下载站","ico/pianhd.png"]
+                                ]
+                            },
+                            "动漫": {
+                                "id": "term-video-cartoon",
+                                "content": [
+                                    ["AGE动漫","https://www.agemys.cc/","海量的有效的高质量的动漫资源下载","ico/dongman4.png"],
+                                    ["bimi动漫","http://www.bimiacg4.net/","筛选经典作品并将新作经典轮番推荐","ico/dongman3.png"],
+                                    ["克拉TV","https://www.kelatv.com/","最新最全的动漫、剧集、影视等作品","ico/kelatv.png"],
+                                    ["不可视境界线","https://acgcn.ml/","专注于动漫在线播放","ico/dongman2.png"],
+                                    ["OmoFun","https://omofun.tv/","追番、追剧，为您一网打尽","ico/dili.png"],
+                                    ["去看吧","https://www.k6dm.com/","海外更新最快的动漫网、一个大型动漫社区","ico/dongmandao.png"],
+                                    ["樱花动漫","http://www.dmh8.com/","专注动漫在线观看的门户网站","ico/yinghua.png"],
+                                    ["卡通站","https://www.antoc.cn/","国语配音动漫网站","ico/katongzhan.png"],
+                                    ["趣动漫","http://www.qdmsh.com/","提供高清的动漫资源","ico/qudongman.png"],
+                                    ["蜜柑计划","https://mikanani.me/","新一代的动漫下载站","ico/mikan.png"],
+                                    ["KOTOMI","https://moe4sale.in/","专业动漫下载网站","ico/dongman6.png"],
+                                    ["动漫花园","https://share.dmhy.org/","最大动漫下载交流平台","ico/dongman5.png"],
+                                ]
+                            },
+                            "动漫": {
+                                "id": "term-video-cartoon",
+                                "content": [
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                    ["","","","ico/ico.png"],
+                                ]
+                            },
+                        }
+                    },
+                }
+            },
+            methods: {
+
+            },
+            mounted() {
+                // let that = this;
+                // axios
+                //     .get("https://nav.xiaozaiz.xyz/nav/index.json")
+                //     .then(function(res){
+                //         that.navs = res.data.index
+                //     });
+            }
+        };
+        const app = Vue.createApp(App);
+
+        app.mount("#app");
+    </script>
     <script type='text/javascript' src='ajax/libs/jqueryui/1.12.1/jquery-ui.min-3.03029.1.js'
         id='jquery-ui-js'></script>
     <script type='text/javascript' src='jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min-3.0302.js'
