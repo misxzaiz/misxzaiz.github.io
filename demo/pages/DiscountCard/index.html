@@ -15,11 +15,11 @@
 <body>
     
     <div id="app">
-        <el-button>用户1抢卷</el-button>
-        <el-button>用户2抢卷</el-button>
-        <el-button>用户3抢卷</el-button>
-        <el-button>用户4抢卷</el-button>
-        <el-button>用户5抢卷</el-button>
+        <el-button :data-id="1" @click="getCoupon">用户1抢卷</el-button>
+        <el-button :data-id="2" @click="getCoupon">用户2抢卷</el-button>
+        <el-button :data-id="3" @click="getCoupon">用户3抢卷</el-button>
+        <el-button :data-id="4" @click="getCoupon">用户4抢卷</el-button>
+        <el-button :data-id="5" @click="getCoupon">用户5抢卷</el-button>
         <div>优惠卷剩余：{{count}} 张</div>
     </div>
 
@@ -27,11 +27,21 @@
         const App = {
             data() {
                 return {
-                    count: 0
+                    count: 10,
+                    couponId: null
                 }
             },
             methods: {
-
+                getCoupon(event) {
+                    let that = this;
+                    const couponId = event.target.dataset.id;
+                    axios
+                        .get("https://127.0.0.1/coupons/"+couponId)
+                        .then(function(res){
+                            that.navs = res.data.index
+                        });
+                
+                }
             },
             mounted() {
 
