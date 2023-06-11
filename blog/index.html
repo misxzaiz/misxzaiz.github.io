@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="css/highlight.default.min.css">
     <script src="js/highlight.min.js"></script>
     <style>
-
+#back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
 
     </style>
 </head>
@@ -20,23 +24,26 @@
     <div id="app">
         <el-collapse>
             <el-collapse-item title="文章列表" icon-position="right">
-              <!-- 文章列表 -->
+
               <div v-for="(item, index) in contents" :key="index">
                 <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
               </div>
             </el-collapse-item>
-          </el-collapse>
-          <el-collapse>
+        </el-collapse>
+        <el-collapse>
             <el-collapse-item title="文章索引" icon-position="right">
-              <!-- 文章索引 -->
+
               <div v-for="(title, index) in titles" :key="index">
                 <a :href="'#'+title.title">{{title.title}}</a>
               </div>
             </el-collapse-item>
-          </el-collapse>
-              <!-- 内容 -->
-              <div id="markdown"></div> 
+        </el-collapse>
 
+        <div id="markdown"></div> 
+        <!-- 页面底部回到顶部按钮 -->
+        <div id="back-to-top">
+            <el-button size="small" icon="el-icon-arrow-up" circle @click="backToTop"></el-button>
+        </div>
 
         <!-- 文章列表 -->
         <!-- <div v-for="(item, index) in contents" :key="index">
@@ -85,6 +92,9 @@
                         .catch(function(err){
                             alert("获取文章失败！")
                         });
+                },
+                backToTop() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 },
 
             },
