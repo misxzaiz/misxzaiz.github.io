@@ -1145,12 +1145,12 @@
 
             },
             mounted() {
-                // let that = this;
-                // axios
-                //     .get("https://nav.xiaozaiz.xyz/nav/index.json")
-                //     .then(function(res){
-                //         that.navs = res.data.index
-                //     });
+                let that = this;
+                axios
+                    .get("https://nav.xiaozaiz.xyz/nav/index.json")
+                    .then(function(res){
+                        that.navs = res.data
+                    });
             }
         };
         const app = Vue.createApp(App);
