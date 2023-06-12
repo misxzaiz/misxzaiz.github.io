@@ -72,7 +72,7 @@
                 getMarkdown(markdown) {
                     let that = this;
                     axios
-                        .get("https://nav.xiaozaiz.xyz/blog/md/"+markdown)
+                        .get("https://nav.xiaozaiz.xyz/blog/note/"+markdown)
                         .then(function(res){
                             let _that = that
                             // 获取文章内容并使用markjs和highlightjs修饰
