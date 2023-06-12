@@ -41,7 +41,8 @@
             <el-collapse-item title="文章索引" icon-position="right">
 
               <div v-for="(title, index) in titles" :key="index">
-                <a :href="'#'+title.title">{{title.title}}</a>
+                <!-- v-if="index!=0" 避免展示第一个 <h1></h1> -->
+                <a v-if="index!=0" :href="'#'+title.id">{{title.title}}</a>
               </div>
             </el-collapse-item>
         </el-collapse>
@@ -90,7 +91,8 @@
                             headings.forEach(heading => {
                                 const level = heading.tagName;
                                 const title = heading.textContent;
-                                const titleObj = { level, title }; // 将标题级别和标题内容存储在对象中
+                                const id = heading.id;
+                                const titleObj = { level, title, id }; // 将标题级别和标题内容存储在对象中
                                 _that.titles.push(titleObj); // 将标题对象添加到titles数组中
                             });
                         })
