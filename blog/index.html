@@ -76,7 +76,8 @@
                         .then(function(res){
                             let _that = that
                             // 获取文章内容并使用markjs和highlightjs修饰
-                            document.getElementById("markdown").innerHTML = marked(res.data)
+                            // document.getElementById("markdown").innerHTML = marked(res.data)
+                            document.getElementById("markdown").innerHTML = res.data
                             hljs.highlightAll();
                             // 获取文章标题
                             that.titles = []
