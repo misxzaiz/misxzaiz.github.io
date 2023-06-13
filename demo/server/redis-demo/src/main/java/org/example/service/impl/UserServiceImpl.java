@@ -35,26 +35,41 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Result getUserById(Long id) {
         String key = GET_USER_BY_ID + ":" + id;
-        // 从 redis 查询用户缓存
-        String userJson = stringRedisTemplate.opsForValue().get(key);
-        // 判断是否存在
-        if (!(userJson == null || userJson.equals(""))) {
-            // 存在，直接返回
-            User user = JSONUtil.toBean(userJson, User.class);
-            log.info("【Redis 缓存查询】通过id查询用户信息");
-            return Result.ok(user,"查询成功！");
-        }
         // 不存在，查询数据库
-        User user = getById(id);
-        // 判断是否存在
-        if (user == null) {
-            return Result.fail("该用户不存在！");
+        log.info("【查询数据库】");
+        try {
+            // 从 redis 查询用户缓存
+            String userJson = stringRedisTemplate.opsForValue().get(key);
+            // 判断是否存在
+            if (userJson != null) {
+                // 【缓存空对象】
+                if ("".equals(userJson)){
+                    log.info("【缓存空对象】读取到的是空值");
+                    return Result.fail("用户不存在！");
+                }else {
+                    // 存在，直接返回
+                    User user = JSONUtil.toBean(userJson, User.class);
+                    log.info("【Redis 缓存查询】通过id查询用户信息");
+                    return Result.ok(user,"查询成功！");
+                }
+            }
+            User user = getById(id);
+            if (user == null) {
+                // 【缓存空对象】将空值写入 redis
+                log.info("【缓存空对象】将空值写入 redis");
+                stringRedisTemplate.opsForValue().set(key,"",2,TimeUnit.MINUTES);
+                return Result.fail("该用户不存在！");
+            }
+            // 写入缓存【超时剔除】
+            stringRedisTemplate.opsForValue().set(key,JSONUtil.toJsonStr(user),30, TimeUnit.MINUTES);
+            // 返回用户信息
+            log.info("【MySQL 数据库查询】通过id查询用户信息");
+            return Result.ok(getById(id),"查询成功！");
+        } catch (Exception e) {
+            log.error("查询用户信息异常", e);
+            return Result.fail("查询用户信息异常");
         }
-        // 写入缓存
-        stringRedisTemplate.opsForValue().set(key,JSONUtil.toJsonStr(user),3, TimeUnit.DAYS);
-        // 返回用户信息
-        log.info("【MySQL 数据库查询】通过id查询用户信息");
-        return Result.ok(getById(id),"查询成功！");
+
     }
 
     @Override

@@ -74,7 +74,7 @@
                         <a :href="'#' + title.id" 
                         class="catalogue" 
                         :style="{ fontWeight: title.level <= 2 ? 'bold' : 'normal' }" 
-                        v-html="'&nbsp;'.repeat(title.level - 1) + title.title"></a>
+                        v-html="'&nbsp;'.repeat((title.level - 1)*2) + title.title"></a>
                     </div>
                 </el-collapse-item>
             </el-collapse>
