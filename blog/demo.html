@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>El-drawer 示例</title>
+  <!-- 引入 Element Plus 的库文件 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/element-plus@next"></script>
+</head>
+
+<body>
+    11
+  <div id="app">
+    <button @click="drawerVisible = true">打开抽屉</button>
+    <!-- el-drawer 组件 -->
+    <el-drawer :visible.sync="drawerVisible">
+      <span slot="title">这里是标题</span>
+      这里是内容
+    </el-drawer>
+  </div>
+
+  <script>
+    const App = {
+      data() {
+        return {
+          drawerVisible: false,
+        };
+      },
+    };
+    const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+  </script>
+</body>
+
+</html>

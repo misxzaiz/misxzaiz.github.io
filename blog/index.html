@@ -60,24 +60,28 @@
 </head>
 <body>
     <div id="app">
-        <el-collapse>
-            <el-collapse-item title="文章列表" icon-position="right">
-                <div v-for="(item, index) in contents" :key="index">
-                    <el-card shadow="always" @click="getMarkdown(item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
-                </div>
-            </el-collapse-item>
-        </el-collapse>
-        <el-collapse>
-            <el-collapse-item title="文章索引" icon-position="right">
-                <div v-for="(title, index) in titles" :key="index">
-                    <a :href="'#' + title.id" 
-                    class="catalogue" 
-                    :style="{ fontWeight: title.level <= 2 ? 'bold' : 'normal' }" 
-                    v-html="'&nbsp;'.repeat(title.level - 1) + title.title"></a>
-                </div>
-            </el-collapse-item>
-        </el-collapse>
-        <div id="markdown"></div> 
+        <div>
+            <el-collapse>
+                <el-collapse-item title="文章列表" icon-position="right">
+                    <div v-for="(item, index) in contents" :key="index">
+                        <el-card shadow="always" @click="getMarkdown(item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
+                    </div>
+                </el-collapse-item>
+            </el-collapse>
+            <el-collapse>
+                <el-collapse-item title="文章索引" icon-position="right">
+                    <div v-for="(title, index) in titles" :key="index">
+                        <a :href="'#' + title.id" 
+                        class="catalogue" 
+                        :style="{ fontWeight: title.level <= 2 ? 'bold' : 'normal' }" 
+                        v-html="'&nbsp;'.repeat(title.level - 1) + title.title"></a>
+                    </div>
+                </el-collapse-item>
+            </el-collapse>
+            <div id="markdown"></div>
+        </div>
+
+
         <!-- 页面底部回到顶部按钮 -->
         <div id="back-to-top">
             <el-button icon="el-icon-arrow-up" circle @click="backToTop"></el-button>
