@@ -81,19 +81,19 @@
                     axios
                         .get("https://nav.xiaozaiz.xyz/blog/note/"+markdown)
                         .then(function(res){
-                            // let _that = that
-                            // const parser = new DOMParser();
-                            // const htmlDoc = parser.parseFromString(res.data, 'text/html');
-                            // const bodyContent = htmlDoc.body.innerHTML;
-                            // document.getElementById("markdown").innerHTML = bodyContent
-                            // let container = document.querySelector('div.container-lg.px-3.my-5.markdown-body');
-                            // let content = container.innerHTML;
-                            // document.getElementById("markdown").innerHTML = content
                             let _that = that
-                            document.getElementById("markdown").innerHTML = res.data
-                            // 获取文章主要内容
-                            let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
+                            const parser = new DOMParser();
+                            const htmlDoc = parser.parseFromString(res.data, 'text/html');
+                            const bodyContent = htmlDoc.body.innerHTML;
+                            document.getElementById("markdown").innerHTML = bodyContent
+                            let container = document.querySelector('div.container-lg.px-3.my-5.markdown-body');
+                            let content = container.innerHTML;
                             document.getElementById("markdown").innerHTML = content
+                            // let _that = that
+                            // document.getElementById("markdown").innerHTML = res.data
+                            // // 获取文章主要内容
+                            // let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
+                            // document.getElementById("markdown").innerHTML = content
                             // 删除第一个<h1>标签
                             const h1Element = document.querySelector('h1');
                             h1Element.parentNode.removeChild(h1Element);
