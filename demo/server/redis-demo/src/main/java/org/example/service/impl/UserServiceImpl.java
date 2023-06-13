@@ -10,6 +10,7 @@ import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,15 +24,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private UserMapper userMapper;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public Result listAllUser() {
         log.info("【数据库查询】查询所有用户信息");
-        return Result.ok(userService.list(),"查询成功！");
+        return Result.ok(list(),"查询成功！");
     }
 
     @Override
@@ -47,16 +45,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return Result.ok(user,"查询成功！");
         }
         // 不存在，查询数据库
-        User user = userService.getById(id);
+        User user = getById(id);
         // 判断是否存在
         if (user == null) {
             return Result.fail("该用户不存在！");
         }
         // 写入缓存
-        stringRedisTemplate.opsForValue().set(key,JSONUtil.toJsonStr(user));
-        stringRedisTemplate.expire(key, 3, TimeUnit.DAYS);
+        stringRedisTemplate.opsForValue().set(key,JSONUtil.toJsonStr(user),3, TimeUnit.DAYS);
         // 返回用户信息
         log.info("【MySQL 数据库查询】通过id查询用户信息");
-        return Result.ok(userService.getById(id),"查询成功！");
+        return Result.ok(getById(id),"查询成功！");
+    }
+
+    @Override
+    @Transactional
+    public Result updateUser(User user) {
+        log.info("【更新用户信息】");
+        Long id = user.getId();
+        if (id == null) {
+            return Result.fail("用户 id 不存在！");
+        }
+        String key = GET_USER_BY_ID + ":" + id;
+        // 更新数据库
+        updateById(user);
+        // 删除缓存
+        stringRedisTemplate.delete(key);
+        return Result.ok("更新用户数据成功！");
     }
 }
