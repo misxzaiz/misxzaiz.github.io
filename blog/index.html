@@ -44,7 +44,7 @@
                 </div>
             </el-collapse-item>
         </el-collapse>
-        <div id="markdown" style="width: 100%;"></div> 
+        <div id="markdown"></div> 
         <!-- 页面底部回到顶部按钮 -->
         <div id="back-to-top">
             <el-button icon="el-icon-arrow-up" circle @click="backToTop"></el-button>
@@ -80,8 +80,8 @@
                             let _that = that
                             document.getElementById("markdown").innerHTML = res.data
                             // 获取文章主要内容
-                            // let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
-                            // document.getElementById("markdown").innerHTML = content
+                            let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
+                            document.getElementById("markdown").innerHTML = content
                             // 删除第一个<h1>标签
                             const h1Element = document.querySelector('h1');
                             h1Element.parentNode.removeChild(h1Element);
