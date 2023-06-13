@@ -8,7 +8,7 @@
     <script src="js/vue@3.js"></script>
     <script src="js/element-plus.js"></script>
     <script src="js/axios.min.js"></script>
-    <script src="js/marked.js"></script>
+    <!-- <script src="js/marked.js"></script> -->
     <link rel="stylesheet" href="css/highlight.default.min.css">
     <script src="js/highlight.min.js"></script>
     <style>
@@ -23,11 +23,37 @@
         /* 目录 */
         .catalogue {
             text-decoration: none; /* 去掉下划线 */
-            color: rgb(60, 138, 153); /* 修改文字颜色为红色 */
+            color: rgb(149, 149, 149); /* 修改文字颜色为红色 */
         }
+
+        strong {
+            color: #ff0000;
+        }
+
 
         img {
             width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 18px;
+        }
+
+        td:first-child {
+            font-weight: bold;
         }
 
     </style>
@@ -44,7 +70,10 @@
         <el-collapse>
             <el-collapse-item title="文章索引" icon-position="right">
                 <div v-for="(title, index) in titles" :key="index">
-                    <a :href="'#' + title.id" class="catalogue" v-html="'&nbsp;'.repeat(title.level - 1) + title.title"></a>
+                    <a :href="'#' + title.id" 
+                    class="catalogue" 
+                    :style="{ fontWeight: title.level <= 2 ? 'bold' : 'normal' }" 
+                    v-html="'&nbsp;'.repeat(title.level - 1) + title.title"></a>
                 </div>
             </el-collapse-item>
         </el-collapse>
@@ -101,7 +130,11 @@
                             // 初始化 highlight.js
                             hljs.initHighlightingOnLoad();
                             // 手动高亮显示代码块
-                            hljs.highlightBlock(document.querySelector('pre code'));
+                            let preCode = document.querySelector('pre code')
+                            if(preCode){
+                                hljs.highlightBlock(preCode);
+                            }
+                            
 
                             // 获取文章标题
                             that.titles = [];
