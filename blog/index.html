@@ -20,30 +20,32 @@
             bottom: 80px;
         }
 
-        /* 不显示第一个 <h1></h1> */
-        h1:first-child {
-            display: none;
+        /* 目录 */
+        .catalogue {
+            text-decoration: none; /* 去掉下划线 */
+            color: rgb(0, 0, 0); /* 修改文字颜色为红色 */
         }
 
     </style>
 </head>
 <body>
     <div id="app">
-        <el-collapse>
-            <el-collapse-item title="文章列表" icon-position="right">
-              <div v-for="(item, index) in contents" :key="index">
-                <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
-              </div>
-            </el-collapse-item>
-        </el-collapse>
-        <el-collapse>
-            <el-collapse-item title="文章索引" icon-position="right">
-              <div v-for="(title, index) in titles" :key="index">
-                <a  :href="'#'+title.id">{{title.title}}</a>
-              </div>
-            </el-collapse-item>
-        </el-collapse>
-
+        <el-affix :offset="0">
+            <el-collapse>
+                <el-collapse-item title="文章列表" icon-position="right">
+                    <div v-for="(item, index) in contents" :key="index">
+                        <el-card shadow="always" @click="getMarkdown(item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
+                    </div>
+                </el-collapse-item>
+            </el-collapse>
+            <el-collapse>
+                <el-collapse-item title="文章索引" icon-position="right">
+                  <div v-for="(title, index) in titles" :key="index">
+                    <a :href="'#'+title.id" class="catalogue">{{title.title}}</a>
+                  </div>
+                </el-collapse-item>
+            </el-collapse>
+        </el-affix>
         <div id="markdown"></div> 
         <!-- 页面底部回到顶部按钮 -->
         <div id="back-to-top">
@@ -78,30 +80,25 @@
                         .get("https://nav.xiaozaiz.xyz/blog/note/"+markdown)
                         .then(function(res){
                             let _that = that
-                            const parser = new DOMParser();
-                            const htmlDoc = parser.parseFromString(res.data, 'text/html');
-                            const bodyContent = htmlDoc.body.innerHTML;
-                            document.getElementById("markdown").innerHTML = bodyContent
-                            let container = document.querySelector('div.container-lg.px-3.my-5.markdown-body');
-                            let content = container.innerHTML;
+                            document.getElementById("markdown").innerHTML = res.data
+                            // 获取文章主要内容
+                            let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
                             document.getElementById("markdown").innerHTML = content
+                            // 删除第一个<h1>标签
+                            const h1Element = document.querySelector('h1');
+                            h1Element.parentNode.removeChild(h1Element);
+                            // 亮高处理
                             hljs.highlightAll();
 
                             // 获取文章标题
                             that.titles = [];
                             const headings = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
-                            let isFirstH1Skipped = false;
                             headings.forEach(heading => {
-                                if (isFirstH1Skipped || heading.tagName !== 'H1') { // 如果已经跳过了第一个 h1，则继续遍历；如果当前元素不是 h1，则继续遍历
-                                    const level = heading.tagName;
-                                    const title = heading.textContent;
-                                    const id = heading.id;
-                                    const titleObj = { level, title, id }; // 将标题级别和标题内容存储在对象中
-                                    that.titles.push(titleObj); // 将标题对象添加到titles数组中
-                                }
-                                if (!isFirstH1Skipped && heading.tagName === 'H1') { // 如果是第一个 h1，则标记为已跳过
-                                    isFirstH1Skipped = true;
-                                }
+                                const level = heading.tagName;
+                                const title = heading.textContent;
+                                const id = heading.id;
+                                const titleObj = { level, title, id }; 
+                                that.titles.push(titleObj); 
                             });
                         })
                         .catch(function(err){
@@ -115,7 +112,6 @@
 
             },
             mounted() {
-
                 let that = this;
                 axios
                     .get("https://nav.xiaozaiz.xyz/blog/contents.json")
