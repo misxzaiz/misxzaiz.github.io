@@ -23,29 +23,27 @@
         /* 目录 */
         .catalogue {
             text-decoration: none; /* 去掉下划线 */
-            color: rgb(0, 0, 0); /* 修改文字颜色为红色 */
+            color: rgb(60, 138, 153); /* 修改文字颜色为红色 */
         }
 
     </style>
 </head>
 <body>
     <div id="app">
-        <el-affix :offset="0">
-            <el-collapse>
-                <el-collapse-item title="文章列表" icon-position="right">
-                    <div v-for="(item, index) in contents" :key="index">
-                        <el-card shadow="always" @click="getMarkdown(item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
-                    </div>
-                </el-collapse-item>
-            </el-collapse>
-            <el-collapse>
-                <el-collapse-item title="文章索引" icon-position="right">
-                  <div v-for="(title, index) in titles" :key="index">
-                    <a :href="'#'+title.id" class="catalogue">{{title.title}}</a>
-                  </div>
-                </el-collapse-item>
-            </el-collapse>
-        </el-affix>
+        <el-collapse>
+            <el-collapse-item title="文章列表" icon-position="right">
+                <div v-for="(item, index) in contents" :key="index">
+                    <el-card shadow="always" @click="getMarkdown(item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
+                </div>
+            </el-collapse-item>
+        </el-collapse>
+        <el-collapse>
+            <el-collapse-item title="文章索引" icon-position="right">
+                <div v-for="(title, index) in titles" :key="index">
+                <a :href="'#'+title.id" class="catalogue">{{title.title}}</a>
+                </div>
+            </el-collapse-item>
+        </el-collapse>
         <div id="markdown" style="width: 100%;"></div> 
         <!-- 页面底部回到顶部按钮 -->
         <div id="back-to-top">
@@ -82,8 +80,8 @@
                             let _that = that
                             document.getElementById("markdown").innerHTML = res.data
                             // 获取文章主要内容
-                            let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
-                            document.getElementById("markdown").innerHTML = content
+                            // let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
+                            // document.getElementById("markdown").innerHTML = content
                             // 删除第一个<h1>标签
                             const h1Element = document.querySelector('h1');
                             h1Element.parentNode.removeChild(h1Element);
