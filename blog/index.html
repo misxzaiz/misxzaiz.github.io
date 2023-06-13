@@ -114,9 +114,9 @@
                                 that.titles.push(titleObj); 
                             });
                         })
-                        .catch(function(err){
-                            alert("获取文章失败！")
-                        });
+                        // .catch(function(err){
+                        //     alert("获取文章失败！")
+                        // });
                 },
                 backToTop() {
                     // 回到顶部
@@ -130,9 +130,9 @@
                     .then(function(res){
                         that.contents = res.data.contents
                     })
-                    .catch(function(err){
-                        alert("获取文章列表失败！")
-                    });
+                    // .catch(function(err){
+                    //     alert("获取文章列表失败！")
+                    // });
             }
         };
         const app = Vue.createApp(App);
