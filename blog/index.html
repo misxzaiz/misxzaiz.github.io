@@ -8,7 +8,7 @@
     <script src="js/vue@3.js"></script>
     <script src="js/element-plus.js"></script>
     <script src="js/axios.min.js"></script>
-    <script src="js/marked.js"></script>
+    <!-- <script src="js/marked.js"></script> -->
     <link rel="stylesheet" href="css/highlight.default.min.css">
     <script src="js/highlight.min.js"></script>
     <style>
@@ -46,7 +46,7 @@
                 </el-collapse-item>
             </el-collapse>
         </el-affix>
-        <div id="markdown"></div> 
+        <div id="markdown" style="width: 100%;"></div> 
         <!-- 页面底部回到顶部按钮 -->
         <div id="back-to-top">
             <el-button icon="el-icon-arrow-up" circle @click="backToTop"></el-button>
@@ -109,7 +109,6 @@
                     // 回到顶部
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 },
-
             },
             mounted() {
                 let that = this;
