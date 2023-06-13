@@ -31,7 +31,6 @@
     <div id="app">
         <el-collapse>
             <el-collapse-item title="文章列表" icon-position="right">
-
               <div v-for="(item, index) in contents" :key="index">
                 <el-button @click="getMarkdown(item[1]+'-'+item[0])">{{item[0]}}</el-button>
               </div>
@@ -39,10 +38,8 @@
         </el-collapse>
         <el-collapse>
             <el-collapse-item title="文章索引" icon-position="right">
-
               <div v-for="(title, index) in titles" :key="index">
-                <!-- v-if="index!=0" 避免展示第一个 <h1></h1> -->
-                <a v-if="index!=0" :href="'#'+title.id">{{title.title}}</a>
+                <a  :href="'#'+title.id">{{title.title}}</a>
               </div>
             </el-collapse-item>
         </el-collapse>
@@ -81,19 +78,30 @@
                         .get("https://nav.xiaozaiz.xyz/blog/note/"+markdown)
                         .then(function(res){
                             let _that = that
-                            // 获取文章内容并使用markjs和highlightjs修饰
-                            // document.getElementById("markdown").innerHTML = marked(res.data)
-                            document.getElementById("markdown").innerHTML = res.data
+                            const parser = new DOMParser();
+                            const htmlDoc = parser.parseFromString(res.data, 'text/html');
+                            const bodyContent = htmlDoc.body.innerHTML;
+                            document.getElementById("markdown").innerHTML = bodyContent
+                            let container = document.querySelector('div.container-lg.px-3.my-5.markdown-body');
+                            let content = container.innerHTML;
+                            document.getElementById("markdown").innerHTML = content
                             hljs.highlightAll();
+
                             // 获取文章标题
-                            that.titles = []
-                            const headings = document.querySelectorAll('h1,h2')//,h3,h4,h5,h6')
+                            that.titles = [];
+                            const headings = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+                            let isFirstH1Skipped = false;
                             headings.forEach(heading => {
-                                const level = heading.tagName;
-                                const title = heading.textContent;
-                                const id = heading.id;
-                                const titleObj = { level, title, id }; // 将标题级别和标题内容存储在对象中
-                                _that.titles.push(titleObj); // 将标题对象添加到titles数组中
+                                if (isFirstH1Skipped || heading.tagName !== 'H1') { // 如果已经跳过了第一个 h1，则继续遍历；如果当前元素不是 h1，则继续遍历
+                                    const level = heading.tagName;
+                                    const title = heading.textContent;
+                                    const id = heading.id;
+                                    const titleObj = { level, title, id }; // 将标题级别和标题内容存储在对象中
+                                    that.titles.push(titleObj); // 将标题对象添加到titles数组中
+                                }
+                                if (!isFirstH1Skipped && heading.tagName === 'H1') { // 如果是第一个 h1，则标记为已跳过
+                                    isFirstH1Skipped = true;
+                                }
                             });
                         })
                         .catch(function(err){
