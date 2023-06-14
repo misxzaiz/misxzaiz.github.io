@@ -26,4 +26,5 @@ public class RedisDemoTest {
     public void testMysql(){
         System.out.println(userService.getById(1));
     }
+
 }

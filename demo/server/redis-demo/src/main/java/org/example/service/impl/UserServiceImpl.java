@@ -2,9 +2,11 @@ package org.example.service.impl;
 
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.example.dto.RedisData;
 import org.example.dto.Result;
 import org.example.entity.User;
 import org.example.mapper.UserMapper;
@@ -14,6 +16,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static org.example.utils.RedisUtils.*;
@@ -37,9 +42,82 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public Result getUserById(Long id) {
         // 缓存穿透
-         // return getUserByIdWithPassThrough(id);
+        // return getUserByIdWithPassThrough(id);
+        // 互斥锁
+        // return queryWithMutex(id);
+        // 逻辑过期
+        // saveUserToRedis(id,10L);
+        return queryWithLocalExpire(id);
 
-        return queryWithMutex(id);
+    }
+
+    private boolean tryLock(String key){
+        Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(key, "", 10, TimeUnit.SECONDS);
+        // 涉及拆箱问题，当 flag 为 false 和 null 是都返回 false
+        log.info("【tryLock】{}",BooleanUtil.isTrue(flag));
+        return BooleanUtil.isTrue(flag);
+    }
+
+    private void unlock(String key){
+        stringRedisTemplate.delete(key);
+    }
+
+    private static final ExecutorService CACHE_REBUILD_EXECUTOR = Executors.newFixedThreadPool(10);
+
+
+    private Result queryWithLocalExpire(Long id) {
+        String key = GET_USER_BY_ID + ":" + id;
+        String lockKey = LOCK_GET_USER_BY_ID + ":" + id;
+        // 从缓存查询商铺缓存
+        String userJson = stringRedisTemplate.opsForValue().get(key);
+        // 判断是否存在
+        if (StrUtil.isBlank(userJson)) {
+            return Result.fail("【缓存】缓存不存在！");
+        }
+        // 存在，判断是否过期
+        RedisData userRedisData = JSONUtil.toBean(userJson,RedisData.class);
+        JSONObject data = (JSONObject) userRedisData.getData();
+        User user = JSONUtil.toBean(data, User.class);
+        // 判断是否过期
+        LocalDateTime expireTime = userRedisData.getExpireTime();
+        if (expireTime.isAfter(LocalDateTime.now())) {
+            // 未过期，直接返回店铺信息
+            return Result.ok(user,"【缓存】缓存未过期！");
+        }
+        // 已过期
+        // 缓存重建
+        // 获取互斥锁
+        boolean isLock = tryLock(lockKey);
+        if (isLock) {
+            // 成功，开启独立线程，实现缓存重建
+            CACHE_REBUILD_EXECUTOR.submit(()->{
+                try {
+                    // 重建
+                    this.saveUserToRedis(id,30L);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    // 释放锁
+                    unlock(lockKey);
+                }
+            });
+        }
+        // 返回旧数据
+        return Result.ok(user,"【缓存】缓存以过期，返回旧数据");
+    }
+
+
+    private void saveUserToRedis(Long id,Long expireSeconds){
+        log.info("【saveUserToRedis】");
+        String key = GET_USER_BY_ID + ":" + id;
+        // 查询店铺数据
+        User user = getById(id);
+        // 封装逻辑过期时间
+        RedisData redisData = new RedisData();
+        redisData.setData(user);
+        redisData.setExpireTime(LocalDateTime.now().plusSeconds(expireSeconds));
+        // 写入 redis
+        stringRedisTemplate.opsForValue().set(key,JSONUtil.toJsonStr(redisData));
     }
 
     private Result queryWithMutex(Long id) {
@@ -71,7 +149,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 Thread.sleep(100);
                 log.info("【重新获取锁】");
                 // 【存在问题，待完善】重试
-                queryWithMutex(id);
+                return queryWithMutex(id);
             }
             // 延时，测试锁
             Thread.sleep(5000);
@@ -139,13 +217,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return Result.ok("更新用户数据成功！");
     }
 
-    private boolean tryLock(String key){
-        Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(key, "1", 10, TimeUnit.SECONDS);
-        // 涉及拆箱问题，当 flag 为 false 和 null 是都返回 false
-        return BooleanUtil.isTrue(flag);
-    }
 
-    private void unlock(String key){
-        stringRedisTemplate.delete(key);
-    }
 }
