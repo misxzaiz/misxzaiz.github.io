@@ -11,11 +11,13 @@ import org.example.dto.Result;
 import org.example.entity.User;
 import org.example.mapper.UserMapper;
 import org.example.service.UserService;
+import org.example.utils.RedisTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -33,6 +35,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    @Resource
+    private RedisTools redisTools;
+
     @Override
     public Result listAllUser() {
         log.info("【数据库查询】查询所有用户信息");
@@ -47,8 +52,28 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // return queryWithMutex(id);
         // 逻辑过期
         // saveUserToRedis(id,10L);
-        return queryWithLocalExpire(id);
+        // return queryWithLocalExpire(id);
+        // 工具类
+        // return redisUtilWithPassThrough(id);
+        // 逻辑过期
+        return redisLocalExpire(id);
 
+    }
+
+    private Result redisLocalExpire(Long id) {
+        User user = redisTools.getWithLocalExpire(id, GET_USER_BY_ID,
+                User.class,
+                this::getById,
+                2L, TimeUnit.MINUTES);
+        return Result.ok(user,"查询完成");
+    }
+
+    private Result redisUtilWithPassThrough(Long id) {
+        User user = redisTools.getWithPassThrough(id, GET_USER_BY_ID,
+                User.class,
+                this::getById,
+                2L, TimeUnit.MINUTES);
+        return Result.ok(user,"查询完成");
     }
 
     private boolean tryLock(String key){
