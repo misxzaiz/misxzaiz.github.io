@@ -1,16 +1,19 @@
 package org.example.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
+@TableName("tb_user")
 public class User {
     private Long id;
-    private String username;
-    private String password;
     private String phone;
     private String email;
-    private String image;
-    private String role;
-    private String status;
-    private Long balance;
+    private String password;
+    private String nickName;
+    private String icon;
+    private Date createTime;
+    private Date updateTime;
 }
