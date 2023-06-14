@@ -1,8 +1,5 @@
 let reqUrl = "http://127.0.0.1"
-let tokenSession = sessionStorage.getItem("token")
 
-// let commonURL = "http://192.168.50.115:8081";
-// let commonURL = "/api";
 // 设置后台服务地址
 axios.defaults.baseURL = reqUrl;
 axios.defaults.timeout = 2000;

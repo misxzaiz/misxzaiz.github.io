@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="stylesheet" href="css/element.css" />
     <script src="js/vue@3.js"></script>
     <script src="js/element-plus.js"></script>
@@ -15,6 +14,7 @@
 <body>
     
     <div id="app">
+        <el-button @click="href('../nav/index.html')">返回</el-button>
         <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
         <el-button @click="href('./pages/login/index.html')">登录</el-button>
         <el-button @click="testLoginIntercept()">测试登录</el-button>
