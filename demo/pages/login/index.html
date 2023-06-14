@@ -44,7 +44,7 @@
                         this.$message.error("手机号和验证码不能为空！");
                         return
                     }
-                    axios.post(reqUrl+"/user/login/phone/code", this.form)
+                    axios.post("/user/login/phone/code", this.form)
                     .then(({data}) => {
                         if(data){                    
                             // 保存用户信息到session
@@ -61,7 +61,7 @@
                         return;
                     }
                     // 发送验证码
-                    axios.get(reqUrl+"/user/code/phone/"+this.form.phone)
+                    axios.get("/user/code/phone/"+this.form.phone)
                         .then(() => {})
                         .catch(err => {
                             console.log(err);

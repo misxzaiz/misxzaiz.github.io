@@ -34,11 +34,7 @@
                 testLoginIntercept(){
                     console.log(tokenSession)
                     // 发送验证码
-                    axios.get(reqUrl+"/user/test/login/intercept",{
-                        headers: {
-                            "authorization": tokenSession
-                        }
-                    })
+                    axios.get("/user/test/login/intercept")
                         .then(res => {
                             console.log(res);
                             this.$message.success(res.data.message)
