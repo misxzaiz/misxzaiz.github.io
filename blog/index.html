@@ -57,31 +57,7 @@
             font-weight: bold;
         }
 
-        h1,h2,h3,h4,h5,h6 {
-            color: #333; /* 设置标题颜色 */
-            font-weight: 500; /* 设置标题字体粗细 */
-            line-height: 1.2; /* 设置标题行高 */
-            margin-top: 1.5em; /* 设置标题与上方元素的距离 */
-            margin-bottom: 0.5em; /* 设置标题与下方元素的距离 */
-        }
-        h1 {
-            font-size: 2.5rem; /* 设置h1标题字体大小 */
-        }
-        h2 {
-            font-size: 2rem; /* 设置h2标题字体大小 */
-        }
-        h3 {
-            font-size: 1.8rem; /* 设置h3标题字体大小 */
-        }
-        h4 {
-            font-size: 1.5rem; /* 设置h4标题字体大小 */
-        }
-        h5 {
-            font-size: 1.2rem; /* 设置h5标题字体大小 */
-        }
-        h6 {
-            font-size: 1rem; /* 设置h6标题字体大小 */
-        }
+
 
     </style>
 </head>
@@ -202,10 +178,13 @@
                     .get("https://nav.xiaozaiz.xyz/blog/contents.json")
                     .then(function(res){
                         that.contents = res.data.contents
+                        // 直接展示第一篇文章
+                        that.getMarkdown(res.data.contents[0][1]+"-"+res.data.contents[0][0])
                     })
                     // .catch(function(err){
                     //     alert("获取文章列表失败！")
                     // });
+
             }
         };
         const app = Vue.createApp(App);
