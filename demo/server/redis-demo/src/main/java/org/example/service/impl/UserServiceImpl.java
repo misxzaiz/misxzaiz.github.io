@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -143,6 +144,35 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         return result;
+    }
+
+    /**
+     * 注销登录，删除token缓存
+     * @param request
+     * @return
+     */
+    @Override
+    public Result logout(HttpServletRequest request) {
+        // 获取请求头中的token
+        String token = request.getHeader("Authorization");
+
+        if (token == null || token.trim().length() == 0) {
+            return Result.fail("token不能为空！");
+        }
+
+        // 基于TOKEN删除redis中的用户
+        String key = LOGIN_USER_KEY + token;
+        try {
+            Boolean result = stringRedisTemplate.delete(key);
+            if (result == null || !result) {
+                return Result.fail("redis删除失败！");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.fail("redis操作异常！");
+        }
+
+        return Result.ok("注销成功！");
     }
 
 

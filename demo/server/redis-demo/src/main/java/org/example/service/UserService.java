@@ -5,6 +5,7 @@ import org.example.dto.LoginForm;
 import org.example.dto.Result;
 import org.example.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 public interface UserService extends IService<User> {
@@ -14,4 +15,6 @@ public interface UserService extends IService<User> {
     Result loginWithPhoneByCode(LoginForm form);
 
     Result getUserByIdWithRedisLocalExpire(Long id, String keyPrefix, Long time, TimeUnit unit);
+
+    Result logout(HttpServletRequest request);
 }

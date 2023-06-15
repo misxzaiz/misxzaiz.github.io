@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dto.LoginForm;
 import org.example.dto.Result;
@@ -8,11 +9,15 @@ import org.example.entity.User;
 import org.example.service.UserService;
 import org.example.utils.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static org.example.utils.RedisUtils.GET_USER_BY_ID;
+import static org.example.utils.RedisUtils.LOGIN_USER_KEY;
 
 @Slf4j
 @RestController
@@ -20,6 +25,9 @@ import static org.example.utils.RedisUtils.GET_USER_BY_ID;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("/{id}")
     public Result getUserByIdWithRedisLocalExpire(@PathVariable Long id){
@@ -61,6 +69,11 @@ public class UserController {
     public Result getCodeByPhone(@PathVariable String phone){
         log.info("【验证码】phone：{}",phone);
         return userService.getCodeByPhone(phone);
+    }
+
+    @GetMapping("/logout")
+    public Result logout(HttpServletRequest request){
+        return userService.logout(request);
     }
 
 
