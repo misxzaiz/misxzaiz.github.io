@@ -11,6 +11,7 @@ import org.example.mapper.FileMapper;
 import org.example.service.FileService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileOutputStream;
 import java.util.Base64;
@@ -54,29 +55,36 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
     }
 
     @Override
+    @Transactional
     public Result uploadFile(FileDto fileDto) throws Exception {
         // 检查数据库中是否存在该文件的信息
         FileDto fileDtoDatabase = findByKey(fileDto.getMd5Key());
         String fileName = null;
         // 数据库中不存在文件信息
-        if(fileDtoDatabase == null){
+        if (fileDtoDatabase == null) {
             // 生成随机存储文件名
-            fileName = UUID.randomUUID().toString()+"."+fileDto.getSuffix();
+            fileName = UUID.randomUUID().toString() + "." + fileDto.getSuffix();
+            fileDto.setPrimitiveName(fileDto.getName());
             fileDto.setName(fileName);
             fileDto.setPath(FILE_DOMAIN + fileName);
+            File file = BeanUtil.copyProperties(fileDto, File.class);
+            save(file);
+            Long fileId = file.getId(); // 获取回传id
+            fileDto.setId(fileId);
         }
+
         // 检查分片
         Integer index = fileDto.getShardIndex();
-        if(fileDto.getShardTotal()!=index){
-            fileDto.setShardIndex(++index);
+        if (fileDto.getShardTotal() >= index) {
             saveFile(fileDto);
+            fileDto.setShardIndex(++index);
             merge(fileDto);
         }
-        return Result.ok(fileDto,"文件上传！");
+
+        return Result.ok(fileDto, "文件上传！");
     }
 
-
-    //合并分片
+    // 合并分片
     private void merge(FileDto fileDto) throws Exception {
         log.info("合并分片开始");
         // 文件存储的位置
@@ -88,25 +96,22 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
 
         // 将二进制数据解码为字节数组
         byte[] content = Base64.getDecoder().decode(shard.split(",")[1]);
-        // byte[] content = Base64.getDecoder().decode(shard);
 
         // 将分片写入本地磁盘
         // 创建文件夹
-        java.io.File file = new java.io.File(fileUploadPath);
-        if (!file.exists() && !file.isDirectory()) {
-            boolean success = file.mkdirs(); // 创建目录
+        java.io.File file = new java.io.File(fileUploadPath, fileName);
+        if (!file.getParentFile().exists()) {
+            boolean success = file.getParentFile().mkdirs(); // 创建目录和文件
             if (!success) {
                 throw new RuntimeException("Failed to create directory: " + file.getAbsolutePath());
             }
         }
-        // 创建文件
-        java.io.File targetFile = new java.io.File(file, fileName);
 
-        // FileOutputStream
-
-        FileOutputStream fos = new FileOutputStream(targetFile, true);
-        fos.write(content);
-        fos.close();
+        // 使用 try-with-resources 语句，确保 FileOutputStream 对象自动关闭
+        try (FileOutputStream fos = new FileOutputStream(file, true)) {
+            fos.write(content);
+            fos.flush();
+        }
     }
 
 }
