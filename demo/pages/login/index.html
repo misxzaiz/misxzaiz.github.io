@@ -61,7 +61,9 @@
                     }
                     // 发送验证码
                     axios.get("/user/code/phone/"+this.form.phone)
-                        .then(() => {})
+                        .then(res => {
+                            this.$message.success(res.data.data)
+                        })
                         .catch(err => {
                             console.log(err);
                             this.$message.error(err)

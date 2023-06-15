@@ -60,7 +60,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         stringRedisTemplate.opsForValue().set(LOGIN_PHONE_CODE+phone,code,1,TimeUnit.MINUTES);
         // TODO 发送验证码
         log.info("【验证码登录】{} 的验证码为：{}",phone,code);
-        return Result.ok("验证码获取成功！");
+        // 测试使用
+        return Result.ok(code,"验证码获取成功！");
+        // return Result.ok("验证码获取成功！");
     }
 
     /**
