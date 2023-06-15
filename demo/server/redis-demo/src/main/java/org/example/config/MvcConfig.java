@@ -17,11 +17,11 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 拦截器
-        registry.addInterceptor(new LoginInterceptor(stringRedisTemplate))
-                .excludePathPatterns(
-                        "/user/code/**",
-                        "/user/login/**"
-                )
-                .addPathPatterns("/**").order(0);
+//        registry.addInterceptor(new LoginInterceptor(stringRedisTemplate))
+//                .excludePathPatterns(
+//                        "/user/code/**",
+//                        "/user/login/**"
+//                )
+//                .addPathPatterns("/**").order(0);
     }
 }
