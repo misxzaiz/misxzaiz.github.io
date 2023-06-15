@@ -10,13 +10,46 @@
     <script src="../../js/element-plus.js"></script>
     <script src="../../js/axios.min.js"></script>
     <script src="../../index.js"></script>
-
+    <style>
+        #app {
+          margin: 20px;
+          padding: 20px;
+          border: 2px solid #ccc;
+          border-radius: 5px;
+          background-color: #f8f8f8;
+        }
+        
+        input[type="file"] {
+          margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+          width: 100%;
+          height: 20px;
+          background-color: #eee;
+          border-radius: 5px;
+          overflow: hidden;
+        }
+        
+        .progress {
+          height: 100%;
+          background-color: #4CAF50;
+          text-align: center;
+          line-height: 20px;
+          color: #fff;
+          transition: width 0.3s ease-in-out;
+        }
+        </style>
 </head>
 <body>
     
     <div id="app">
         <div>
             <input type="file" ref="file" v-on:change="uploadFile()">
+            <div class="progress-bar">
+              <div class="progress" :style="{width: uploadSpeed + '%'}">{{uploadSpeed}}</div>
+            </div>
+            <div>文件路径：{{imageUrl}}</div>
         </div>
     </div>
 
@@ -25,6 +58,8 @@
         const App = {
             data() {
                 return {
+                    uploadSpeed: 0,
+                    imageUrl: ''
                 }
             },
             methods: {
@@ -88,12 +123,14 @@
                         axios.post("/file/upload",param)
                             .then(res => {
                                 let file = res.data.data;
+                                that.imageUrl = file.path
+                                that.uploadSpeed = parseInt((file.shardIndex-1) * 100 / file.shardTotal)
+                                console.log("进度:"+parseInt((file.shardIndex-1) * 100 / file.shardTotal))
                                 //如果当前分片索引 小于等于 总的片数
                                 if(file.shardIndex <= file.shardTotal){
-                                    console.log("进度:"+parseInt(file.shardIndex * 100 / file.shardTotal))
                                     that.upload(file);
-                                }else{
-                                    this.$message.success("文件上传完成！")
+                                }else {
+                                    that.$message.success("文件上传完成！")
                                 }
                             }).catch(err => {})
                     }
@@ -104,12 +141,16 @@
                     axios.get("/file/check/"+param.md5Key)
                         .then(res => {
                             console.log(res.data);
-                            this.$message.success(res.data.message)
                             let file = res.data.data;
                             if(res.data.errorMsg!=null){
                                 param.shardIndex = 1;
                                 console.log("没有找到文件记录，从分片1开始上传");
+                                this.$message.success("文件开始上传！")
                                 that.upload(param);
+                            } else {
+                                this.$message.success(res.data.message)
+                                that.uploadSpeed = parseInt(100)
+                                that.imageUrl = file.path
                             }
                         }).catch(err => {});
                 },
