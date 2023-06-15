@@ -11,6 +11,7 @@
     <script src="js/icon-element.js"></script>
     <script src="index.js"></script>
 </head>
+
 <body>
     
     <div id="app">
@@ -32,7 +33,7 @@
                     window.location.href=url
                 },
                 testLoginIntercept(){
-                    console.log(tokenSession)
+
                     // 发送验证码
                     axios.get("/user/test/login/intercept")
                         .then(res => {
