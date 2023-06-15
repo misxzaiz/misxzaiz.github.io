@@ -10,6 +10,10 @@ import org.example.utils.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
+import static org.example.utils.RedisUtils.GET_USER_BY_ID;
+
 @Slf4j
 @RestController
 @RequestMapping("user")
@@ -17,7 +21,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/{id}")
+    public Result getUserByIdWithRedisLocalExpire(@PathVariable Long id){
+        return userService.getUserByIdWithRedisLocalExpire(id,GET_USER_BY_ID,
+                10L, TimeUnit.SECONDS);
+    }
 
+    @GetMapping
+    public Result getUserList(){
+        return Result.ok(userService.list(),"用户列表！");
+    }
 
     @GetMapping("/test/login/intercept")
     public Result testLoginIntercept(){
@@ -50,18 +63,5 @@ public class UserController {
         return userService.getCodeByPhone(phone);
     }
 
-    @GetMapping
-    public Result getUsers(){
-        return userService.listAllUser();
-    }
 
-    @GetMapping("{id}")
-    public Result getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
-    }
-
-    @PostMapping()
-    public Result updateUser(@RequestBody User user){
-        return userService.updateUser(user);
-    }
 }

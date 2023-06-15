@@ -36,6 +36,9 @@ public class Result {
     public static Result fail(String errorMsg){
         return new Result(true,null,errorMsg,null,null);
     }
+    public static Result fail(Object data,String message,String errorMsg){
+        return new Result(true,message,errorMsg,data,null);
+    }
     public static Result fail(String message,String errorMsg){
         return new Result(true,message,errorMsg,null,null);
     }

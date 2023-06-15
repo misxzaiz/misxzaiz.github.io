@@ -6,6 +6,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dto.RedisData;
+import org.example.dto.Result;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -45,44 +46,11 @@ public class RedisTools {
         stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(redisData));
     }
 
-    /**
-     * 获取 redis 的值，解决缓存穿透问题，添加空值
-     */
-    public <R, ID> R getWithPassThrough(ID id, String keyPrefix,
-                                        Class<R> type,
-                                        Function<ID, R> dbFallBack,
-                                        Long time, TimeUnit unit){
-        String key = keyPrefix + id;
-        // 查询缓存
-        String json = stringRedisTemplate.opsForValue().get(key);
-        // 判断是否存在
-        if (StrUtil.isNotBlank(json)) {
-            // 存在，直接返回
-            return JSONUtil.toBean(json,type);
-        }
-        // 不存在
-        if (json != null){
-            return null;
-        }
-        // 查询数据库【怎么查，不知道，返回给调用者】
-        R r = dbFallBack.apply(id);
-        // 检查
-        if (r == null) {
-            // 空值，将空值存入
-            stringRedisTemplate.opsForValue().set(key,"",2,TimeUnit.MINUTES);
-            return null;
-        }
-        // 存在，写入 redis
-        this.set(key,r,time,unit);
-        return r;
-    }
-
     private static final ExecutorService CACHE_REBUILD_EXECUTOR = Executors.newFixedThreadPool(10);
 
     private boolean tryLock(String key){
         Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(key, "", 10, TimeUnit.SECONDS);
         // 涉及拆箱问题，当 flag 为 false 和 null 是都返回 false
-        log.info("【tryLock】{}", BooleanUtil.isTrue(flag));
         return BooleanUtil.isTrue(flag);
     }
 
@@ -94,18 +62,27 @@ public class RedisTools {
      * 获取 redis 的值，解决缓存击穿问题，实现缓存重建
      */
     public <R, ID> R getWithLocalExpire(ID id, String keyPrefix,
-                                         Class<R> type,
-                                         Function<ID, R> dbFallBack,
-                                         Long time, TimeUnit unit) {
+                                        Class<R> type,
+                                        Function<ID, R> dbFallBack,
+                                        Long time, TimeUnit unit) {
         String key = keyPrefix + id;
         String lockKey = keyPrefix + "lock:" + id;
         // 从缓存查询商铺缓存
         String userJson = stringRedisTemplate.opsForValue().get(key);
         // 判断是否存在
-        if (StrUtil.isBlank(userJson)) {
+        // 不存在则重建缓存
+        if (userJson == null) {
+            log.info("【缓存】缓存为空，等待缓存重建");
+            // 查询数据库，如果不存在，就设置为空值
+            rebuildCache(id, dbFallBack, time, unit, key, lockKey);
             return null;
         }
-        // 存在，判断是否过期
+        // 判断是否存在缓存空对象
+        if("".equals(userJson)){
+            log.info("【缓存·空值】缓存和数据库都不存在该数据！");
+            return null;
+        }
+        // 存在，获取数据
         RedisData userRedisData = JSONUtil.toBean(userJson,RedisData.class);
         JSONObject data = (JSONObject) userRedisData.getData();
         R r = JSONUtil.toBean(data, type);
@@ -113,10 +90,21 @@ public class RedisTools {
         LocalDateTime expireTime = userRedisData.getExpireTime();
         if (expireTime.isAfter(LocalDateTime.now())) {
             // 未过期，直接返回店铺信息
+            log.info("【缓存】成功获取缓存数据！");
             return r;
         }
         // 已过期
         // 缓存重建
+        rebuildCache(id, dbFallBack, time, unit, key, lockKey);
+        log.info("【缓存·过期】等待缓存重建！");
+        // 返回旧数据
+        return r;
+    }
+
+    /**
+     * 缓存重建
+     */
+    private <R, ID> void rebuildCache(ID id, Function<ID, R> dbFallBack, Long time, TimeUnit unit, String key, String lockKey) {
         // 获取互斥锁
         boolean isLock = tryLock(lockKey);
         if (isLock) {
@@ -124,10 +112,14 @@ public class RedisTools {
             CACHE_REBUILD_EXECUTOR.submit(()->{
                 try {
                     // 重建
-                    // 查询数据库
+                    // 查询数据库，如果查询失败，就设置空值
                     R apply = dbFallBack.apply(id);
-                    // 写入 redis
-                    this.setLocalExpire(key,apply,time,unit);
+                    if (apply == null) {
+                        this.set(key,"",time,unit);
+                    } else {
+                        // 写入 redis
+                        this.setLocalExpire(key,apply,time,unit);
+                    }
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 } finally {
@@ -136,7 +128,45 @@ public class RedisTools {
                 }
             });
         }
+    }
+
+    public <R, ID> Result testGetWithLocalExpire(ID id, String keyPrefix,
+                                                 Class<R> type,
+                                                 Function<ID, R> dbFallBack,
+                                                 Long time, TimeUnit unit) {
+        String key = keyPrefix + id;
+        String lockKey = keyPrefix + "lock:" + id;
+        // 从缓存查询商铺缓存
+        String userJson = stringRedisTemplate.opsForValue().get(key);
+        // 判断是否存在
+        // 不存在则重建缓存
+        if (userJson == null) {
+            log.info("【缓存】缓存为空，等待缓存重建");
+            // 查询数据库，如果不存在，就设置为空值
+            rebuildCache(id, dbFallBack, time, unit, key, lockKey);
+            return Result.fail("【缓存】缓存为空，等待缓存重建！","【缓存】缓存为空，等待缓存重建！");
+        }
+        // 判断是否存在缓存空对象
+        if("".equals(userJson)){
+            log.info("【缓存·空值】缓存和数据库都不存在该数据！");
+            return Result.fail("【缓存·空值】缓存和数据库都不存在该数据！","【缓存·空值】缓存和数据库都不存在该数据！");
+        }
+        // 存在，获取数据
+        RedisData userRedisData = JSONUtil.toBean(userJson,RedisData.class);
+        JSONObject data = (JSONObject) userRedisData.getData();
+        R r = JSONUtil.toBean(data, type);
+        // 判断是否过期
+        LocalDateTime expireTime = userRedisData.getExpireTime();
+        if (expireTime.isAfter(LocalDateTime.now())) {
+            // 未过期，直接返回店铺信息
+            log.info("【缓存】成功获取缓存数据！");
+            return Result.ok(r,"【缓存】成功获取缓存数据！");
+        }
+        // 已过期
+        // 缓存重建
+        rebuildCache(id, dbFallBack, time, unit, key, lockKey);
+        log.info("【缓存·过期】等待缓存重建！");
         // 返回旧数据
-        return r;
+        return Result.fail(r,"【缓存·过期】等待缓存重建！","【缓存·过期】等待缓存重建！");
     }
 }

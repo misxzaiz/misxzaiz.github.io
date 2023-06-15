@@ -23,6 +23,5 @@ public class MvcConfig implements WebMvcConfigurer {
                         "/user/login/**"
                 )
                 .addPathPatterns("/**").order(0);
-
     }
 }
