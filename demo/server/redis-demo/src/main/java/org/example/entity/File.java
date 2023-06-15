@@ -14,7 +14,7 @@ public class File {
     private String name;
     private String primitiveName;
     private String suffix;
-    private Integer size;
+    private Long size;
     private Character fileUse;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;

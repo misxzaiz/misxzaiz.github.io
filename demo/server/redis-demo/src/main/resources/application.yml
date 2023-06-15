@@ -27,6 +27,6 @@ logging:
     org.example: debug
 
 file:
-  path: D:/Github/misxzaiz.github.io/demo/pages/file/save/
+  path: D:/Github/tmp/file
   domain: http://nav.xiaozaiz.xyz/demo/pages/file/save/
 

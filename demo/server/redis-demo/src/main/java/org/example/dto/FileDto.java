@@ -13,7 +13,7 @@ public class FileDto {
     private String name;
     private String primitiveName;
     private String suffix;
-    private Integer size;
+    private Long size;
     private String fileUse;
     private Integer shardIndex;
     //   base64 字符串

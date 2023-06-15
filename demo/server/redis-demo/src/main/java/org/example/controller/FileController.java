@@ -52,7 +52,10 @@ public class FileController {
             return fileService.uploadFile(fileDto);
         } catch (Exception e) {
             log.error("文件上传失败！", e);
-            return Result.fail("文件上传失败：" + e.getMessage());
+            Thread.sleep(100);
+            // 重试
+            return fileService.uploadFile(fileDto);
+            // return Result.fail("文件上传失败：" + e.getMessage());
         }
     }
 
