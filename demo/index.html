@@ -17,9 +17,12 @@
     <div id="app">
         <el-button @click="href('../nav/index.html')">返回</el-button>
         <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
-        <el-button @click="href('./pages/login/index.html')">登录</el-button>
-        <el-button @click="testLoginIntercept()">测试登录</el-button>
+
         <el-collapse>
+            <el-collapse-item title="登录测试" icon-position="right">
+                <el-button @click="href('./pages/login/index.html')">登录</el-button>
+                <el-button @click="testLoginIntercept()">测试登录</el-button>
+            </el-collapse-item>
             <el-collapse-item title="缓存测试" icon-position="right">
                 <p>缓存穿透：空值（√）、布隆过滤器</p>
                 <p>缓存击穿：逻辑过期（√）、互斥锁</p>
@@ -44,7 +47,6 @@
         const App = {
             data() {
                 return {
-                    msg: "aa",
                     userId: null,
                     userForm: {},
                     userList: []
