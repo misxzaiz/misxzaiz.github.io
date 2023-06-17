@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+
+</head>
+<body>
+    
+    <div id="app">
+        <el-button @click="getCoupon(1)">用户1抢卷</el-button>
+        <el-button @click="getCoupon(2)">用户2抢卷</el-button>
+        <el-button @click="getCoupon(3)">用户3抢卷</el-button>
+        <el-button @click="getCoupon(4)">用户4抢卷</el-button>
+        <el-button @click="getCoupon(5)">用户5抢卷</el-button>
+        <div>优惠卷剩余：{{count}} 张</div>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    count: 10,
+                    couponId: null
+                }
+            },
+            methods: {
+                getCoupon(id) {
+                    let that = this;
+                    axios
+                        .get("http://localhost/coupons/"+id)
+                        .then(function(res){
+                            that.count = that.count - 1
+                        })
+                        .catch(function(err){
+                            alert("抢卷失败！")
+                        });
+                
+                }
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

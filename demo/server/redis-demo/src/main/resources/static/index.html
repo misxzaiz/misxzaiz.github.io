@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/element.css" />
+    <script src="js/vue@3.js"></script>
+    <script src="js/element-plus.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    
+    <div id="app">
+        <el-button @click="href('../nav/index.html')">返回</el-button>
+
+
+        <el-collapse>
+            <el-collapse-item title="测试说明" icon-position="right">
+                <strong>需要启动后端代码才能进行下面测试</strong>
+                <p>文档位置：<a href="../blog/index.html" target="_blank">点击查看</a></p></p>
+                <p>代码位置：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/demo/server/redis-demo" target="_blank">https://github.com/misxzaiz/misxzaiz.github.io/tree/main/demo/server/redis-demo</a></p>
+            </el-collapse-item>
+            <el-collapse-item title="登录测试" icon-position="right">
+                <p>
+                    <strong>功能：</strong>
+                    <ul>
+                        <li>验证码：验证码以手机号为 key 保存到缓存中，添加超时时间，用于认证；</li>
+                        <li>认证：
+                            <ul>
+                                <li>完成登录认证后，返回随机生成的 token（可以以 redis 全局唯一 id 代替）；</li>
+                                <li>以 token 为 key 将用户信息保存到 redis，添加超时时间；</li>
+                            </ul>
+                        </li>
+                        <li>鉴权：
+                            <ul>
+                                <li>检查请求头是否存在 token；</li>
+                                <li>如果存在 token ，查询 redis 检查是否存在该用户的登录信息；</li>
+                                <li>如果存在，则将用户信息保存到当前 ThreadLocal 中。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <el-button @click="href('./pages/login/index.html')">登录</el-button>
+                <el-button @click="logout()">注销</el-button>
+                <el-button @click="testLoginIntercept()">测试登录</el-button>
+            </el-collapse-item>
+            <el-collapse-item title="缓存测试" icon-position="right">
+                <p>缓存穿透：空值（√）、布隆过滤器</p>
+                <p>缓存击穿：逻辑过期（√）、互斥锁</p>
+                <p>缓存雪崩：随机 TTL、限流降级</p>
+                <p>这里为了测试，空值和逻辑过期的过期时间只设置为10s</p>
+                <el-button @click="getUserList()">获取所有用户id</el-button>
+                <p>测试 id：
+                    <span v-for="(item,index) in userList" :key="index"><br>{{item.id}}</span>
+                </p>
+                <input type="text" placeholder="输入用户 id" v-model="userId" style="width: 20%; margin-right: 3%;">
+                <el-button @click="getUserByIdWithRedisLocalExpire()">获取用户信息</el-button>
+                <div v-if="userForm!=null">
+                    <div v-if="userForm.id!=null">id：{{userForm.id}}</div>
+                    <div v-if="userForm.phone!=null">phone：{{userForm.phone}}</div>
+                    <div v-if="userForm.email!=null">email：{{userForm.email}}</div>
+                    <div v-if="userForm.nickName!=null">nickName：{{userForm.nickName}}</div>
+                    <div v-if="userForm.icon!=null & userForm.icon!=''">icon：{{userForm.icon}}</div>
+                </div>
+            </el-collapse-item>
+            <!-- <el-collapse-item title="优惠卷测试" icon-position="right">
+                <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
+            </el-collapse-item> -->
+            <el-collapse-item title="文件测试" icon-position="right">
+                <p>
+                    <strong>文件分片上传</strong>
+                    <ul>
+                        <li>通过计算文件名、文件大小和文件类型的组合获取文件的md5码，用于检验文件上传状态；</li>
+                        <li>采用base64编码方式对文件进行分片上传，每个分片大小为5MB；</li>
+                        <li>分片上传时，根据当前分片索引与总分片数量的比较来判断是否需要继续上传，上传过程中将文件分片转化成base64编码格式，传递给后台处理；</li>
+                        <li>上传前会调用check()方法检查服务器是否已经存在该文件记录（通过比对md5码），若存在则可直接完成上传，否则从第一个分片开始上传。</li>
+                    </ul>
+                </p>
+                <el-button @click="href('./pages/file/index.html')">文件</el-button>
+            </el-collapse-item>
+        </el-collapse>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    userId: null,
+                    userForm: {},
+                    userList: []
+                }
+            },
+            methods: {
+                href(url) {
+                    window.location.href=url
+                },
+                testLoginIntercept(){
+                    axios.get("/user/test/login/intercept")
+                        .then(res => {
+                            console.log(res);
+                            this.$message.success(res.data.message)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                getUserByIdWithRedisLocalExpire() {
+                    let that = this;
+                    axios.get("/user/"+this.userId)
+                        .then(res => {
+                            if(!res.data.errorMsg){
+                                this.$message.success(res.data.message)
+                            }else {
+                                this.$message.error(res.data.message)
+                            }
+                            that.userForm = res.data.data
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                getUserList(){
+                    let that = this;
+                    axios.get("/user")
+                        .then(res => {
+                            that.userList = res.data.data
+                        })
+                        .catch(err => {
+                            this.$message.error(err)
+                        });
+                },
+                logout(){
+                    let that = this;
+                    axios.get("/user/logout")
+                        .then(res => {
+                            this.$message.success(res.data.message);
+                            sessionStorage.removeItem("token");
+                        })
+                        .catch(err => {
+                            this.$message.error(err)
+                        });
+                }
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+
+    </script>
+</body>
+</html>

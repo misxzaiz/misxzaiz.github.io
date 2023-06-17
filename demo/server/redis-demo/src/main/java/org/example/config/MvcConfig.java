@@ -20,7 +20,13 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginInterceptor(stringRedisTemplate))
                 .excludePathPatterns(
                         "/user/code/**",
-                        "/user/login/**"
+                        "/user/login/**",
+                        "/css/**",
+                        "/js/**",
+                        "/pages/**",
+                        "/index.html",
+                        "/index.js",
+                        "/favicon.ico"
                 )
                 .addPathPatterns("/**").order(0);
     }

@@ -130,34 +130,34 @@ $('#hitokoto').click(function () {
 //获取天气
 //请前往 https://www.mxnzp.com/doc/list 申请 app_id 和 app_secret
 //请前往 https://dev.qweather.com/ 申请 key
-const add_id = "wrknltonr0foslhs"; // app_id
-const app_secret = "Nlh1c0F6d0ZDU2pDR0J3YVBVbkhudz09"; // app_secret
-const key = "433f0c48615a48dfaf2f2b2444297e79" // key
-function getWeather() {
-    fetch("https://www.mxnzp.com/api/ip/self?app_id=" + add_id + "&app_secret=" + app_secret)
-        .then(response => response.json())
-        .then(data => {
-            let str = data.data.city
-            let city = str.replace(/市/g, '')
-            $('#city_text').html(city);
-            fetch("https://geoapi.qweather.com/v2/city/lookup?location=" + city + "&number=1&key=" + key)
-                .then(response => response.json())
-                .then(location => {
-                    let id = location.location[0].id
-                    fetch("https://devapi.qweather.com/v7/weather/now?location=" + id + "&key=" + key)
-                        .then(response => response.json())
-                        .then(weather => {
-                            $('#wea_text').html(weather.now.text)
-                            $('#tem_text').html(weather.now.temp + "°C&nbsp;")
-                            $('#win_text').html(weather.now.windDir)
-                            $('#win_speed').html(weather.now.windScale + "级")
-                        })
-                })
-        })
-        .catch(console.error);
-}
+// const add_id = "wrknltonr0foslhs"; // app_id
+// const app_secret = "Nlh1c0F6d0ZDU2pDR0J3YVBVbkhudz09"; // app_secret
+// const key = "433f0c48615a48dfaf2f2b2444297e79" // key
+// function getWeather() {
+//     fetch("https://www.mxnzp.com/api/ip/self?app_id=" + add_id + "&app_secret=" + app_secret)
+//         .then(response => response.json())
+//         .then(data => {
+//             let str = data.data.city
+//             let city = str.replace(/市/g, '')
+//             $('#city_text').html(city);
+//             fetch("https://geoapi.qweather.com/v2/city/lookup?location=" + city + "&number=1&key=" + key)
+//                 .then(response => response.json())
+//                 .then(location => {
+//                     let id = location.location[0].id
+//                     fetch("https://devapi.qweather.com/v7/weather/now?location=" + id + "&key=" + key)
+//                         .then(response => response.json())
+//                         .then(weather => {
+//                             $('#wea_text').html(weather.now.text)
+//                             $('#tem_text').html(weather.now.temp + "°C&nbsp;")
+//                             $('#win_text').html(weather.now.windDir)
+//                             $('#win_speed').html(weather.now.windScale + "级")
+//                         })
+//                 })
+//         })
+//         .catch(console.error);
+// }
 
-getWeather();
+// getWeather();
 
 let wea = 0;
 $('#upWeather').click(function () {
