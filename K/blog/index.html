@@ -79,6 +79,7 @@
             },
             methods: {
                 getMarkdown(markdown) {
+                    // 获取 jekyll 编译后的 md 文件
                     let that = this;
                     axios
                         .get(reqHead + "/note/"+markdown)
@@ -87,15 +88,24 @@
                             const parser = new DOMParser();
                             const htmlDoc = parser.parseFromString(res.data, 'text/html');
                             const bodyContent = htmlDoc.body.innerHTML;
+                            // console.log("bodyContent")
+                            // console.log(bodyContent)
                             document.getElementById("markdown").innerHTML = bodyContent
-                            let container = document.querySelector('div.container-lg.px-3.my-5.markdown-body');
-                            let content = container.innerHTML;
-                            document.getElementById("markdown").innerHTML = content
-                            // let _that = that
-                            // document.getElementById("markdown").innerHTML = res.data
-                            // // 获取文章主要内容
-                            // let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
+                            let containerHead = document.querySelectorAll('div.container')[1];
+                            let container = document.querySelectorAll('div.container')[2];
+                            // console.log("container")
+                            // console.log(container)
+                            let content = containerHead.innerHTML + container.innerHTML;
+                            // console.log("content")
+                            // console.log(content)
                             // document.getElementById("markdown").innerHTML = content
+                            // // let _that = that
+                            // // document.getElementById("markdown").innerHTML = res.data
+                            // // // 获取文章主要内容
+                            // // // let content = document.querySelector('div.container-lg.px-3.my-5.markdown-body').innerHTML;
+                            // // let content = document.querySelector('div.container').innerHTML;
+
+                            document.getElementById("markdown").innerHTML = content
                             // 删除第一个<h1>标签
                             const h1Element = document.querySelector('h1');
                             h1Element.parentNode.removeChild(h1Element);
