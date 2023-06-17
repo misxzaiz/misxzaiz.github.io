@@ -4,9 +4,9 @@ spring:
   application:
     name: redis-demo
   redis:
-    host: cloud.aliyun.com
+    host: 127.0.0.1 #cloud.aliyun.com
     port: 6379
-    password: 1234
+    # password: 1234
     lettuce:
       pool:
         max-active: 8
