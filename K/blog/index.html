@@ -75,7 +75,7 @@
                 getMarkdown(markdown) {
                     let that = this;
                     axios
-                        .get("https://nav.xiaozaiz.xyz/blog/note/"+markdown)
+                        .get("https://nav.xiaozaiz.xyz/K/blog/note/"+markdown)
                         .then(function(res){
                             let _that = that
                             const parser = new DOMParser();

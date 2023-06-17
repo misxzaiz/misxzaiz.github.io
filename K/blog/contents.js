@@ -1,3 +1,5 @@
+let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
+
 let Contents_index = [
     ["文件（分片）","2023-06-15",""],
     ["前后端Long精丢失问题","2023-06-15",""],
@@ -9,3 +11,5 @@ let Contents_index = [
     ["Redis","2023-06-12",""],
     ["Redis安装说明","2023-06-12",""]
 ]
+
+

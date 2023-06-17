@@ -1,5 +1,4 @@
-{
-    "index": {
+let index = {
         "常用": {
             "BinJie（新）": ["https://chat.jinshutuan.com/","GPT"],
             "Wuguokai": ["https://chat.wuguokai.cn/", "GPT"],
@@ -29,4 +28,4 @@
             "单词发音": ["https://misxzaiz.top/page/page/word/speech.html", "查询单词发音"]
         }
     }
-}
+
