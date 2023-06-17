@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="css/highlight.default.min.css">
     <script src="js/highlight.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* jekyll 博客存在的问题 */
+        /* #mainNav {
+            display: none;
+        } */
+    </style>
 </head>
 <body>
     <div id="app">
@@ -75,7 +81,7 @@
                 getMarkdown(markdown) {
                     let that = this;
                     axios
-                        .get("https://nav.xiaozaiz.xyz/K/blog/note/"+markdown)
+                        .get(reqHead + "/note/"+markdown)
                         .then(function(res){
                             let _that = that
                             const parser = new DOMParser();
@@ -113,6 +119,7 @@
                                 const titleObj = { level, title, id }; 
                                 that.titles.push(titleObj); 
                             });
+
                         })
                         // .catch(function(err){
                         //     alert("获取文章失败！")
