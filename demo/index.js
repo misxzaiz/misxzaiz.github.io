@@ -1,4 +1,4 @@
-let reqUrl = "http://xiaozaiz.xyz"
+let reqUrl = "//xiaozaiz.xyz" // 使用 // 解决 https 网站请求 http 的问题
 
 // let reqUrl = "http://192.168.43.244"
 // 设置后台服务地址
