@@ -24,6 +24,25 @@
                 <p>代码位置：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/demo/server/redis-demo" target="_blank">https://github.com/misxzaiz/misxzaiz.github.io/tree/main/demo/server/redis-demo</a></p>
             </el-collapse-item>
             <el-collapse-item title="登录测试" icon-position="right">
+                <p>
+                    <strong>功能：</strong>
+                    <ul>
+                        <li>验证码：验证码以手机号为 key 保存到缓存中，添加超时时间，用于认证；</li>
+                        <li>认证：
+                            <ul>
+                                <li>完成登录认证后，返回随机生成的 token（可以以 redis 全局唯一 id 代替）；</li>
+                                <li>以 token 为 key 将用户信息保存到 redis，添加超时时间；</li>
+                            </ul>
+                        </li>
+                        <li>鉴权：
+                            <ul>
+                                <li>检查请求头是否存在 token；</li>
+                                <li>如果存在 token ，查询 redis 检查是否存在该用户的登录信息；</li>
+                                <li>如果存在，则将用户信息保存到当前 ThreadLocal 中。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
                 <el-button @click="href('./pages/login/index.html')">登录</el-button>
                 <el-button @click="logout()">注销</el-button>
                 <el-button @click="testLoginIntercept()">测试登录</el-button>
@@ -51,6 +70,15 @@
                 <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
             </el-collapse-item> -->
             <el-collapse-item title="文件测试" icon-position="right">
+                <p>
+                    <strong>文件分片上传</strong>
+                    <ul>
+                        <li>通过计算文件名、文件大小和文件类型的组合获取文件的md5码，用于检验文件上传状态；</li>
+                        <li>采用base64编码方式对文件进行分片上传，每个分片大小为5MB；</li>
+                        <li>分片上传时，根据当前分片索引与总分片数量的比较来判断是否需要继续上传，上传过程中将文件分片转化成base64编码格式，传递给后台处理；</li>
+                        <li>上传前会调用check()方法检查服务器是否已经存在该文件记录（通过比对md5码），若存在则可直接完成上传，否则从第一个分片开始上传；</li>
+                    </ul>
+                </p>
                 <el-button @click="href('./pages/file/index.html')">文件</el-button>
             </el-collapse-item>
         </el-collapse>

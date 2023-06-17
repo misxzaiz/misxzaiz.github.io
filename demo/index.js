@@ -1,4 +1,4 @@
-let reqUrl = "http://127.0.0.1"
+let reqUrl = "http://8.130.73.113"
 
 // let reqUrl = "http://192.168.43.244"
 // 设置后台服务地址
