@@ -978,6 +978,7 @@
         </div>
     </div>
 
+    <script type='text/javascript' src='./index.js'></script>
     <script>
         const App = {
             data() {
@@ -989,13 +990,7 @@
 
             },
             mounted() {
-                
-                let that = this;
-                axios
-                    .get("https://nav.xiaozaiz.xyz/nav/index.json")
-                    .then(function(res){
-                        that.navs = res.data
-                    });
+                this.navs = index // 这是 index.js 文件里面的
             }
         };
         const app = Vue.createApp(App);

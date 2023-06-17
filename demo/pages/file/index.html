@@ -49,11 +49,13 @@
             <div class="progress-bar">
               <div class="progress" :style="{width: uploadSpeed + '%'}">{{uploadSpeed}}</div>
             </div>
-            
-            <div>文件名：{{file.name}}</div>
-            <div>文件大小：{{parseInt(file.size / (1024 * 1024))}} MB</div>
-            <!-- <div>文件类型：{{file.type}}</div> -->
-            <div>文件路径：{{imageUrl}}</div>
+            <div v-if="file.name!=null">
+                <div>文件名：{{file.name}}</div>
+                <div>文件大小：{{parseInt(file.size / (1024 * 1024))}} MB</div>
+                <!-- <div>文件类型：{{file.type}}</div> -->
+                <div>文件路径：{{imageUrl}}</div>
+            </div>
+
         </div>
     </div>
 
@@ -116,13 +118,13 @@
                     let shardIndex = param.shardIndex;
                     let shardTotal = param.shardTotal;
                     let shardSize = param.shardSize;
-                    //获得分片
+                    // 获得分片
                     let fileShard = that.getFileShard(shardIndex,shardSize);
                     console.log("fileShard:")
                     console.log(fileShard)
-                    //图片转化成 Base64 传递
+                    // 图片转化成 Base64 传递
                     let fileReader = new FileReader();
-                    //增加事件监听
+                    // 增加事件监听
                     fileReader.onload = function(e){
                         let base64 = e.target.result;
                         //给param对象增加一个shard参数
