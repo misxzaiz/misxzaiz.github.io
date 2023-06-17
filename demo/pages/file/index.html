@@ -49,6 +49,10 @@
             <div class="progress-bar">
               <div class="progress" :style="{width: uploadSpeed + '%'}">{{uploadSpeed}}</div>
             </div>
+            
+            <div>文件名：{{file.name}}</div>
+            <div>文件大小：{{parseInt(file.size / (1024 * 1024))}} MB</div>
+            <!-- <div>文件类型：{{file.type}}</div> -->
             <div>文件路径：{{imageUrl}}</div>
         </div>
     </div>
@@ -59,7 +63,8 @@
             data() {
                 return {
                     uploadSpeed: 0,
-                    imageUrl: ''
+                    imageUrl: '',
+                    file: {}
                 }
             },
             methods: {
@@ -67,6 +72,8 @@
                     let that = this;
                     let formData = new window.FormData();
                     let file = that.$refs.file.files[0]; //找到ref别名
+                    this.file = file
+                    this.filename = file.name
                     // 获取文件的md5，使用file.name+file.size+file.type
                     axios.post("/file/md5",{fileForm: file.name+file.size+file.type})
                         .then(res => {
@@ -124,7 +131,7 @@
                             .then(res => {
                                 let file = res.data.data;
                                 that.imageUrl = file.path
-                                that.uploadSpeed = parseInt((file.shardIndex-1) * 100 / file.shardTotal)
+                                that.uploadSpeed = parseFloat(((file.shardIndex-1) * 100 / file.shardTotal).toFixed(3));
                                 console.log("进度:"+parseInt((file.shardIndex-1) * 100 / file.shardTotal))
                                 //如果当前分片索引 小于等于 总的片数
                                 if(file.shardIndex <= file.shardTotal){
