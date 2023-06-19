@@ -73,7 +73,6 @@ public class RabbitMQTest {
             rabbitTemplate.convertAndSend(queueName, message+i);
             System.out.println("【发送端】simple.queue："+message+i);
         }
-
     }
 
     @Test

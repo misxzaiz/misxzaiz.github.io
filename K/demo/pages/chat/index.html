@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Async Chat</title>
+</head>
+<body>
+    <h1>Async Chat</h1>
+    <form>
+        <input type="text" id="message" placeholder="Enter your message...">
+        <button type="button" onclick="sendMessage()">Send</button>
+    </form>
+    <div id="messages"></div>
+
+    <script src="js/stomp.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script>
+        var stompClient = null;
+
+        function connect() {
+            var socket = new SockJS('/chat');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('http://127.0.0.1/topic/messages', function (message) {
+                    showMessage(JSON.parse(message.body));
+                });
+            });
+        }
+
+        function disconnect() {
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            console.log("Disconnected");
+        }
+
+        function sendMessage() {
+            var messageInput = $("#message");
+            var message = messageInput.val().trim();
+            if (message) {
+                stompClient.send("http://127.0.0.1/app/chat", {}, JSON.stringify({content: message}));
+                messageInput.val("");
+            }
+        }
+
+        function showMessage(message) {
+            $("#messages").append("<p>" + message.content + "</p>");
+        }
+
+        $(function () {
+            connect();
+        });
+
+        $(window).on('beforeunload', function(){
+            disconnect();
+        });
+    </script>
+</body>
+</html>
