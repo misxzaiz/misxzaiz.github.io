@@ -72,14 +72,20 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
             Long fileId = file.getId(); // 获取回传id
             fileDto.setId(fileId);
         }
-
+        // 测试使用，返回时间
+        fileDto.setUpdateTime(null);
         // 检查分片
         Integer index = fileDto.getShardIndex();
         if (fileDto.getShardTotal() >= index) {
+
             saveFile(fileDto);
             fileDto.setShardIndex(++index);
             merge(fileDto);
         }
+        // 测试使用，待完善
+        fileDtoDatabase = findByKey(fileDto.getMd5Key());
+        fileDto.setCreateTime(fileDtoDatabase.getCreateTime());
+        fileDto.setUpdateTime(fileDtoDatabase.getUpdateTime());
 
         return Result.ok(fileDto, "文件上传！");
     }
