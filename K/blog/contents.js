@@ -1,6 +1,7 @@
 let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
 
 let Contents_index = [
+    ["基于 RabbitMQ 的异步聊天","2023-06-19",""],
     ["RabbitMQ","2023-06-19",""],
     ["文件（分片）","2023-06-15",""],
     ["前后端Long精丢失问题","2023-06-15",""],
