@@ -11,6 +11,7 @@ import org.example.dto.UserDto;
 import org.example.entity.User;
 import org.example.mapper.UserMapper;
 import org.example.service.UserService;
+import org.example.utils.RedisIDWorker;
 import org.example.utils.RedisTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -93,6 +94,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         // 保存用户信息到 redis
         // 随机生成 token 作为登录令牌
+        // 使用 redis 全局唯一 id 作为 token
         String token = UUID.randomUUID().toString();
         // 将 user 对象转换为 HashMap 存在
         UserDto userDto = BeanUtil.copyProperties(user, UserDto.class);

@@ -1,9 +1,9 @@
 package org.example.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.example.entity.File;
 import org.example.dto.FileDto;
 import org.example.dto.Result;
-import org.example.entity.File;
 
 public interface FileService extends IService<File> {
     void saveFile(FileDto fileDto);
