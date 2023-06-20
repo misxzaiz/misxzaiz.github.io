@@ -1,7 +1,7 @@
 // let reqUrl = "http://xiaozaiz.xyz" 
-let reqUrl = "http://8.130.73.113"
+// let reqUrl = "http://8.130.73.113"
 // let reqUrl = "http://192.168.43.244"
-// let reqUrl = "http://localhost"
+let reqUrl = "http://localhost"
 //1
 // 设置后台服务地址
 axios.defaults.baseURL = reqUrl;
