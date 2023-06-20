@@ -16,8 +16,6 @@
     
     <div id="app">
         <el-button @click="href('https://nav.xiaozaiz.xyz/K/index/index.html')">返回</el-button>
-
-
         <el-collapse>
             <el-collapse-item title="测试说明" icon-position="right">
                 <strong>需要启动后端代码才能进行下面测试</strong>
@@ -44,7 +42,7 @@
                         <li>验证码：验证码以手机号为 key 保存到缓存中，添加超时时间，用于认证；</li>
                         <li>认证：
                             <ul>
-                                <li>完成登录认证后，返回随机生成的 token（可以以 redis 全局唯一 id 代替）；</li>
+                                <li>完成登录认证后，返回通过 UUID 随机生成的 token；</li>
                                 <li>以 token 为 key 将用户信息保存到 redis，添加超时时间；</li>
                             </ul>
                         </li>
@@ -96,7 +94,6 @@
                 <el-button @click="href('./pages/file/index.html')">文件</el-button>
             </el-collapse-item>
             <el-collapse-item title="下面部分为单独项目，后端代码不在上面Java代码中" icon-position="right">
-                
             </el-collapse-item>
             <el-collapse-item title="ES搜索" icon-position="right">
                 <p>代码位置：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/K/demo/pages/es/元/es-service">代码</a></p>

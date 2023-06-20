@@ -9,8 +9,11 @@ let index = {
             "RightBrain": ["https://rightbrain.art/store","AI绘画"]
         },
         "工作": {
-            "Java 面试题汇总": ["https://mp.weixin.qq.com/s/MrWFt4jDKRQC3g4TsMde7Q", "Java 面试题汇总"],
             "牛客网": ["https://www.nowcoder.com/","牛客网"],
+            "智联招聘": ["https://www.zhaopin.com/","智联招聘"],
+            "实习僧": ["https://www.shixiseng.com/","实习僧"],
+            "拉勾": ["https://www.lagou.com/","拉勾"],
+            "BOSS": ["https://www.zhipin.com/dongguan/","BOSS"],
             "职友集": ["https://www.jobui.com/","查看公司信息"],
             "24 365": ["https://www.ncss.cn/","国家大学生就业服务平台"]
         },

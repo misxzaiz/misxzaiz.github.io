@@ -61,6 +61,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         stringRedisTemplate.opsForValue().set(LOGIN_PHONE_CODE+phone,code,1,TimeUnit.MINUTES);
         // TODO 发送验证码
         log.info("【验证码登录】{} 的验证码为：{}",phone,code);
+
         // 测试使用
         return Result.ok(code,"验证码获取成功！");
         // return Result.ok("验证码获取成功！");
@@ -128,15 +129,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public Result getUserByIdWithRedisLocalExpire(Long id, String keyPrefix, Long time, TimeUnit unit) {
-//        log.info("【UserServiceImpl】");
-//        User user =  redisTools.getWithLocalExpire(id, keyPrefix,
-//                User.class,
-//                this::getById,
-//                time, unit);
-//        if (user == null) {
-//            return Result.fail("用户不存在！");
-//        }
-//        return Result.ok(user,"查询成功！");
         Result result = redisTools.testGetWithLocalExpire(id, keyPrefix,
                 User.class,
                 this::getById,
