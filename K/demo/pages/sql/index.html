@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="index.css">
     <!-- 导出excel -->
     <script src="./static/js/dist_xlsx.full.min.js"></script>
+    <!-- axios -->
+    <script src="../../index.js"></script>
 </head>
 
 <body>
@@ -63,7 +65,7 @@
     <script src="index.js"></script>
     <script>
 
-        let reqUrl = "http://127.0.0.1"
+        // let reqUrl = "http://127.0.0.1"
         // let reqUrl = ""
         const App = {
             data() {
@@ -101,7 +103,7 @@
                     this.sqlDto.sqlTemplate = result_question_mark.sql
                     this.sqlDto.parameters = result_question_mark.params   
                     // 发起异步请求，查询符合条件的数据
-                    axios.post(reqUrl + "/actCardResult/queryBuilder",this.sqlDto)
+                    axios.post("/actCardResult/queryBuilder",this.sqlDto)
                         .then(res => {
                             if(res.data.errorMsg!=null) {
                                 alert("参数错误！")
