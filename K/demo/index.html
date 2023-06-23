@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    
     <div id="app">
         <el-button @click="href('https://nav.xiaozaiz.xyz/K/index/index.html')">返回</el-button>
         <el-collapse>
@@ -98,6 +97,12 @@
             <el-collapse-item title=" SQL 过滤筛选器" icon-position="right">
                 <!-- <p>代码位置：<a href="https://github.com/misxzaiz/Adventure">代码</a></p> -->
                 <el-button @click="href('./pages/sql/index.html')">展示</el-button>
+            </el-collapse-item>
+            <el-collapse-item title="外卖小程序" icon-position="right">
+                <p>代码位置：<a href="https://gitee.com/shanhais/take-out">查看</a></p>
+                <p>技术：微信小程序 + springboot + minio + mysql + mybatisplus</p>
+                <p>功能：登录注册 + 菜品及分类 + 用户 + 评论 + 订单 + 文件</p>
+                <el-button @click="href('https://gitee.com/shanhais/take-out')">展示</el-button>
             </el-collapse-item>
             <el-collapse-item title="ES搜索" icon-position="right">
                 <p>代码位置：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/K/demo/pages/es/元/es-service">代码</a></p>
