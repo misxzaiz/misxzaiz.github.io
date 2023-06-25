@@ -94,7 +94,7 @@
                             let fileName = file.name; // 文件名
                             let suffix = fileName.substring(fileName.lastIndexOf(".")+1,fileName.length).toLowerCase();
                             //文件分片
-                            let shardSize = 1 * 1024  * 1024; //一个分片0.01MB大小
+                            let shardSize = 0.001 * 1024  * 1024; //一个分片0.01MB大小
                             let shardIndex = 1; //分片索引 1标识第一个分片 不要从0开始
                             let size = file.size; 
                             let shardTotal = Math.ceil(size / shardSize); //总片数

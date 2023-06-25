@@ -30,7 +30,7 @@ axios.interceptors.response.use(function (response) {
     if(error.response.status == 401){
       // 未登录，跳转
       setTimeout(() => {
-        location.href = "pages/login/index.html"
+        location.href = "https://nav.xiaozaiz.xyz/K/demo/pages/login/index.html"
       }, 200);
       return Promise.reject("请先登录");
     }
