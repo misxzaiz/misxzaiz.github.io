@@ -5,7 +5,7 @@ import org.example.dto.Result;
 import org.example.entity.VoucherOrder;
 
 public interface VoucherOrderService extends IService<VoucherOrder> {
-    Result getVoucherOrderById(Long id);
+    Result getVoucherOrderByIdWithLua(Long id);
 
-    Result createVoucherOrder(Long id, Long userId);
+    void createVoucherOrder(VoucherOrder voucherOrder);
 }

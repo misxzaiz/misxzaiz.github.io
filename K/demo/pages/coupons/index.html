@@ -334,7 +334,14 @@
 </head>
 <body>
     <div id="app">
-          <div class="shop-voucher">
+        <div>
+            <el-button @click="deleteVoucherOrderByUserId()">删除我的优惠卷</el-button>
+        </div>
+        <div>
+            <el-input v-model="voucherCount" :value="voucherCount" placeholder="请输入优惠券数量" style="width: 10%;"></el-input>
+            <el-button @click="updateVoucherCount(voucherCount)">修改</el-button>
+        </div>
+        <div class="shop-voucher">
             <div>
               <span class="voucher-icon">券</span>
               <span style="font-weight: bold;">代金券</span>
@@ -365,7 +372,7 @@
         const App = {
             data() {
                 return {
-                    count: 10,
+                    voucherCount: null,
                     couponId: null,
                     vouchers: [{
                         title: "80元优惠卷",
@@ -388,12 +395,11 @@
                                 this.$message.error(res.data.errorMsg)
                             }else {
                                 this.$message.success("抢卷成功！")
-                                this.queryVoucher()
+                                this.$message.success("优惠卷订单号为："+res.data.data)
                             }  
                         }).catch(err => {
                             this.$message.error("抢卷失败！")
                         })
-
                 },
                 queryVoucher() {
                     let that = this
@@ -402,11 +408,22 @@
                             that.vouchers = res.data.data;
                             console.log(res.data.data)
                         }).catch(err => {})
-
                 },
                 formatTime(v){
                     return v.startTime + " ~ " + v.endTime;
                 }, 
+                deleteVoucherOrderByUserId() {
+                    axios.get("/voucher-order/delete")
+                        .then(res => {
+                            this.$message.success("删除成功！")
+                        }).catch(err => {})
+                },
+                updateVoucherCount(count){
+                    axios.get("/voucher/setVoucherCount/"+count)
+                        .then(res => {
+                            this.$message.success("修改成功！")
+                        }).catch(err => {})
+                }
             },
             mounted() {
                 // 查询优惠券信息

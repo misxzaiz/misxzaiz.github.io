@@ -83,7 +83,7 @@
                     <strong>实现：</strong>
                     <ul>
                         <li>超买问题：使用版本号（CAS）法解决超卖问题（改进：以库存为版本号，当库存大于0即可，避免失败率过高）</li>
-                        <li>一人一单（分布式系统）：使用分布式锁解决一人一单问题（待改进：使用 Redisson）</li>
+                        <li>一人一单（分布式系统）：使用 Redisson 分布式锁解决一人一单问题</li>
                     </ul>
                 </p>
                 <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
