@@ -1,4 +1,8 @@
+// let reqUrl = "http://xiaozaiz.xyz" 
+// let reqUrl = "http://8.130.73.113"
+// let reqUrl = "http://192.168.43.244"
 let reqUrl = ""
+//1
 // 设置后台服务地址
 axios.defaults.baseURL = reqUrl;
 // axios.defaults.timeout = 2000;
@@ -26,7 +30,7 @@ axios.interceptors.response.use(function (response) {
     if(error.response.status == 401){
       // 未登录，跳转
       setTimeout(() => {
-        location.href = "pages/login/index.html"
+        location.href = "/pages/login/index.html"
       }, 200);
       return Promise.reject("请先登录");
     }

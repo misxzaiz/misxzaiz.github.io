@@ -39,7 +39,7 @@
           color: #fff;
           transition: width 0.3s ease-in-out;
         }
-        </style>
+    </style>
 </head>
 <body>
     
@@ -49,23 +49,13 @@
             <div class="progress-bar">
               <div class="progress" :style="{width: uploadSpeed + '%'}">{{uploadSpeed}}</div>
             </div>
-            <div>id：{{fileDto.id}}</div>
-            <div>path：{{fileDto.path}}</div>
-            <div>name：{{fileDto.name}}</div>
-            <div>primitiveName：{{fileDto.primitiveName}}</div>
-            <div>suffix：{{fileDto.suffix}}</div>
-            <div>size：{{parseInt(fileDto.size / (1024 * 1024))}} MB</div>
-            <div>fileUse：{{fileDto.fileUse}}</div>
-            <div>shardIndex：{{fileDto.shardIndex}}</div>
-            <div>shard：{{fileDto.shard}}</div>
-            <div>shardTotal：{{fileDto.shardTotal}}</div>
-            <div>ma5Key：{{fileDto.ma5Key}}</div>
-            <div>createTime：{{fileDto.createTime}}</div>
-            <div>updateTime：{{fileDto.updateTime}}</div>
-<!--            <div>文件名：{{file.shardSize}}</div>-->
-<!--            <div>文件大小：{{parseInt(file.size / (1024 * 1024))}} MB</div>-->
-            <!-- <div>文件类型：{{file.type}}</div> -->
-            <!-- <div>文件路径：{{imageUrl}}</div> -->
+            <div v-if="file.name!=null">
+                <div>文件名：{{file.name}}</div>
+                <div>文件大小：{{parseInt(file.size / (1024 * 1024))}} MB</div>
+                <!-- <div>文件类型：{{file.type}}</div> -->
+                <div>文件路径：{{imageUrl}}</div>
+            </div>
+
         </div>
     </div>
 
@@ -76,8 +66,7 @@
                 return {
                     uploadSpeed: 0,
                     imageUrl: '',
-                    file: {},
-                    fileDto: {}
+                    file: {}
                 }
             },
             methods: {
@@ -94,7 +83,7 @@
                             let fileName = file.name; // 文件名
                             let suffix = fileName.substring(fileName.lastIndexOf(".")+1,fileName.length).toLowerCase();
                             //文件分片
-                            let shardSize = 0.001 * 1024  * 1024; //一个分片0.01MB大小
+                            let shardSize = 1 * 1024  * 1024; //一个分片1MB大小
                             let shardIndex = 1; //分片索引 1标识第一个分片 不要从0开始
                             let size = file.size; 
                             let shardTotal = Math.ceil(size / shardSize); //总片数
@@ -129,13 +118,13 @@
                     let shardIndex = param.shardIndex;
                     let shardTotal = param.shardTotal;
                     let shardSize = param.shardSize;
-                    //获得分片
+                    // 获得分片
                     let fileShard = that.getFileShard(shardIndex,shardSize);
                     console.log("fileShard:")
                     console.log(fileShard)
-                    //图片转化成 Base64 传递
+                    // 图片转化成 Base64 传递
                     let fileReader = new FileReader();
-                    //增加事件监听
+                    // 增加事件监听
                     fileReader.onload = function(e){
                         let base64 = e.target.result;
                         //给param对象增加一个shard参数
@@ -143,7 +132,6 @@
                         axios.post("/file/upload",param)
                             .then(res => {
                                 let file = res.data.data;
-                                that.fileDto = res.data.data;
                                 that.imageUrl = file.path
                                 that.uploadSpeed = parseFloat(((file.shardIndex-1) * 100 / file.shardTotal).toFixed(3));
                                 console.log("进度:"+parseInt((file.shardIndex-1) * 100 / file.shardTotal))
@@ -163,7 +151,6 @@
                         .then(res => {
                             console.log(res.data);
                             let file = res.data.data;
-                            that.fileDto = res.data.data;
                             if(res.data.errorMsg!=null){
                                 param.shardIndex = 1;
                                 console.log("没有找到文件记录，从分片1开始上传");

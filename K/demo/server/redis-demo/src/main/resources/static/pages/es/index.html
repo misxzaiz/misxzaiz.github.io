@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <title>酒店搜索</title>
   <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
-  <link rel="stylesheet" href="css/index.css"/>
-  <link rel="stylesheet" href="css/banner.css"/>
+  <link rel="stylesheet" href="./css/index.css"/>
+  <link rel="stylesheet" href="./css/banner.css"/>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
         <div class="hotel-box" v-for="(hotel,i) in hotels" :key="i"
              style="display: flex;justify-content: space-between;" @mouseover="handleMarkerFocus(hotel)">
           <div class="ad-mark" v-if="hotel.isAD">
-            <img src="img/ad.png" width="25"/>
+            <img src="./img/ad.png" width="25"/>
           </div>
           <div style="width: 0;"></div>
           <div style="width: 25%"><img width="100%" :src="hotel.pic"></div>
@@ -138,9 +138,9 @@
   </div>
 </div>
 
-<script src="js/vue.js"></script>
-<script src="js/axios.min.js"></script>
-<script src="js/amap.min.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/amap.min.js"></script>
 <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=ddd292c88aa1bad9c04891a47724f40a"></script>
 
 
@@ -150,7 +150,8 @@
 //   axios.defaults.baseURL = "http://xiaozaiz.free.idcfengye.com";
   axios.defaults.baseURL = "";
   axios.defaults.timeout = 3000;
-  let reqUrl = "http://xiaozaiz.free.idcfengye.com";
+//   let reqUrl = "http://xiaozaiz.free.idcfengye.com";
+let reqUrl = "http://xiaozaiz.xyz";
   let app = new Vue({
     el: "#app",
     data: {

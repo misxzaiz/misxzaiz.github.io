@@ -1,6 +1,7 @@
 let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
 
 let Contents_index = [
+    ["Redis（达人探店）","2023-06-26",""],
     ["Redis（优惠卷）","2023-06-24",""],
     ["RabbitMQ","2023-06-19",""],
     ["文件（分片）","2023-06-15",""],

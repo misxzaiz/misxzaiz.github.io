@@ -8,20 +8,31 @@
     <script src="js/vue@3.js"></script>
     <script src="js/element-plus.js"></script>
     <script src="js/axios.min.js"></script>
+    <script src="js/icon-element.js"></script>
     <script src="index.js"></script>
 </head>
 
 <body>
-    
     <div id="app">
-        <el-button @click="href('../nav/index.html')">返回</el-button>
-
-
+        <el-button @click="href('https://nav.xiaozaiz.xyz/K/index/index.html')">返回</el-button>
         <el-collapse>
             <el-collapse-item title="测试说明" icon-position="right">
                 <strong>需要启动后端代码才能进行下面测试</strong>
-                <p>文档位置：<a href="../blog/index.html" target="_blank">点击查看</a></p></p>
-                <p>代码位置：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/demo/server/redis-demo" target="_blank">https://github.com/misxzaiz/misxzaiz.github.io/tree/main/demo/server/redis-demo</a></p>
+                <p>文档位置：<a href="../blog/index.html" target="_blank">点击查看</a></p>
+                <p>Java代码：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/K/demo/server/redis-demo" target="_blank">点击查看</a></p>
+                <p>前端代码：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/K/demo">点击查看</a></p>
+                <!-- <p><a href="http://xiaozaiz.xyz/index.html">ee</a></p> -->
+                <p>MySQL数据表：<a href="https://github.com/misxzaiz/misxzaiz.github.io/blob/main/K/demo/server/redis-demo/demo.sql">点击查看</a></p>
+                <p>注意：
+                    <ul>
+                        <li>修改java项目配置文件
+                            <ul>
+                                <li>将mysql和redis数据库的配置信息修改为自己的mysql和redis</li>
+                            </ul>
+                            </li>
+                        <li>前端axios请求头默认为开始为："http://localhost"，请根据需要修改</li>
+                    </ul>
+                </p>
             </el-collapse-item>
             <el-collapse-item title="登录测试" icon-position="right">
                 <p>
@@ -30,7 +41,7 @@
                         <li>验证码：验证码以手机号为 key 保存到缓存中，添加超时时间，用于认证；</li>
                         <li>认证：
                             <ul>
-                                <li>完成登录认证后，返回随机生成的 token（可以以 redis 全局唯一 id 代替）；</li>
+                                <li>完成登录认证后，返回通过 UUID 随机生成的 token；</li>
                                 <li>以 token 为 key 将用户信息保存到 redis，添加超时时间；</li>
                             </ul>
                         </li>
@@ -66,12 +77,16 @@
                     <div v-if="userForm.icon!=null & userForm.icon!=''">icon：{{userForm.icon}}</div>
                 </div>
             </el-collapse-item>
-            <!-- <el-collapse-item title="优惠卷测试" icon-position="right">
+            <el-collapse-item title="优惠卷测试" icon-position="right">
+                <p>基于 Redis 实现</p>
+                <p>
+                    <strong>实现：</strong>
+                    <ul>
+                        <li>超买问题：使用版本号（CAS）法解决超卖问题（改进：以库存为版本号，当库存大于0即可，避免失败率过高）</li>
+                        <li>一人一单（分布式系统）：使用 Redisson 分布式锁解决一人一单问题</li>
+                    </ul>
+                </p>
                 <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
-            </el-collapse-item> -->
-            <el-collapse-item title="ES搜索" icon-position="right">
-                <a href="http://xiaozaiz.free.idcfengye.com">ES搜索</a>
-                <el-button @click="href('pages/es/index.html')">ES搜索</el-button>
             </el-collapse-item>
             <el-collapse-item title="文件测试" icon-position="right">
                 <p>
@@ -84,6 +99,30 @@
                     </ul>
                 </p>
                 <el-button @click="href('./pages/file/index.html')">文件</el-button>
+            </el-collapse-item>
+            <el-collapse-item title="" icon-position="right"></el-collapse-item>
+            <el-collapse-item title="下面部分为单独项目，后端代码不在上面Java代码中" icon-position="right"></el-collapse-item>
+            <el-collapse-item title=" SQL 过滤筛选器" icon-position="right">
+                <p>代码位置：<a href="https://github.com/misxzaiz/Adventure">代码</a></p>
+                <p>演示视频：<a href="https://github.com/misxzaiz/Adventure/blob/main/%E6%95%88%E6%9E%9C%E6%BC%94%E7%A4%BA.mp4">下载</a></p>
+                <el-button @click="href('./pages/sql/index.html')">展示</el-button>
+            </el-collapse-item>
+            <!-- <el-collapse-item title="java 后台课程管理项目" icon-position="right">
+                <p>代码位置：<a href="https://gitee.com/shanhais/join-test-two">查看</a></p>
+            </el-collapse-item> -->
+            <el-collapse-item title="外卖小程序" icon-position="right">
+                <p>代码位置：<a href="https://gitee.com/shanhais/take-out">查看</a></p>
+                <p>技术：微信小程序 + springboot + minio + mysql + mybatisplus</p>
+                <p>功能：登录注册 + 菜品及分类 + 用户 + 评论 + 订单 + 文件</p>
+                <el-button @click="href('https://gitee.com/shanhais/take-out')">展示</el-button>
+            </el-collapse-item>
+            <el-collapse-item title="ES搜索" icon-position="right">
+                <p>代码位置：<a href="https://github.com/misxzaiz/misxzaiz.github.io/tree/main/K/demo/pages/es/元/es-service">代码</a></p>
+                <!-- <strong>ES搜索</strong>
+                <p>功能：</p> -->
+                <el-button @click="href('./pages/es/index.html')">静态页面</el-button>
+                <!-- <el-button @click="href('http://xiaozaiz.xyz/')">ES搜索</el-button> -->
+                <!-- <el-button @click="href('http://xiaozaiz.free.idcfengye.com/')">ES搜索</el-button> -->
             </el-collapse-item>
         </el-collapse>
     </div>
