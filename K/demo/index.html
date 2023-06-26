@@ -84,9 +84,14 @@
                     <ul>
                         <li>超买问题：使用版本号（CAS）法解决超卖问题（改进：以库存为版本号，当库存大于0即可，避免失败率过高）</li>
                         <li>一人一单（分布式系统）：使用 Redisson 分布式锁解决一人一单问题</li>
+                        <li>基于阻塞队列的异步秒杀，提高性能（待完善：使用Redis消息队列或其他消息队列组件）</li>
                     </ul>
                 </p>
                 <el-button @click="href('./pages/coupons/index.html')">优惠卷测试</el-button>
+            </el-collapse-item>
+            <el-collapse-item title="评论测试" icon-position="right">
+                <el-button @click="href('./pages/comment/index.html')">评论列表</el-button>
+                <el-button @click="href('./pages/comment/blog-edit.html')">添加评论</el-button>
             </el-collapse-item>
             <el-collapse-item title="文件测试" icon-position="right">
                 <p>
@@ -99,6 +104,7 @@
                     </ul>
                 </p>
                 <el-button @click="href('./pages/file/index.html')">文件</el-button>
+                <el-button @click="href('./pages/file/new-file.html')">新文件</el-button>
             </el-collapse-item>
             <el-collapse-item title="" icon-position="right"></el-collapse-item>
             <el-collapse-item title="下面部分为单独项目，后端代码不在上面Java代码中" icon-position="right"></el-collapse-item>
