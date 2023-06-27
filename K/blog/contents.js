@@ -1,6 +1,7 @@
 let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
 
 let Contents_index = [
+    ["Java高并发核心编程（卷2）","2023-06-27",""],
     ["Java（内部类）","2023-06-27",""],
     ["多线程","2023-06-27",""],
     ["Redis（达人探店）","2023-06-26",""],
