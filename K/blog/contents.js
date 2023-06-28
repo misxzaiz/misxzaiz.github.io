@@ -1,6 +1,7 @@
 let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
 
 let Contents_index = [
+    ["Java对象结构与内置锁","2023-06-28","Java/内置锁/"],
     ["synchronized关键字","2023-06-28","Java/内置锁/"],
     ["线程安全问题","2023-06-28","Java/内置锁/"],
     ["ThreadLocal原理与实战","2023-06-28","Java/多线程/"],
