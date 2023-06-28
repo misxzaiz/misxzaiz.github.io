@@ -10,12 +10,39 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f7f7f7;
         }
 
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            margin-right: 10px;
+            color: #666;
+            text-decoration: none;
         }
 
         h1 {
@@ -29,10 +56,29 @@
             line-height: 1.5;
             color: #666;
         }
+
+        strong {
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <div class="logo">江湖大学</div>
+        <nav>
+            <a href="#">首页</a>
+            <a href="#">课程</a>
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+        </nav>
+    </header>
     <div class="container">
         <h1>欢迎来到江湖大学</h1>
         <p>江湖大学是一个致力于让所有人都能享受大学教育的非传统大学。在这里，我们相信每个人都有权利接受高质量的教育，无论其背景、地区或经济状况如何。</p>
@@ -42,6 +88,9 @@
         <p>加入江湖大学，开启你的学术之旅吧！无论你身处何地，我们都相信每个人都有权利获得优质教育，实现自己的梦想。</p>
         <p><strong>江湖大学，让你的未来不再受限！</strong></p>
     </div>
+    <footer>
+        &copy; 2023 江湖大学. All rights reserved.
+    </footer>
 </body>
 
 </html>
