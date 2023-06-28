@@ -142,7 +142,7 @@
             },
             mounted() {
                 this.contents = Contents_index
-                this.getMarkdown(Contents_index[0][1]+"-"+Contents_index[0][0])
+                this.getMarkdown(Contents_index[0][2] + Contents_index[0][1]+"-"+Contents_index[0][0])
             }
         };
         const app = Vue.createApp(App);
