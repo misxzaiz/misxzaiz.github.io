@@ -27,6 +27,9 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            background-color: #e6f2ff;
+            padding: 10px;
+            border-radius: 5px;
         }
 
         .logo {
@@ -66,6 +69,51 @@
             margin-top: 20px;
             color: #666;
         }
+
+        .slideshow-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slideshow-container .prev,
+        .slideshow-container .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 25px;
+            padding: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .slideshow-container .prev {
+            left: 0;
+        }
+
+        .slideshow-container .next {
+            right: 0;
+        }
+
+        .slideshow-container .prev:hover,
+        .slideshow-container .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .mySlides {
+            width: 3pc;
+            /* height: auto; */
+        }
     </style>
 </head>
 
@@ -88,9 +136,44 @@
         <p>加入江湖大学，开启你的学术之旅吧！无论你身处何地，我们都相信每个人都有权利获得优质教育，实现自己的梦想。</p>
         <p><strong>江湖大学，让你的未来不再受限！</strong></p>
     </div>
+    <div class="slideshow-container">
+        <div class="image-container">
+            <img class="mySlides" src="./images/index-1.png" alt="">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
     <footer>
         &copy; 2023 江湖大学. All rights reserved.
     </footer>
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
 </body>
 
 </html>
