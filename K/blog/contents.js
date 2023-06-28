@@ -1,6 +1,7 @@
 let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
 
 let Contents_index = [
+    ["ThreadLocal原理与实战","2023-06-28",""],
     ["确定线程池的线程数","2023-06-28",""],
     ["Java线程池","2023-06-28",""],
     // ["Java内置锁的核心原理","2023-06-27",""],
