@@ -26,7 +26,7 @@
             <el-collapse>
                 <el-collapse-item title="文章列表" icon-position="right">
                     <div v-for="(item, index) in contents" :key="index">
-                        <el-card shadow="always" @click="getMarkdown(item[2] + item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
+                        <el-card shadow="always" @click="getMarkdown(item[2] + item[3]  + item[1]+'-'+item[0])">{{item[1]}} {{item[0]}}</el-card>
                     </div>
                 </el-collapse-item>
             </el-collapse>
@@ -142,7 +142,7 @@
             },
             mounted() {
                 this.contents = Contents_index
-                this.getMarkdown(Contents_index[0][2] + Contents_index[0][1]+"-"+Contents_index[0][0])
+                this.getMarkdown(Contents_index[0][2] + Contents_index[0][3] + Contents_index[0][1]+"-"+Contents_index[0][0])
             }
         };
         const app = Vue.createApp(App);
