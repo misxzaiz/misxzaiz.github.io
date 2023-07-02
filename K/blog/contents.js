@@ -1,9 +1,9 @@
 let reqHead = "https://nav.xiaozaiz.xyz/K/blog"
 
 let Contents_index = [
-    // [
-    //     "MySQL架构",
-    //     "2023-06-18","数据库/","MySQL/"],
+    [
+        "MySQL",
+        "2023-07-02","数据库/","MySQL/"],
     // [
     //     "数据库",
     //     "2023-06-18","数据库/",""],
