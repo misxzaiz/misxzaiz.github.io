@@ -11,6 +11,7 @@ import org.example.dto.UserDto;
 import org.example.entity.User;
 import org.example.mapper.UserMapper;
 import org.example.service.UserService;
+import org.example.utils.AliyunSMS;
 import org.example.utils.RedisIDWorker;
 import org.example.utils.RedisTools;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         stringRedisTemplate.opsForValue().set(LOGIN_PHONE_CODE+phone,code,1,TimeUnit.MINUTES);
         // TODO 发送验证码
         log.info("【验证码登录】{} 的验证码为：{}",phone,code);
+        // TODO 开启多线程异步发送短信
+        try {
+            // AliyunSMS.sendCodeByPhone(phone,code);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // 测试使用
         return Result.ok(code,"验证码获取成功！");
