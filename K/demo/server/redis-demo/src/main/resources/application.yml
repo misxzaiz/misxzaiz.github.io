@@ -30,3 +30,9 @@ file:
   path: D:/Github/tmp/file
   domain: http://nav.xiaozaiz.xyz/demo/pages/file/save/
 
+minio:
+  ip: http://localhost # 图片下载的服务器 ip
+  endpoint: http://localhost:9000
+  bucketName: takeout
+  accessKey: 3LTZoIp0lDQWJioehAnV
+  secretKey: xDIxDur9iiEGu5tYkxNBh6Tu57z1tLhJuqJnUQoP

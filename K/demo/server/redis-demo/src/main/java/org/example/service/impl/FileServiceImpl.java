@@ -3,7 +3,10 @@ package org.example.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.UUID;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.minio.MinioClient;
+import io.minio.PutObjectArgs;
 import lombok.extern.slf4j.Slf4j;
+import org.example.config.MinioConfig;
 import org.example.entity.File;
 import org.example.dto.FileDto;
 import org.example.mapper.FileMapper;
@@ -13,7 +16,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Base64;
 
 @Slf4j
@@ -25,6 +31,11 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
 
     @Value("${file.domain}")
     private String FILE_DOMAIN;
+
+    @Resource
+    private MinioClient minioClient;
+    @Resource
+    private MinioConfig minioConfig;
 
     @Override
     public void saveFile(FileDto fileDto) {
@@ -81,6 +92,7 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
             saveFile(fileDto);
             fileDto.setShardIndex(++index);
             merge(fileDto);
+            // mergeWithMinio(fileDto);
         }
         // 测试使用，待完善
         fileDtoDatabase = findByKey(fileDto.getMd5Key());
@@ -88,6 +100,42 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, File> implements Fi
         fileDto.setUpdateTime(fileDtoDatabase.getUpdateTime());
 
         return Result.ok(fileDto, "文件上传！");
+    }
+
+    // 合并分片
+    private void mergeWithMinio(FileDto fileDto) throws Exception {
+        log.info("合并分片开始");
+        // 文件存储的位置
+        String fileUploadPath = FILE_PATH;
+        // 文件名
+        String fileName = fileDto.getName();
+        // 文件二进制，包含前缀 data:application/octet-stream;base64,
+        String shard = fileDto.getShard();
+
+        String[] split = shard.split(",");
+        String fileType = split[0].substring(5,29);
+        log.info("【fileType】{}",fileType);
+        // 将二进制数据解码为字节数组
+        byte[] content = Base64.getDecoder().decode(split[1]);
+
+
+        // 使用 try-with-resources 语句，确保输入流和 MinIO客户端自动关闭
+        try (InputStream inputStream = new ByteArrayInputStream(content)) {
+            // 上传文件到MinIO
+            minioClient.putObject(
+                    PutObjectArgs.builder()
+                            .bucket("demo") // 替换为你的存储桶名称
+                            .object("demo/" + fileName) // 替换为文件在MinIO中的对象键（路径）
+                            .stream(inputStream, content.length, -1)
+                            .contentType(fileType) // 替换为文件的内容类型（MIME类型）
+                            .build());
+
+            log.info("文件上传成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("文件上传失败");
+        }
+
     }
 
     // 合并分片
