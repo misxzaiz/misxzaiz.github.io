@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>江湖大学</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e6f2ff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            margin-right: 10px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .slideshow-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slideshow-container .prev,
+        .slideshow-container .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 25px;
+            padding: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .slideshow-container .prev {
+            left: 0;
+        }
+
+        .slideshow-container .next {
+            right: 0;
+        }
+
+        .slideshow-container .prev:hover,
+        .slideshow-container .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .mySlides {
+            width: 60%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">江湖大学</div>
+        <nav>
+            <a href="#">首页</a>
+            <a href="#">课程</a>
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+        </nav>
+    </header>
+    <div class="slideshow-container">
+        <div class="image-container">
+            <img class="mySlides" src="./images/index-1.png" alt="">
+            <img class="mySlides" src="./images/index-2.png" alt="">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="container">
+        <h1>欢迎来到江湖大学</h1>
+        <p>江湖大学是一个致力于让所有人都能享受大学教育的非传统大学。在这里，我们相信每个人都有权利接受高质量的教育，无论其背景、地区或经济状况如何。</p>
+        <p>江湖大学是由一群志同道合的人自发组成的。我们相信，知识不应该被壁垒所束缚，而应该是自由传播和共享的。因此，我们建立了这个大学，以打破传统教育的限制，为任何渴望学习的人提供机会。</p>
+        <p>无论你是正在工作的职场人士，还是没有机会进入传统大学的年轻人，江湖大学都欢迎你。我们提供丰富多样的在线课程，涵盖各种领域和学科。我们致力于为学生提供优质的教育资源、灵活的学习方式以及与世界各地学习者互动的机会。</p>
+        <p>通过江湖大学的学习平台，你可以根据自己的兴趣和需求选择适合的课程，无论是掌握新技能、提升职业发展还是追求个人兴趣爱好，我们都将竭尽全力支持你。</p>
+        <p>加入江湖大学，开启你的学术之旅吧！无论你身处何地，我们都相信每个人都有权利获得优质教育，实现自己的梦想。</p>
+        <p><strong>江湖大学，让你的未来不再受限！</strong></p>
+    </div>
+
+    <footer>
+        &copy; 2023 江湖大学. All rights reserved.
+    </footer>
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
