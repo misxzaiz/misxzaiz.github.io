@@ -28,7 +28,7 @@ let index = {
         "Bingo": {
             "孔明灯": ["https://henxiangsi.com/","在线放孔明灯"],
             "ChiShenMe": ["https://chishenme.xyz/","中午吃什么"],
-            "单词发音": ["https://misxzaiz.top/page/page/word/speech.html", "查询单词发音"]
+            "音乐": ["https://misxzaiz.github.io/nav/page/music/music.html","随机音乐播放器"]
         }
     }
 
