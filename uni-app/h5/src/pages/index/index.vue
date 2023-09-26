@@ -3,6 +3,7 @@
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
       <text class="title">{{ title }}</text>
+      你好
     </view>
   </view>
 </template>
