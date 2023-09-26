@@ -1,1 +1,0 @@
-import{_ as e,o as t,d as a}from"./index-191a9f24.js";const s=e({name:"test.vue",data:()=>({}),methods:{}},[["render",function(e,s,n,o,r,d){return t(),a("div",{class:"container"})}]]);export{s as default};
