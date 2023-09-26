@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/h5': {
-        target: 'https://misxzaiz.github.io/h5',
+        target: './h5',
         changeOrigin: true,
       },
     }
