@@ -1,7 +1,0 @@
-@echo off
-
-rem 执行打包操作
-npm run build:h5
-
-rem 移动结果到指定目录
-move ./dist/build/h5/ ../../../misxzaiz.github.io
