@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+  }
+
+  .song-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .song-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .img-container {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .audio-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .audio-name {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  audio {
+    display: none;
+  }
+
+  .play-button {
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .play-button:hover {
+    transform: scale(1.1);
+  }
+
+  .play-button svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+  }
+  .img-container img.rotate {
+    animation: rotation 10s infinite linear;
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

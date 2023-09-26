@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bingo</title>
+    <link rel="stylesheet" href="../../css/element.css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <style>
+        .flex-grow {
+            flex-grow: 1;
+        }
+        .logo {
+            font-size: larger;
+            font-weight: bolder;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        .el-tabs__nav {
+            align-items: center;
+        }
+        .el-tabs__item {
+            font-size: large;
+            font-weight: bold;
+        }
+        .list {
+            margin: 10px 0 20px 20px;
+        }
+        .link {
+            margin-bottom: 8px;
+            font-size: larger;
+            font-weight: bolder;
+            color: #000;
+        }
+        .link span {
+            font-size: 14px;
+            display: block;
+            margin-left: 10px;
+            font-weight: 500;
+            color: #898989;
+        }
+        .tabs {
+            margin: 0 25% 0 25%;
+        }
+
+        .card-content {
+            line-height: 1.8;
+            margin: 0 25% 0 25%;
+        }
+
+        .word-card {
+            background-color: #fff;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+             
+        .word {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .word-button {
+            margin-left: auto;
+        }
+        .phonetic {
+            font-size: 16px;
+            color: #999;
+        } 
+        .translation {
+            font-size: 18px;
+        }
+        .example {
+            font-style: italic;
+            color: #999;
+        }
+
+        @media screen and (max-width: 768px) {
+            .tabs {
+                margin: 0;
+            }
+            .card-content {
+                margin: 0;
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <div>
+            <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" >
+                <el-menu-item index="0"><a href="/" class="logo">AndZaiz</a></el-menu-item>
+                <div class="flex-grow" ></div>
+                <el-sub-menu index="1">
+                    <template #title>Workspace</template>
+                    <el-menu-item index="1-1"><a href="../email/liu.html" style="width: 100%;">联系</a></el-menu-item>
+                </el-sub-menu>
+            </el-menu>
+        </div>
+        <div class="tabs">
+            <el-tabs tab-position="left" class="demo-tabs">
+                <div v-for="(value, key, index) in navs">
+                    <el-tab-pane :label="key">
+                        <div v-for="(v, k, i) in value" >
+                            <div class="list">
+                                <a :href="v[0]" class="link">{{k}}<span>{{v[1]}}</span></a>
+                            </div>
+                        </div>
+                    </el-tab-pane>
+                </div>
+            </el-tabs>
+        </div>
+        
+        <div class="card-content">
+            <el-card class="word-card" shadow="hover">
+                <div class="card">
+                    <div class="card-header word">
+                        {{ wordData.word }}                            
+                        <button href="#" class="btn btn-primary word-button" @click="getWordData()">下一个</button>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <p class="card-text phonetic">{{ wordData.accent }}</p>
+                            <p class="card-text translation">{{ wordData.mean_cn }}</p>
+                            <p class="card-text example">{{ wordData.sentence }}</p>
+                        </div>
+                    </div>
+                </div>
+            </el-card>
+        </div>
+
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    navs: null,
+                    wordList: {},
+                    wordIndex: '',
+                    wordData: {}
+                }
+            },
+            methods: {
+                getWordData() { // 将方法名 word 修改为 getWordData
+                    let that = this;
+                    let random = Math.floor(Math.random() * that.wordList.total);
+                    that.wordIndex = that.wordList.list[random];
+                    axios
+                      .get("https://nav.xiaozaiz.xyz/page/json/word/words/" + that.wordIndex + ".json")
+                      .then(function(res) {
+                        that.wordData = res.data;
+                    })
+                }
+            },
+            mounted() {
+                let that = this;
+                axios
+                    .get("https://nav.xiaozaiz.xyz/page/page/index/index.json")
+                    .then(function(res){
+                        that.navs = res.data.index
+                    });
+                axios
+                    .get("https://nav.xiaozaiz.xyz/page/json/word/list.json")
+                    .then(function(res) {
+                        that.wordList = res.data;
+                        that.getWordData(); // 调用获取单词数据的方法
+                    })
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+
+    </script>
+  </body>
+</html>
