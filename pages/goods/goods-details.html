@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <script src="../../index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary" @click="goBack">返回</el-button>
+        <div v-if="goods!=null">
+            <el-card :body-style="{ padding: '0px' }">
+                <div style="padding: 14px">
+                    <span>{{ goods.name }}</span>
+                    <div class="bottom">
+                        <time class="time">{{ goods.description }}</time>
+                        <!-- <el-button class="button" @click="href('../chat/index.html?id='+goods.webUserDto.uid)">联系卖家</el-button>
+                        <el-button class="button" @click="href('../chat/index.html?id='+post.webUserDto.uid)">联系同学</el-button> -->
+                        <el-button class="button" @click="href('../user/show-user.html?id='+goods.webUserDto.uid)">联系同学</el-button>
+                    </div>
+                </div>
+                <div>
+                    <div v-if="goods.goodsImagesList.length > 0" v-for="item in goods.goodsImagesList" :key="item">
+                        <img :src="item.image" alt="图片" style="width: 100%;" />
+                    </div>
+                    <div v-else>
+                        <img src="https://static.runoob.com/images/demo/demo2.jpg" class="image" alt="图片" style="height: 200px;" />
+                    </div>
+                </div>
+
+            </el-card>
+        </div>
+
+    </div>
+
+    <script src="./index.js" ></script>
+    <script>
+        
+        const App = {
+            data() {
+                return {
+                    goods: null,
+                }
+            },
+            mounted() {
+                var searchParams = new URLSearchParams(location.search);
+                var id = searchParams.get('id');
+                this.getGoodsById(id)
+                alert(goods.userDto.id)
+            },
+            methods: {
+                goBack() {
+                    window.history.back();
+                },
+                href(url) {
+                    window.location.href=url
+                },
+                getGoodsById(id){
+                    let that = this
+                    axios.get("/web/goods/"+id)
+                        .then(res => {
+                            that.goods = res.data.data
+                            this.$message.success(res.data.message)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                }
+            },
+
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

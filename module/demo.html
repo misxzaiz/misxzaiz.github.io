@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue@3.js"></script>
+    <script src="interfaceacting220819.js"></script>
+    <script src="antidomxss_v640.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <foot-bar :active-btn="activeBtn"></foot-bar>
+      </div>
+
+      <script src="demo.js"></script>
+      <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    userId: null,
+                    userForm: {},
+                    userList: []
+                }
+            },
+            methods: {
+                href(url) {
+                    window.location.href=url
+                },
+
+            },
+            mounted() {
+
+            }
+        });
+        
+        app.component('foot-bar', footBarComponent);
+    
+        app.mount('#app');
+      </script>
+      
+</body>
+</html>

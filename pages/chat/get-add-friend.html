@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+    <script src="../../module/interfaceacting220819.js"></script>
+    <script src="../../module/antidomxss_v640.js"></script>
+    <script src="../module/footer.js"></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        #chatbox {
+            width: 400px;
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .bottom {
+            margin-top: 13px;
+            line-height: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .button {
+            padding: 0;
+            min-height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div style="margin-bottom: 3%;">
+            <el-button @click="href('../../index.html')">主页</el-button>
+            <el-button @click="getLocalStorageMessage()">获取历史聊天记录</el-button>
+            <el-button @click="removeLocalStorageMessage()">清空历史聊天记录</el-button>
+        </div>
+        <el-collapse>
+            <el-collapse-item title="新朋友">
+                <div v-for="item,index in addList" :key="item.id">
+                    <el-card :body-style="{ padding: '0px' }">
+                        <div style="padding: 14px">
+                          <div class="bottom">
+                            <time class="time">uid：{{item.tuid}}</time>
+                            <el-button type="primary" class="button" @click="href('../user/show-user.html?id='+item.tuid)">资料</el-button>
+                            <el-button type="primary" class="button" @click="agree(item.tuid)">同意</el-button>
+                            <!-- <el-button class="button">拒绝</el-button> -->
+                          </div>
+                        </div>
+                    </el-card>
+                </div>
+            </el-collapse-item>
+        </el-collapse>
+        <foot-bar :active-btn="3"></foot-bar>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    addList: []
+                }
+            },
+            created() {
+                this.getAddList()
+            },
+            methods: {
+                href(url) {
+                    window.location.href=url
+                },
+                getAddList() {
+                    axios.get("/web/user-friend/getAddList")
+                        .then(res => {
+                            // this.$message.success(res.data.message)
+                            if(res.data.code==200){
+                                this.addList = res.data.data
+                                this.$message.success(res.data.message)
+                            } else {
+                                this.$message.error(res.data.message)
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                agree(tuid) {
+                    axios.get("/web/user-friend/agree/"+tuid)
+                        .then(res => {
+                            // this.$message.success(res.data.message)
+                            if(res.data.code==200){
+                                this.$message.success(res.data.message)
+                            } else {
+                                this.$message.error(res.data.message)
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                }
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.component('foot-bar', footBarComponent);
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

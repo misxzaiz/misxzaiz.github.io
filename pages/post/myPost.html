@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <script src="../../index.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- <el-button @click="href('../../index.html')">主页</el-button> -->
+        <el-button type="primary" @click="goBack">返回</el-button>
+        <el-row>
+            <el-col :span="22" v-for="(item, index) in List" :key="item.id" style="margin: 2%;">
+                <el-card :body-style="{ padding: '0px' }">
+                    <div @click="getDetails(item.id)">
+                        <img v-if="item.postImageList.length > 0" :src="item.postImageList[0].image" class="image" />
+                        <img v-else src="https://static.runoob.com/images/demo/demo2.jpg" class="image" />
+                    </div>
+                    <div style="padding: 14px">
+                        <span>{{ item.title }}</span>
+                        <div class="bottom">
+                          <time class="time">{{ item.content }}</time>
+                          <el-button size="mini" @click="deletePost(item.id)">删除</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+        </el-row>
+    </div>
+
+    <script src="./index.js" ></script>
+    <script>
+        
+        const App = {
+            data() {
+                return {
+                    List: {},
+                    deletedCards: []
+                }
+            },
+            mounted() {
+                this.MyId = userDto.id
+                this.getMyList(this.MyId)
+            },
+            methods: {
+                goBack() {
+                    window.history.back();
+                },
+                deletePost(postId) {
+                    let that = this
+                    axios.get("/web/post/delete/" + postId)
+                        .then(res => {
+                            // that.List = res.data.data
+                            this.$message.success(res.data.message)
+                            
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                href(url) {
+                    window.location.href = url
+                },
+                getDetails(id) {
+                    window.location.href = './post-comment.html?id=' + id
+                },
+                getMyList(MyId) {
+                    let that = this
+                    axios.get("/web/post/list/" + MyId)
+                        .then(res => {
+                            that.List = res.data.data
+                            this.$message.success(res.data.message)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+            },
+
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

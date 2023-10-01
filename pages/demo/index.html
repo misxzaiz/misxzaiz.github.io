@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <el-button @click="href('../../index.html')">主页</el-button>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    count: 10,
+                    couponId: null
+                }
+            },
+            methods: {
+                href(url) {
+                    window.location.href=url
+                },
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

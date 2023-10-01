@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary" @click="goBack">返回</el-button>
+        <!-- <el-button @click="href('../user/update-user.html')">修改用户信息</el-button> -->
+        <div>
+            <el-input placeholder="请输入手机号" v-model="form.phone"></el-input>
+            <el-input placeholder="请输入密码" v-model="form.password"></el-input>
+            <el-button @click="login" style="width: 100%; background-color:rgb(0, 8, 255); color: #fff;">登录</el-button>
+            <div style="text-align: right; color:#333333; margin: 5px 0"><a href="register.html">注册</a></div>
+        </div>
+    </div>
+
+    <script>
+        console.log(reqUrl)
+        const App = {
+            data() {
+                return {
+                    form:{}
+                }
+            },
+            methods: {
+                goBack() {
+                    window.history.back();
+                },
+                href(url) {
+                    window.location.href=url
+                },
+                login(){
+                    if(!this.form.phone || !this.form.password){
+                        this.$message.error("手机号和验证码不能为空！");
+                        return
+                    }
+                    axios.post("/auth/login/phone/password/getUserDto", this.form)
+                        .then(res => {
+                            this.$message.success(res.data.message)
+                            if(res.data.code==200){
+                                // 保存用户信息到session
+                                localStorage.setItem("token", res.data.data.token);
+                                sessionStorage.setItem("token", res.data.data.token);
+
+                                localStorage.setItem("userDto", JSON.stringify(res.data.data.userDto));
+                                sessionStorage.setItem("userDto", JSON.stringify(res.data.data.userDto));
+                                // 跳转到首页
+                                location.href = "../../index.html"
+                            }
+                        })
+                        .catch(err => this.$message.error(err))
+                }
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

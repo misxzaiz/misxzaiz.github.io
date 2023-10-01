@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-button @click="href('../../index.html')">主页</el-button>
+        <div>
+            <el-button @click="deleteVoucherOrderByUserId()">删除我的优惠卷</el-button>
+        </div>
+        <div>
+            <el-input v-model="voucherCount" :value="voucherCount" placeholder="请输入优惠券数量" style="width: 10%;"></el-input>
+            <el-button @click="updateVoucherCount(voucherCount)">修改</el-button>
+        </div>
+        <div class="shop-voucher">
+            <div>
+              <span class="voucher-icon">券</span>
+              <span style="font-weight: bold;">代金券</span>
+            </div>
+            <div class="voucher-box" v-for="v in vouchers" :key="v.id">
+              <div class="voucher-circle">
+                <div class="voucher-b"></div>
+                <div class="voucher-b"></div>
+                <div class="voucher-b"></div>
+              </div>
+              <div class="voucher-left">
+                <div class="voucher-title">{{v.title}}</div>
+                <div class="voucher-subtitle">{{v.subTitle}}</div>
+                <div class="voucher-price"><div>￥ {{v.payValue}}</div><span>{{(v.payValue*10)/v.actualValue}}折</span></div>
+              </div>
+              <div class="voucher-right">
+                <div class="seckill-box">
+                  <div class="voucher-btn" :class="{'disable-btn': v.stock < 1}" @click="seckill()">限时抢购</div>
+                  <div class="seckill-stock">剩余 <span>{{v.stock}}</span> 张</div>
+                  <div class="seckill-time">{{formatTime(v)}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    voucherCount: null,
+                    couponId: null,
+                    vouchers: [{
+                        title: "80元优惠卷",
+                        subTitle: "周一至周日均可使用",
+                        payValue: 100,
+                        actualValue: 80,
+                        stock: 10,
+                        startTime: "2023-06-01",
+                        endTime: "2025-06-01"
+                    }]
+                }
+            },
+            methods: {
+                href(url) {
+                    window.location.href=url
+                },
+                seckill(){
+                    let that = this
+                    // 秒杀抢购
+                    axios.get("/voucher-order/seckill/1")
+                        .then(res => {
+                            if(res.data.errorMsg!=null){
+                                this.$message.error(res.data.errorMsg)
+                            }else {
+                                this.$message.success("抢卷成功！")
+                                this.$message.success("优惠卷订单号为："+res.data.data)
+                            }  
+                        }).catch(err => {
+                            this.$message.error("抢卷失败！")
+                        })
+                },
+                queryVoucher() {
+                    let that = this
+                    axios.get("/voucher/list")
+                        .then(res => {
+                            that.vouchers = res.data.data;
+                            console.log(res.data.data)
+                        }).catch(err => {})
+                },
+                formatTime(v){
+                    return v.startTime + " ~ " + v.endTime;
+                }, 
+                deleteVoucherOrderByUserId() {
+                    axios.get("/voucher-order/delete")
+                        .then(res => {
+                            this.$message.success("删除成功！")
+                        }).catch(err => {})
+                },
+                updateVoucherCount(count){
+                    axios.get("/voucher/setVoucherCount/"+count)
+                        .then(res => {
+                            this.$message.success("修改成功！")
+                        }).catch(err => {})
+                }
+            },
+            mounted() {
+                // 查询优惠券信息
+                this.queryVoucher();
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

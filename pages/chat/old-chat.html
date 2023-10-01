@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+    <script src="../../module/interfaceacting220819.js"></script>
+    <script src="../../module/antidomxss_v640.js"></script>
+    <script src="../module/footer.js"></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        #chatbox {
+            width: 400px;
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div style="margin-bottom: 3%;">
+            <el-button @click="href('../../index.html')">主页</el-button>
+            <el-button @click="getLocalStorageMessage()">获取历史聊天记录</el-button>
+            <el-button @click="removeLocalStorageMessage()">清空历史聊天记录</el-button>
+        </div>
+        
+        <div>
+            <el-tabs tab-position="left" class="demo-tabs" v-model="activeTab">
+                <div v-for="(item, index) in userList" :key="index" @click="checkMsg(item.uid)">
+                    <el-tab-pane :label="item.username" :name="item.uid">
+                        <el-button @click="connectWebSocket()">上线获取消息</el-button>
+                        {{ MyPhone }}
+                        <div :id="item.uid" class="chatBox"></div>
+                        <input type="text" v-model="message" placeholder="输入内容...">
+                        <button @click="sendMessage(item.uid)" :disabled="isOnline">发送</button>
+                    </el-tab-pane>
+                </div>
+            </el-tabs>
+        </div>
+        <foot-bar :active-btn="3"></foot-bar>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    activeTab: null,
+                    userList: null,
+                    socket: null,
+                    message: null,
+                    chatboxMessage: [],
+                    MyPhone: null,
+                    MyUid: null,
+                    phone: null,
+                    chatWithUid: null,
+                    isOnline: true
+                }
+            },
+            created() {
+                this.getUserList()
+                this.setBase()
+            },
+            methods: {
+                checkMsg(uid) {
+                    // 查看消息后，取消红色
+                    const chatbox = document.getElementById('tab-'+uid);
+                    chatbox.style.color = "black"
+                },
+                href(url) {
+                    window.location.href = url
+                },
+                getUserList() {
+                    axios.get("/web/user/list")
+                        .then(res => {
+                            this.userList = res.data.data
+                            // this.$message.success(res.data.message)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                connectWebSocket() {
+                    this.isOnline = false
+                    console.log("connectWebSocket")
+                    console.log(this.MyUid)
+                    // 创建WebSocket连接
+                    // webSocketUri 在 index.js 文件中定义
+                    this.socket = new WebSocket(`ws://${webSocketUri}/chat?uid=${this.MyUid}`);
+                    // 在连接打开时触发的事件
+                    this.socket.onopen = () => { console.log("Connected to server"); };
+                    // 在接收到消息时触发的事件
+                    this.socket.onmessage = (event) => {
+                        const message = event.data;
+                        const [uid, msg] = message.split(",");
+
+                        // 接收到消息变红
+                        const chatbox = document.getElementById('tab-'+uid);
+                        console.log("this.socket.onmessage")
+                        console.log('tab-'+uid)
+                        console.log(msg)
+                        chatbox.style.color = "red"
+
+                        // HE表示别人发来的消息
+                        this.appendMessage(msg, "HE", uid);
+                    };
+                },
+                sendMessage(uid) {
+                    this.uid = uid;
+                    console.log("sendMessage")
+                    console.log(this.uid)
+                    this.socket.send(`${this.uid},${this.message}`);
+                    // ME表示我发出去的消息
+                    this.appendMessage(this.message, "ME", uid);
+                },
+                // mark：ME：我发出去的；HE：别人发过来的
+                appendMessage(message, mark, uid) {
+                    item = { chatPerson: uid, mark: mark, content: message}
+                    this.creatMessageBox(item)
+
+                    this.storedRecords = localStorage.getItem(`chatRecords${this.MyUid}`);
+                    if (this.storedRecords) {
+                        this.chatboxMessage = JSON.parse(this.storedRecords);
+                    }
+                    // 将消息添加到聊天记录中
+                    this.chatboxMessage.push({
+                        chatPerson: uid,
+                        mark: mark,
+                        content: message
+                    });
+                    // 保存聊天记录到本地存储
+                    localStorage.setItem(`chatRecords${this.MyUid}`, JSON.stringify(this.chatboxMessage));
+                },
+                creatMessageBox(item) {
+                    console.log("creatMessageBox")
+                    console.log(item.chatPerson)
+                    const chatbox = document.getElementById(item.chatPerson);
+                    const p = document.createElement("p");
+                    p.textContent = `${item.mark}: ${item.content}`;
+                    if (item.mark === "ME") {
+                        p.style.color = "red";
+                        p.style.background = "white";
+                    } else {
+                        p.style.color = "black";
+                        p.style.background = "white";
+                    }
+                    chatbox.appendChild(p);
+                },
+                getLocalStorageMessage() {
+                    const elements = document.getElementsByClassName("chatBox");
+                    for (let i = 0; i < elements.length; i++) {
+                        elements[i].innerHTML = "";
+                    }
+                    // 从本地存储中读取聊天记录
+                    this.storedRecords = localStorage.getItem(`chatRecords${this.MyUid}`);
+                    if (this.storedRecords) {
+                        const chatboxMessage = JSON.parse(this.storedRecords);
+                        for (const item of chatboxMessage) {
+                            this.creatMessageBox(item)
+                        }
+                    }
+                },
+                removeLocalStorageMessage() {
+                    localStorage.removeItem(`chatRecords${this.MyUid}`);
+                    this.getLocalStorageMessage()
+                },
+                setBase() {
+                    // userDto 在 index.js 文件中定义
+                    this.MyPhone = userDto.phone
+                    this.MyUid = userDto.uid
+                    var searchParams = new URLSearchParams(location.search);
+                    this.activeTab = searchParams.has('id') ? searchParams.get('id') : this.MyUid;
+                    this.chatWithUid = searchParams.has('id') ? searchParams.get('id') : this.MyUid;
+                }
+            },
+            mounted() {
+
+
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.component('foot-bar', footBarComponent);
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

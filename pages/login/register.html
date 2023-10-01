@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary" @click="goBack">返回</el-button>
+        <div>
+            <div style="display: flex; justify-content: space-between">
+                <el-input style="width: 60%" placeholder="手机号（随便填，符合格式就行）" v-model="form.phone" ></el-input>
+                <el-button style="width: 38%" @click="sendCode" type="success" :disabled="disabled">{{codeBtnMsg}}</el-button>
+            </div>
+            <div style="height: 5px"></div>
+            <el-input placeholder="验证码" v-model="form.code"></el-input>
+            <el-input placeholder="密码（随便填，符合格式就行）" v-model="form.password"></el-input>
+            <el-input placeholder="Uid：（全数字）用户标识（类似QQ号）随便填" v-model="form.uid"></el-input>
+            <el-input placeholder="邮箱（随便填，符合格式就行）" v-model="form.email"></el-input>
+            <el-button @click="login" style="width: 100%; background-color:rgb(0, 8, 255); color: #fff;">登录</el-button>
+            <div style="text-align: right; color:#333333; margin: 5px 0"><a href="login.html">登录</a></div>
+        </div>
+    </div>
+
+    <script>
+        console.log(reqUrl)
+        const App = {
+            data() {
+                return {
+                    disabled: false,                // 发送短信按钮
+                    codeBtnMsg: "发送验证码",       // 发送短信按钮提示
+                    form:{}
+                }
+            },
+            methods: {
+                goBack() {
+                    window.history.back();
+                },
+                href(url) {
+                    window.location.href=url
+                },
+                login(){
+                    if(!this.form.phone || !this.form.code || !this.form.uid || !this.form.password || !this.form.email){
+                        this.$message.error("请继续输入！");
+                        return
+                    }
+                    axios.post("/auth/login/phone/code", this.form)
+                        .then(res => {
+                            if(res.data.code==400) {
+                                this.$message.error(res.data.message)
+                            } else {
+                                this.$message.success(res.data.message)
+                                // 跳转到登录页
+                                location.href = "./login.html"
+                            }
+                        })
+                        .catch(err => this.$message.error(err))
+                },
+                sendCode(){
+                    if (!this.form.phone) {
+                        this.$message.error("手机号不能为空");
+                        return;
+                    }
+                    // 发送验证码
+                    axios.get("/auth/login/code/phone/"+this.form.phone)
+                        .then(res => {
+                            this.$message.success(res.data.data)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                    // 禁用按钮
+                    this.disabled = true;
+                    // 按钮倒计时
+                    let i = 20;
+                    this.codeBtnMsg = (i--) + '秒后可重发'
+                    let taskId = setInterval(() => this.codeBtnMsg = (i--) + '秒后可重发', 1000);
+                    setTimeout(() => {
+                        this.disabled = false;
+                        clearInterval(taskId);
+                        this.codeBtnMsg = "发送验证码";
+                    }, 59000)
+                }
+            },
+            mounted() {
+
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <script src="../../index.js"></script>
+    <script src="../../module/interfaceacting220819.js"></script>
+    <script src="../../module/antidomxss_v640.js"></script>
+    <script src="../module/footer.js"></script>
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+    
+    <div id="app">
+        <el-button type="primary" @click="goBack">返回</el-button>
+        <el-button type="primary" @click="href('../../index.html')">主页</el-button>
+        <el-button type="primary" @click="href('add-goods.html')">添加商品</el-button>
+        <el-row>
+            <div class="demo-pagination-block">
+                <el-pagination
+                  v-model:current-page="currentPage"
+                  v-model:page-size="pageSize"
+                  :small="small"
+                  :disabled="disabled"
+                  :background="background"
+                  layout="prev, pager, next, jumper"
+                  :page-size="pageSize"
+                  v-model:total="totalValue"
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                />
+            </div>
+            <el-col :span="11" v-for="(item, index) in pageList" :key="item.id" style="margin: 2%;">
+              <el-card :body-style="{ padding: '0px' }" @click="getDetails(item.id)">
+                <img v-if="item.goodsImagesList.length > 0" :src="item.goodsImagesList[0].image" class="image" />
+                <img v-else src="https://static.runoob.com/images/demo/demo2.jpg" class="image" />
+                <div style="padding: 14px">
+                  <span>{{ item.name }}</span>
+                  <div class="bottom">
+                    <time class="time">{{ item.description }}</time>
+                  </div>
+                </div>
+              </el-card>
+            </el-col>
+          </el-row>
+          <!-- <foot-bar :active-btn="2"></foot-bar> -->
+    </div>
+
+    <script src="./index.js" ></script>
+    <script>
+        
+        const App = {
+            data() {
+                return {
+                    pageList: {},
+                    currentPage: 1, // 当前页码
+                    pageSize: 4, // 每页显示的数量
+                    small: true, // 是否使用小型分页样式
+                    disabled: false, // 是否禁用分页
+                    background: false, // 是否带有背景色
+                    totalValue: 0
+                }
+            },
+            mounted() {
+                this.getPageList()
+            },
+            methods: {
+                href(url) {
+                    window.location.href = url
+                },
+                getDetails(id) {
+                    window.location.href = './goods-details.html?id=' + id
+                },
+                getPageList() {
+                    let that = this
+                    axios.post("/web/goods/page", {
+                            "current": this.currentPage,
+                            "size": this.pageSize
+                        })
+                        .then(res => {
+                            that.pageList = res.data.data.pageList
+                            that.totalValue = parseInt(res.data.data.total)
+                            this.$message.success(res.data.message)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                handleSizeChange(val) {
+                    this.pageSize = val
+                    this.getPageList()
+                },
+                handleCurrentChange(val) {
+                    this.currentPage = val
+                    this.getPageList()
+                }
+            },
+
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.component('foot-bar', footBarComponent);
+        app.mount("#app");
+    </script>
+</body>
+</html>

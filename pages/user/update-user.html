@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../../css/element.css" />
+    <script src="../../js/vue@3.js"></script>
+    <script src="../../js/element-plus.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../index.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <el-button type="primary" @click="goBack">返回</el-button>
+        <div>
+            <el-upload
+                v-model:file-list="fileList"
+                :action="uploadUrl"
+                :headers="headers"
+                :data="uploadData"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove"
+                :on-success="handleSuccess"
+                :limit="1"
+                >
+                <el-icon><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M480 480V128a32 32 0 0 1 64 0v352h352a32 32 0 1 1 0 64H544v352a32 32 0 1 1-64 0V544H128a32 32 0 0 1 0-64h352z"></path></svg></el-icon>
+            </el-upload>
+            <el-input placeholder="用户名" v-model="form.username"></el-input>
+            <el-input placeholder="密码" v-model="form.password"></el-input>
+            <el-button @click="update" style="width: 100%; background-color:rgb(0, 8, 255); color: #fff;">修改</el-button>
+        </div>
+    </div>
+
+    <script>
+        console.log(reqUrl)
+        const App = {
+            data() {
+                return {
+                    form: {},
+                    uploadData: {},
+                    dialogVisible: false,
+                    goodsSortList: [],
+                    FileUserList: [],
+                    fileList: [],
+                    headers: {
+                        Authorization: token,  // 设置请求头中的 Token
+                    },
+                    uploadData: {
+                        "fileUseId": null // 从数据库中获取文件用途id
+                    },
+                    uploadUrl: "http://" + webSocketUri + "/web/file/upload",
+                    dialogImageUrl: ""
+                }
+            },
+            methods: {
+                goBack() {
+                    window.history.back();
+                },
+                href(url) {
+                    window.location.href=url
+                },
+                getFileUserList() {
+                    let that = this
+                    axios.get("/web/fileUser/getIdByName/头像")
+                        .then(res => {
+                            console.log("getIdByName/头像"+res.data.data.id)
+                            that.uploadData = {
+                                "fileUseId": res.data.data.id
+                            }
+                            this.$message.success(res.data.message)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.$message.error(err)
+                        });
+                },
+                handlePictureCardPreview(file) {
+                    if (file.raw) {
+                        const url = URL.createObjectURL(file.raw); // 使用URL.createObjectURL方法生成预览图片的URL
+                        this.dialogImageUrl = url; // 将预览图片的URL赋值给dialogImageUrl
+                        this.dialogVisible = true; // 打开对话框显示预览图片
+
+                    }
+                },
+                handleSuccess(response, file, fileList){
+                    this.form.icon = file.response.data.minPath + file.response.data.minName
+                    this.form.fileId = file.response.data.id
+                    this.$message.success(file.response.message)
+                },
+                handleRemove(file, fileList) {
+                    // 删除图片时的回调函数...
+                    // 获取要删除的图片ID
+                    const imageId = file.response.data.id;
+                    
+                    // 在form中找到对应的图片ID并删除
+                    const index = this.form.postImages.indexOf(imageId);
+                    if (index > -1) {
+                        this.form.postImages.splice(index, 1);
+                    }
+                    
+                    // TODO 在服务端也进行图片的删除操作
+                    // axios.delete("/web/file/delete/" + imageId)
+                    //     .then(res => {
+                    //         console.log(res);
+                    //         this.$message.success(res.data.message);
+                    //     })
+                    //     .catch(err => {
+                    //         console.error(err);
+                    //         this.$message.error(err);
+                    //     });
+                },
+                update(){
+                    axios.post("/web/user/update", this.form)
+                        .then(res => {
+                            if(res.data.code==400) {
+                                this.$message.error(res.data.message)
+                            } else {
+                                this.$message.success(res.data.message)
+                                // 跳转到登录页
+                                location.href = "../login/login.html"
+                            }
+                        })
+                        .catch(err => this.$message.error(err))
+                },
+            },
+            mounted() {
+                this.getFileUserList()
+            }
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+</html>
