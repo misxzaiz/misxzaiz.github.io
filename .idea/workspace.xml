@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68704f37-7a61-4d5c-b7e0-573b04dc9447" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+    <list default="true" id="68704f37-7a61-4d5c-b7e0-573b04dc9447" name="Changes" comment="fix 404html">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +57,17 @@
       <workItem from="1695717947814" duration="12000" />
       <workItem from="1696170009794" duration="600000" />
       <workItem from="1696170943641" duration="25000" />
-      <workItem from="1696516510557" duration="74000" />
+      <workItem from="1696516510557" duration="1287000" />
     </task>
+    <task id="LOCAL-00001" summary="fix 404html">
+      <option name="closed" value="true" />
+      <created>1696516603859</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696516603859</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,5 +83,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix 404html" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix 404html" />
   </component>
 </project>
