@@ -41,7 +41,6 @@ export let navs = {
         "Jotform": ["https://www.jotform.com/myforms/", "页面模板",""],
         "Ngrok.cc": ["https://www.ngrok.cc/", "内网穿透，国内版",""],
         "Ngrok": ["https://ngrok.com/", "内网穿透",""],
-
     },
     "API": {
         "夏柔": ["https://api.aa1.cn/","api",""],
