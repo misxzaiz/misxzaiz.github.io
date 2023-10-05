@@ -7,14 +7,19 @@ export let navs = {
         "通义千问": ["https://tongyi.aliyun.com/","阿里的GPT（要申请）","https://img.alicdn.com/imgextra/i4/O1CN01c26iB51UyR3MKMFvk_!!6000000002586-2-tps-124-122.png"],
         "MST": ["https://mst.ai/", "AIS（基础GPT、AI画图）GPT较慢（要登录）","https://img.mst.xyz/assets/favicon-8f9e8d04.ico"],
         "RightBrain": ["https://rightbrain.art/store","AI绘画",""],
-        "new Bing": ["https://www.bing.com/","new Bing",""],
         "Wiki": ["https://openai.wiki/", "openai.wiki","https://openai.wiki/wp-content/uploads/cropped-logo-192x192.png"],
-        "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
         "AgentGpt": ["https://agentgpt.reworkd.ai/", "AgentGpt",""],
+        "CXY521": ["http://www.cxy521.com/ai.html","程序员导航（AI部分）",""],
+        "aiLogo": ["https://ailogo.qq.com/","腾讯的LoGo生产器","https://ailogo.qq.com/favicon.ico"],
         "Claude": ["https://misxzaiz.slack.com/", "Claude",""],
+        "new Bing": ["https://www.bing.com/","new Bing",""],
+        "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
+    },
+    "Learn": {
         "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理",""],
         "MBA": ["https://wiki.mbalib.com/", "MBA智库",""],
-        "CXY521": ["http://www.cxy521.com/ai.html","程序员导航（AI部分）",""]
+        "菜鸟教程": ["https://www.runoob.com","菜鸟教程",""],
+        "W3schools": ["https://www.w3schools.cn/default.asp", "w3schools","https://www.w3schools.cn/static/images/html5_icon.svg"]
     },
     "Company": {
         "牛客网": ["https://www.nowcoder.com/","牛客网",""],
@@ -25,10 +30,6 @@ export let navs = {
         "职友集": ["https://www.jobui.com/","查看公司信息","http://cdnhtm4.jobui.com/template_1/images/putRerord.png"],
         "24 365": ["https://www.ncss.cn/","国家大学生就业服务平台",""]
     },
-    "Learn": {
-        "菜鸟教程": ["https://www.runoob.com","菜鸟教程",""],
-        "W3schools": ["https://www.w3schools.cn/default.asp", "w3schools","https://www.w3schools.cn/static/images/html5_icon.svg"]
-    },
     "Tool": {
         "SpssPro": ["https://www.spsspro.com/","数学分析工具",""],
         "MindShow": ["https://www.mindshow.fun/","PPT生成工具",""],
@@ -38,7 +39,9 @@ export let navs = {
         "PhpStudy": ["https://www.xp.cn/","php集成环境",""],
         "宝塔": ["https://www.bt.cn/","服务器管理",""],
         "Jotform": ["https://www.jotform.com/myforms/", "页面模板",""],
-        "Ngrok": ["https://www.ngrok.cc/", "内网穿透",""]
+        "Ngrok.cc": ["https://www.ngrok.cc/", "内网穿透，国内版",""],
+        "Ngrok": ["https://ngrok.com/", "内网穿透",""],
+
     },
     "API": {
         "夏柔": ["https://api.aa1.cn/","api",""],
