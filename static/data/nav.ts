@@ -1,6 +1,7 @@
 export let navs = {
     "常用": {
         "BinJie": ["https://chat.jinshutuan.com/","GPT",""],
+        "豆包": ["https://www.doubao.com/chat/","抖音的GPT",""],
         "Wuguokai": ["https://chat.wuguokai.cn/", "GPT",""],
         "AiDuTu": ["https://chat.aidutu.cn/","GPT",""],
         "文心一言": ["https://yiyan.baidu.com/","百度的GPT（要申请）","https://nlp-eb.cdn.bcebos.com/logo/favicon.ico"],
@@ -16,6 +17,7 @@ export let navs = {
         "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
     },
     "Learn": {
+        "Guava": ["https://wizardforcel.gitbooks.io/guava-tutorial/content/1.html", "Google Guava官方教程（中文版）",""],
         "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理",""],
         "MBA": ["https://wiki.mbalib.com/", "MBA智库",""],
         "菜鸟教程": ["https://www.runoob.com","菜鸟教程",""],
@@ -59,5 +61,5 @@ export let navs = {
         "AirPano": ["https://www.airpano.com/","云游世界，360全景",""],
         "孔明灯": ["https://henxiangsi.com/","在线放孔明灯",""],
         "ChiShenMe": ["https://chishenme.xyz/","中午吃什么",""],
-    },
+    }
 }
