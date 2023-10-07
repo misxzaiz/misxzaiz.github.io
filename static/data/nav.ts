@@ -1,10 +1,11 @@
 export let navs = {
     "常用": {
-        "BinJie": ["https://chat.jinshutuan.com/","GPT",""],
+        "Binjie": ["https://c.binjie.fun/","GPT",""],
         "豆包": ["https://www.doubao.com/chat/","抖音的GPT","https://lf-cdn-tos.bytescm.com/obj/static/doubao_web/logo-icon.png"],
         "星火大模型": ["https://xinghuo.xfyun.cn/","星火大模型",""],
         "文心一言": ["https://yiyan.baidu.com/","百度的GPT（要申请）","https://nlp-eb.cdn.bcebos.com/logo/favicon.ico"],
         "通义千问": ["https://tongyi.aliyun.com/","阿里的GPT（要申请）","https://img.alicdn.com/imgextra/i4/O1CN01c26iB51UyR3MKMFvk_!!6000000002586-2-tps-124-122.png"],
+        "Jinshu": ["https://chat.jinshutuan.com/","GPT",""],
         "Wuguokai": ["https://chat.wuguokai.cn/", "GPT",""],
         "AiDuTu": ["https://chat.aidutu.cn/","GPT",""],
         "MST": ["https://mst.ai/", "AIS（基础GPT、AI画图）GPT较慢（要登录）","https://img.mst.xyz/assets/favicon-8f9e8d04.ico"],
