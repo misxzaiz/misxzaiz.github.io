@@ -1,4 +1,4 @@
-navs = {
+let navs = {
     "常用": {
         "Binjie": ["https://c.binjie.fun/","GPT",""],
         "豆包": ["https://www.doubao.com/chat/","抖音的GPT","https://lf-cdn-tos.bytescm.com/obj/static/doubao_web/logo-icon.png"],
