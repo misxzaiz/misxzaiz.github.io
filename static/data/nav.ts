@@ -57,7 +57,8 @@ export let navs = {
     "Cloud": {
         "PlanetScale": ["https://planetscale.com/","云数据库",""],
         "FormSpree": ["https://formspree.io/","云邮箱",""],
-        "Analytics": ["https://analytics.google.com/","网站分析",""]
+        "Analytics": ["https://analytics.google.com/","网站分析",""],
+        "百度统计": ["https://tongji.baidu.com/","百度网站统计分析",""]
     },
     "Bingo": {
         "AirPano": ["https://www.airpano.com/","云游世界，360全景",""],
