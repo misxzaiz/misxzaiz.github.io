@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68704f37-7a61-4d5c-b7e0-573b04dc9447" name="Changes" comment="fix 404html">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nav1.js" beforeDir="false" afterPath="$PROJECT_DIR$/nav1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nav1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nav1.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/data/nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/static/data/nav.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "D:\\install\\IDEA\\IntelliJ IDEA 2023.1.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -61,6 +60,7 @@
       <workItem from="1696170009794" duration="600000" />
       <workItem from="1696170943641" duration="25000" />
       <workItem from="1696516510557" duration="1287000" />
+      <workItem from="1696838389243" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="fix 404html">
       <option name="closed" value="true" />

@@ -19,6 +19,7 @@ export let navs = {
         "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
     },
     "Learn": {
+        "Hello算法": ["https://www.hello-algo.com/","Hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
         "Guava": ["https://wizardforcel.gitbooks.io/guava-tutorial/content/1.html", "Google Guava官方教程（中文版）",""],
         "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理",""],
         "MBA": ["https://wiki.mbalib.com/", "MBA智库",""],
