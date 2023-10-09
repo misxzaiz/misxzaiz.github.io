@@ -19,7 +19,7 @@ export let navs = {
         "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
     },
     "Learn": {
-        "Hello算法": ["https://www.hello-algo.com/","Hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
+        "HelloAlog": ["https://www.hello-algo.com/","Hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
         "Guava": ["https://wizardforcel.gitbooks.io/guava-tutorial/content/1.html", "Google Guava官方教程（中文版）",""],
         "WoShipm": ["https://www.woshipm.com/", "人人都是产品经理",""],
         "MBA": ["https://wiki.mbalib.com/", "MBA智库",""],
@@ -65,5 +65,9 @@ export let navs = {
         "AirPano": ["https://www.airpano.com/","云游世界，360全景",""],
         "孔明灯": ["https://henxiangsi.com/","在线放孔明灯",""],
         "ChiShenMe": ["https://chishenme.xyz/","中午吃什么",""],
+    },
+    "Github": {
+        "Material-for-MkDocs": ["https://github.com/squidfunk/mkdocs-material/tree/master", "开源文档主题 Material-for-MkDocs",""],
+        "HelloAlog": ["https://github.com/krahets/hello-algo", "hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
     }
 }
