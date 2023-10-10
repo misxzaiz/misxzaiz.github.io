@@ -19,6 +19,7 @@ export let navs = {
         "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
     },
     "Learn": {
+        "aixcoder": ["https://codesearch.aixcoder.com/#/","代码查询",""],
         "leetcode": ["https://leetcode.cn/studyplan/coding-interviews/", "剑指Offer",""],
         "LeetCodeHot100": ["https://leetcode.cn/studyplan/top-100-liked/", "LeetCodeHot100",""],
         "HelloAlog": ["https://www.hello-algo.com/","Hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
