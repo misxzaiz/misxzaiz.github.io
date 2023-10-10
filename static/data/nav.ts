@@ -28,6 +28,9 @@ export let navs = {
         "菜鸟教程": ["https://www.runoob.com","菜鸟教程",""],
         "W3schools": ["https://www.w3schools.cn/default.asp", "w3schools","https://www.w3schools.cn/static/images/html5_icon.svg"]
     },
+    "Dev": {
+      "anaconda": ["https://anaconda.cloud/","anaconda云平台",""]
+    },
     "Company": {
         "牛客网": ["https://www.nowcoder.com/","牛客网",""],
         "智联招聘": ["https://www.zhaopin.com/","智联招聘","https://infinityicon.infinitynewtab.com/user-share-icon/17165df2da2da97518b20d377161d457.png"],
@@ -69,6 +72,7 @@ export let navs = {
         "ChiShenMe": ["https://chishenme.xyz/","中午吃什么",""],
     },
     "Github": {
+        "GitStar": ["https://gitstar-ranking.com/","GitStar排名",""],
         "Material-for-MkDocs": ["https://github.com/squidfunk/mkdocs-material/tree/master", "开源文档主题 Material-for-MkDocs",""],
         "HelloAlog": ["https://github.com/krahets/hello-algo", "hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
     }
