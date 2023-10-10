@@ -41,6 +41,7 @@ export let navs = {
         "24 365": ["https://www.ncss.cn/","国家大学生就业服务平台",""]
     },
     "Tool": {
+        "DrawIO": ["https://www.drawio.com/","画图工具","https://www.drawio.com/assets/svg/icons/icon-2.svg"],
         "SpssPro": ["https://www.spsspro.com/","数学分析工具",""],
         "MindShow": ["https://www.mindshow.fun/","PPT生成工具",""],
         "语雀": ["https://www.yuque.com/dashboard","在线笔记（电脑/手机app、浏览器）",""],
