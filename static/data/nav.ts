@@ -79,5 +79,8 @@ export let navs = {
         "GitStar": ["https://gitstar-ranking.com/","GitStar排名",""],
         "Material-for-MkDocs": ["https://github.com/squidfunk/mkdocs-material/tree/master", "开源文档主题 Material-for-MkDocs",""],
         "HelloAlog": ["https://github.com/krahets/hello-algo", "hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
+    },
+    "UI": {
+        "vue-admin": ["https://vue-admin-beautiful.com/","vue-admin",""]
     }
 }
