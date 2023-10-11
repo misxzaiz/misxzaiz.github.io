@@ -63,6 +63,7 @@ export let navs = {
         "YouDao": ["https://ai.youdao.com/","有道翻译API",""]
     },
     "Cloud": {
+        "algolia": ["https://www.algolia.com/","搜索、推荐服务平台","https://www.algolia.com/algoliaweb-static-favicons/light-mode/favicon-32x32.png"],
         "PlanetScale": ["https://planetscale.com/","云数据库",""],
         "FormSpree": ["https://formspree.io/","云邮箱",""],
         "Analytics": ["https://analytics.google.com/","网站分析",""],
