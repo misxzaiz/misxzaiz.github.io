@@ -30,7 +30,9 @@ export let navs = {
         "W3schools": ["https://www.w3schools.cn/default.asp", "w3schools","https://www.w3schools.cn/static/images/html5_icon.svg"]
     },
     "Dev": {
-      "anaconda": ["https://anaconda.cloud/","anaconda云平台",""]
+        "v0": ["https://v0.dev/","AI的UI",""],
+        "vercel": ["https://vercel.com/","静态页面搭建",""],
+        "anaconda": ["https://anaconda.cloud/","anaconda云平台",""],
     },
     "Company": {
         "牛客网": ["https://www.nowcoder.com/","牛客网",""],
@@ -81,6 +83,6 @@ export let navs = {
         "HelloAlog": ["https://github.com/krahets/hello-algo", "hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
     },
     "UI": {
-        "vue-admin": ["https://vue-admin-beautiful.com/","vue-admin",""]
+        "vue-admin": ["https://vue-admin-beautiful.com/","vue-admin",""],
     }
 }
