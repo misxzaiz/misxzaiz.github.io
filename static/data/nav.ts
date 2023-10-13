@@ -18,13 +18,7 @@ export let navs = {
         "new Bing": ["https://www.bing.com/","new Bing",""],
         "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
     },
-    "Blog": {
-        "StackOverFlow": ["https://stackoverflow.com/","StackOverFlow社区",""],
-        "StackOverFlowBlog": ["https://stackoverflow.blog/","StackOverFlow博客",""],
-        "apnic": ["https://blog.apnic.net/","apnic博客",""],
-    },
     "Learn": {
-
         "aixcoder": ["https://codesearch.aixcoder.com/#/","代码查询",""],
         "leetcode": ["https://leetcode.cn/studyplan/coding-interviews/", "剑指Offer",""],
         "LeetCodeHot100": ["https://leetcode.cn/studyplan/top-100-liked/", "LeetCodeHot100",""],
