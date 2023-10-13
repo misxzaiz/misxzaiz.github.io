@@ -3,17 +3,22 @@ export let reads = {
         "StackOverFlow": ["https://stackoverflow.com/","StackOverFlow社区",""],
         "StackOverFlowBlog": ["https://stackoverflow.blog/","StackOverFlow博客",""],
         "apnic": ["https://blog.apnic.net/","apnic博客",""],
-    },
-    "New": {
-        "investopedia": ["https://www.investopedia.com/","投资百科",""],
+        "discord": ["https://discord.com/channels/@me","discord",""]
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],
     },
     "技术": {
         "Java": ["https://www.yuque.com/wangyouzhi-u3woi/wvkm9u/uw8c5iyvpgnqpzmg","Java技术栈-语雀-王有志",""],
+        "javaguide": ["https://javaguide.cn/","javaguide",""],
+        "xiaolincoding": ["https://xiaolincoding.com/","xiaolincoding",""],
+        "牛客网": ["https://www.nowcoder.com/","牛客网",""],
+        "HelloAlog": ["https://www.hello-algo.com/","Hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
     },
     "读书": {
         "读万卷书": ["https://www.yuque.com/yinghanzhu/aoiyrw/ugr4h1","读万卷书-语雀-博谦",""],
+    },
+    "New": {
+        "investopedia": ["https://www.investopedia.com/","投资百科",""],
     },
 }
