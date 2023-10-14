@@ -133,7 +133,7 @@
                 const progressDiv = document.getElementById('progress');  
                 progressDiv.innerHTML = `文件切分中... ${Math.round((offset / file.size) * 100)}%`;  
             
-                downloadBlob(blob, `part${Math.floor(offset / chunkSize) + 1}.jpg`)
+                downloadBlob(blob, `part${Math.floor(offset / chunkSize) + 1}`)
  
                 // 更新偏移量  
                 offset += chunkSize;  

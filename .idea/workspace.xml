@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68704f37-7a61-4d5c-b7e0-573b04dc9447" name="Changes" comment="add nav.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/文件分片及合并.html" beforeDir="false" afterPath="$PROJECT_DIR$/文件分片及合并.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +64,7 @@
       <workItem from="1696838389243" duration="126000" />
       <workItem from="1696839732986" duration="14000" />
       <workItem from="1696839832088" duration="238000" />
+      <workItem from="1697247166025" duration="1194000" />
     </task>
     <task id="LOCAL-00001" summary="fix 404html">
       <option name="closed" value="true" />
