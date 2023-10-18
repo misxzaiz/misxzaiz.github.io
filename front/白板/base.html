@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onClick="image()">图片</button>
+    <button onClick="drawing()">画笔</button>
+    <button>取消</button>
+    <div style="background-color: aquamarine;">
+        <canvas id="myCanvas" width="800" height="500"></canvas>
+    </div>
+
+
+    <script>
+        // 画笔 Begin ##############################################################
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        var isDrawing = false;
+        var isCanDrawing = false;
+        var lastX = 0;
+        var lastY = 0;
+
+        function drawing(e) {
+            isCanDrawing = true;
+        }
+        
+        canvas.addEventListener("mousedown", function(e) {
+            if (!isCanDrawing) return;
+            isDrawing = true;
+            lastX = e.pageX - this.offsetLeft;
+            lastY = e.pageY - this.offsetTop;
+            // console.log("x="+lastX+"  y="+lastY)
+        });
+        
+        canvas.addEventListener("mousemove", function(e) {
+            if (!isDrawing) return;
+        
+            var currentX = e.pageX - this.offsetLeft;
+            var currentY = e.pageY - this.offsetTop;
+        
+            context.beginPath();
+            context.moveTo(lastX, lastY);
+            context.lineTo(currentX, currentY);
+            context.stroke();
+        
+            lastX = currentX;
+            lastY = currentY;
+            // console.log("x="+lastX+"  y="+lastY)
+        });
+        
+        canvas.addEventListener("mouseup", function() {
+            isDrawing = false;
+            isCanDrawing = false;
+        });
+        // 画笔 End ##############################################################
+
+        // 展示图片 Begin ##############################################################
+        var img = new Image();
+        img.src = '../../static/logo.png';
+
+        // img.onload = function() {
+        //     // context.drawImage(img, x, y, width, height);
+        //     context.drawImage(img, 11, 11, 100, 100);
+        // }
+
+        var imageX = 0; // 图片的初始 x 坐标
+        var imageY = 0; // 图片的初始 y 坐标
+        var isImage = false
+        var isCanImage = false
+        function image(e) {
+            isCanImage = true;
+
+        }
+
+        canvas.addEventListener("mousedown", function(e) {
+            if (!isCanImage) return;
+            isImage = true;
+            imageX = e.pageX - this.offsetLeft;
+            imageY = e.pageY - this.offsetTop;
+        });
+
+        canvas.addEventListener("mousemove", function(e) {
+            if (!isImage) return;
+            var offsetX = e.pageX - this.offsetLeft - imageX;
+            var offsetY = e.pageY - this.offsetTop - imageY;
+            
+            // 清除画布内容
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            
+            context.drawImage(img, offsetX, offsetY, 100, 100);
+        })
+
+        canvas.addEventListener("mouseup", function() {
+            isImage = false;
+            isCanImage = false;
+        });
+        // 展示图片 End ##############################################################
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onClick="image()">图片</button>
+    <button onClick="drawing()">画笔</button>
+    <button onClick="cancel()">取消</button>
+    <div style="background-color: aquamarine;">
+        <canvas id="myCanvas" width="800" height="500"></canvas>
+    </div>
+    
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        var img = new Image();
+        var isDrawing = false;
+        var isCanDrawing = false;
+        var isImage = false;
+        var isCanImage = false;
+        var lastX = 0;
+        var lastY = 0;
+        var imageX = 0;
+        var imageY = 0;
+    
+        function drawing() {
+            this.cancel()
+            isCanDrawing = true;
+        }
+    
+        function image() {
+            this.cancel()
+            isCanImage = true;
+            img.src = '../../static/logo.png';
+            // img.onload = function() {
+            //     context.drawImage(img, imageX, imageY, 100, 100);
+            // }
+        }
+    
+        function cancel() {
+            isCanDrawing = false;
+            isCanImage = false;
+        }
+    
+        canvas.addEventListener("mousedown", function(e) {
+            if (isCanDrawing) {
+                isDrawing = true;
+                lastX = e.pageX - this.offsetLeft;
+                lastY = e.pageY - this.offsetTop;
+            } else if (isCanImage) {
+                isImage = true;
+                imageX = e.pageX - this.offsetLeft - 50;
+                imageY = e.pageY - this.offsetTop - 50;
+            }
+        });
+    
+        canvas.addEventListener("mousemove", function(e) {
+            if (isDrawing) {
+                var currentX = e.pageX - this.offsetLeft;
+                var currentY = e.pageY - this.offsetTop;
+    
+                context.beginPath();
+                context.moveTo(lastX, lastY);
+                context.lineTo(currentX, currentY);
+                context.stroke();
+    
+                lastX = currentX;
+                lastY = currentY;
+            } else if (isImage) {
+                // TODO 图片不能直接使用画布
+                // TODO 思路1：使用标签，控制坐标
+                // TODO 思路2：每一次操作都是一个单独的画布
+                var offsetX = e.pageX - this.offsetLeft - 50;
+                var offsetY = e.pageY - this.offsetTop - 50;
+    
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, offsetX, offsetY, 100, 100);
+            }
+        });
+    
+        canvas.addEventListener("mouseup", function() {
+            isDrawing = false;
+            isImage = false;
+        });
+    </script>
+</body>
+</html>

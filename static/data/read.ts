@@ -3,7 +3,11 @@ export let reads = {
         "StackOverFlow": ["https://stackoverflow.com/","StackOverFlow社区",""],
         "StackOverFlowBlog": ["https://stackoverflow.blog/","StackOverFlow博客",""],
         "apnic": ["https://blog.apnic.net/","apnic博客",""],
-        "discord": ["https://discord.com/channels/@me","discord",""]
+        "discord": ["https://discord.com/channels/@me","discord",""],
+        "oschina": ["https://www.oschina.net/","开源中国",""],
+    },
+    "比赛": {
+        "Qiniu": ["https://www.qiniu.com/activity/detail/651297ed0d50912d3d53307b","七牛云1024编程比赛",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],
