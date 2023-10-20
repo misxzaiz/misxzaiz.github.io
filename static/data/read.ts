@@ -15,6 +15,7 @@ export let reads = {
     "技术": {
         "Java": ["https://www.yuque.com/wangyouzhi-u3woi/wvkm9u/uw8c5iyvpgnqpzmg","Java技术栈-语雀-王有志",""],
         "javaguide": ["https://javaguide.cn/","javaguide",""],
+        "javaFamily": ["https://java-family.cn/","java-family",""],
         "xiaolincoding": ["https://xiaolincoding.com/","xiaolincoding",""],
         "牛客网": ["https://www.nowcoder.com/","牛客网",""],
         "HelloAlog": ["https://www.hello-algo.com/","Hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
