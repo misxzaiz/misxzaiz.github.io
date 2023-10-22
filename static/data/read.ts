@@ -30,5 +30,7 @@ export let reads = {
         "7days-golang": ["https://github.com/geektutu/7days-golang","7days-golang",""],
         "geektutu": ["https://geektutu.com/post/gee.html","7days-golang",""],
         "golang-design-pattern": ["https://github.com/senghoo/golang-design-pattern","设计模式",""],
+        "go-pkg": ["https://pkg.go.dev/std","go库",""],
+        "go": ["https://cloud.tencent.com/developer/doc/1101","腾讯go库",""],
     },
 }
