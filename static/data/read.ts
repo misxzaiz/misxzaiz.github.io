@@ -26,4 +26,9 @@ export let reads = {
     "New": {
         "investopedia": ["https://www.investopedia.com/","投资百科",""],
     },
+    "Go": {
+        "7days-golang": ["https://github.com/geektutu/7days-golang","7days-golang",""],
+        "geektutu": ["https://geektutu.com/post/gee.html","7days-golang",""],
+        "golang-design-pattern": ["https://github.com/senghoo/golang-design-pattern","设计模式",""],
+    },
 }
