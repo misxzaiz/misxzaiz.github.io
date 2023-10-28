@@ -1,6 +1,6 @@
 export let navs = {
     "常用": {
-        "Binjie": ["https://c.binjie.fun/","GPT",""],
+        "Binjie": ["https://chat18.aichatos.xyz/#/","GPT",""],
         "豆包": ["https://www.doubao.com/chat/","抖音的GPT","https://lf-cdn-tos.bytescm.com/obj/static/doubao_web/logo-icon.png"],
         "星火大模型": ["https://xinghuo.xfyun.cn/","星火大模型",""],
         "文心一言": ["https://yiyan.baidu.com/","百度的GPT（要申请）","https://nlp-eb.cdn.bcebos.com/logo/favicon.ico"],
@@ -86,6 +86,8 @@ export let navs = {
     "UI": {
         "vue-admin": ["https://vue-admin-beautiful.com/","vue-admin",""],
         "UI-NOTES": ["https://uinotes.com/","ui-notes",""],
+        "echarts": ["https://echarts.apache.org/","echarts",""],
+        
     },
     "中间件": {
         "druid": ["https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98","druid",""],

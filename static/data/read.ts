@@ -36,4 +36,7 @@ export let reads = {
         "topgoer": ["https://www.topgoer.com","topgoer",""],
         "gopl": ["https://gopl-zh.github.io/","gopl",""],
     },
+    "Zookeeper": {
+        "zookeeper": ["https://zookeeper.readthedocs.io/zh/latest/intro.html","readthedocs",""],
+    },
 }
