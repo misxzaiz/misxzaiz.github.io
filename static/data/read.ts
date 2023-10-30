@@ -35,6 +35,8 @@ export let reads = {
         "learnku": ["https://learnku.com/docs/the-way-to-go","learnku",""],
         "topgoer": ["https://www.topgoer.com","topgoer",""],
         "gopl": ["https://gopl-zh.github.io/","gopl",""],
+        "xinliangnote": ["https://github.com/xinliangnote/Go","xinliangnote",""],
+        "awesome-go": ["https://github.com/avelino/awesome-go","go项目",""],
     },
     "Zookeeper": {
         "zookeeper": ["https://zookeeper.readthedocs.io/zh/latest/intro.html","readthedocs",""],
