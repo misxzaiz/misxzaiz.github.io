@@ -22,6 +22,7 @@ export let reads = {
     },
     "读书": {
         "读万卷书": ["https://www.yuque.com/yinghanzhu/aoiyrw/ugr4h1","读万卷书-语雀-博谦",""],
+        "码农书籍网": ["https://www.manongbook.com/","manongbook",""],
     },
     "New": {
         "investopedia": ["https://www.investopedia.com/","投资百科",""],

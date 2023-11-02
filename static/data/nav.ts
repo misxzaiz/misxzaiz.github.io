@@ -57,6 +57,7 @@ export let navs = {
         "Ngrok.cc": ["https://www.ngrok.cc/", "内网穿透，国内版",""],
         "Ngrok": ["https://ngrok.com/", "内网穿透",""],
         "passwordmonster": ["https://www.passwordmonster.com/","测试密码安全性",""],
+        "sqlgpt": ["https://sqlgpt.cn/zh","chat2DB的官网",""],
     },
     "API": {
         "夏柔": ["https://api.aa1.cn/","api",""],
