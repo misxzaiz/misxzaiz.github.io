@@ -86,10 +86,10 @@ export let navs = {
         "HelloAlog": ["https://github.com/krahets/hello-algo", "hello算法","https://www.hello-algo.com/index.assets/conceptual_rendering.png"],
     },
     "UI": {
+        "vxe-table": ["https://vxetable.cn/#/table/start/install","vxe-table",""],
         "vue-admin": ["https://vue-admin-beautiful.com/","vue-admin",""],
         "UI-NOTES": ["https://uinotes.com/","ui-notes",""],
         "echarts": ["https://echarts.apache.org/","echarts",""],
-        
     },
     "中间件": {
         "druid": ["https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98","druid",""],
