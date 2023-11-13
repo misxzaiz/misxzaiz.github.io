@@ -6,8 +6,8 @@ export let reads = {
         "discord": ["https://discord.com/channels/@me","discord",""],
         "oschina": ["https://www.oschina.net/","开源中国",""],
     },
-    "比赛": {
-        "Qiniu": ["https://www.qiniu.com/activity/detail/651297ed0d50912d3d53307b","七牛云1024编程比赛",""],
+    "DGUT": {
+        "毕设": ["http://dgut.co.cnki.net/","毕设",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],

@@ -18,6 +18,7 @@ export let navs = {
         "Claude": ["https://misxzaiz.slack.com/", "Claude",""],
         "new Bing": ["https://www.bing.com/","new Bing",""],
         "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
+        "hanlp": ["https://www.hanlp.com/","hanlp",""]
     },
     "Learn": {
         "aixcoder": ["https://codesearch.aixcoder.com/#/","代码查询",""],
@@ -59,6 +60,7 @@ export let navs = {
         "Ngrok": ["https://ngrok.com/", "内网穿透",""],
         "passwordmonster": ["https://www.passwordmonster.com/","测试密码安全性",""],
         "sqlgpt": ["https://sqlgpt.cn/zh","chat2DB的官网",""],
+        "shouxieti": ["http://shouxieti.shufazi.cn/","手写字生成",""],
     },
     "API": {
         "夏柔": ["https://api.aa1.cn/","api",""],
