@@ -7,7 +7,8 @@ export let reads = {
         "oschina": ["https://www.oschina.net/","开源中国",""],
     },
     "DGUT": {
-        "毕设": ["http://dgut.co.cnki.net/","毕设",""],
+        "毕设": ["http://dgut.co.cnki.net/","dgut毕设",""],
+        "论文": ["https://www.semanticscholar.org/","semanticscholar",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],

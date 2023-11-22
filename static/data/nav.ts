@@ -37,6 +37,7 @@ export let navs = {
         "anaconda": ["https://anaconda.cloud/","anaconda云平台",""],
     },
     "Company": {
+        "深圳市工业和信息化局": ["http://gxj.sz.gov.cn/","深圳市工业和信息化局",""],
         "牛客网": ["https://www.nowcoder.com/","牛客网",""],
         "智联招聘": ["https://www.zhaopin.com/","智联招聘","https://infinityicon.infinitynewtab.com/user-share-icon/17165df2da2da97518b20d377161d457.png"],
         "实习僧": ["https://www.shixiseng.com/","实习僧",""],
