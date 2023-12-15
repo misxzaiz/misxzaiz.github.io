@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>自动抓拍</title>
+</head>
+<body>
+  <video id="videoElement" autoplay></video>
+  <canvas id="canvasElement" style="display: none;"></canvas>
+  <button id="captureButton">抓拍</button>
+
+  <script>
+    // 获取视频流
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        var videoElement = document.getElementById('videoElement');
+        videoElement.srcObject = stream;
+      })
+      .catch(function(error) {
+        console.error('无法获取视频流：', error);
+      });
+
+    // 抓拍按钮点击事件
+    var captureButton = document.getElementById('captureButton');
+    captureButton.addEventListener('click', function() {
+      var videoElement = document.getElementById('videoElement');
+      var canvasElement = document.getElementById('canvasElement');
+      var context = canvasElement.getContext('2d');
+
+      // 将视频帧绘制到画布上
+      context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+      
+      // 将画布内容转为图片并保存
+      var image = canvasElement.toDataURL('image/png');
+      var link = document.createElement('a');
+      link.href = image;
+      link.download = 'capture.png';
+      link.click();
+    });
+  </script>
+</body>
+</html>
