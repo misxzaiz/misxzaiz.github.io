@@ -69,7 +69,8 @@ export let navs = {
         "TianApi": ["https://www.tianapi.com/","api",""],
         "聚合": ["https://www.juhe.cn/","api",""],
         "APIspace": ["https://www.apispace.com/","api",""],
-        "YouDao": ["https://ai.youdao.com/","有道翻译API",""]
+        "YouDao": ["https://ai.youdao.com/","有道翻译API",""],
+        "天地图": ["http://lbs.tianditu.gov.cn/home.html","天地图",""]
     },
     "Cloud": {
         "algolia": ["https://www.algolia.com/","搜索、推荐服务平台","https://www.algolia.com/algoliaweb-static-favicons/light-mode/favicon-32x32.png"],
@@ -93,6 +94,7 @@ export let navs = {
         "vue-admin": ["https://vue-admin-beautiful.com/","vue-admin",""],
         "UI-NOTES": ["https://uinotes.com/","ui-notes",""],
         "echarts": ["https://echarts.apache.org/","echarts",""],
+        "semi": ["https://semi.design/zh-CN/navigation/tree", "semi.design", ""]
     },
     "中间件": {
         "druid": ["https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98","druid",""],
