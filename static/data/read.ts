@@ -9,6 +9,7 @@ export let reads = {
     "DGUT": {
         "毕设": ["http://dgut.co.cnki.net/","dgut毕设",""],
         "论文": ["https://www.semanticscholar.org/","semanticscholar",""],
+        "写作猫": ["https://xiezuocat.com/","写作猫",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],
