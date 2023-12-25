@@ -10,6 +10,7 @@ export let reads = {
         "毕设": ["http://dgut.co.cnki.net/","dgut毕设",""],
         "论文": ["https://www.semanticscholar.org/","semanticscholar",""],
         "写作猫": ["https://xiezuocat.com/","写作猫",""],
+        "行行查": ["https://www.hanghangcha.com/","数据",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],
