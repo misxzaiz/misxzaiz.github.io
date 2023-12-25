@@ -12,6 +12,7 @@ export let reads = {
         "写作猫": ["https://xiezuocat.com/","写作猫",""],
         "行行查": ["https://www.hanghangcha.com/","数据",""],
         "QuestMobile": ["https://www.questmobile.com.cn/","QuestMobile",""],
+        "360趋势": ["https://trends.so.com/","360趋势",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],
