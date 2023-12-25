@@ -11,6 +11,7 @@ export let reads = {
         "论文": ["https://www.semanticscholar.org/","semanticscholar",""],
         "写作猫": ["https://xiezuocat.com/","写作猫",""],
         "行行查": ["https://www.hanghangcha.com/","数据",""],
+        "QuestMobile": ["https://www.questmobile.com.cn/","QuestMobile",""],
     },
     "Learn": {
         "geeksforgeeks": ["https://auth.geeksforgeeks.org/","geeksforgeeks",""],
