@@ -1,4 +1,7 @@
 export let reads = {
+    "LeetCode": {
+        "剑指Offer": ["https://www.nowcoder.com/exam/oj/ta?page=1&tpId=13&type=13","剑指Offer",""],
+    },
     "Blog": {
         "StackOverFlow": ["https://stackoverflow.com/","StackOverFlow社区",""],
         "StackOverFlowBlog": ["https://stackoverflow.blog/","StackOverFlow博客",""],
