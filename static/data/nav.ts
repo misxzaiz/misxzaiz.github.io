@@ -1,6 +1,7 @@
 export let navs = {
     "常用": {
         "答案之书": ["https://toolwa.com/book-of-answers/","答案之书",""],
+        "zbj": ["https://www.zbj.com/","zbj",""],
         "Binjie": ["https://chat18.aichatos.xyz/#/","GPT",""],
         "豆包": ["https://www.doubao.com/chat/","抖音的GPT","https://lf-cdn-tos.bytescm.com/obj/static/doubao_web/logo-icon.png"],
         "星火大模型": ["https://xinghuo.xfyun.cn/","星火大模型",""],
