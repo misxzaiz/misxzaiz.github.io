@@ -23,6 +23,7 @@ export let navs = {
     },
     "V": {
         "美团技术团队": ["https://tech.meituan.com/","美团技术团队",""],
+        "发现报告": ["https://www.fxbaogao.com/","发现报告",""],
     },
     "Learn": {
         "aixcoder": ["https://codesearch.aixcoder.com/#/","代码查询",""],
@@ -37,6 +38,7 @@ export let navs = {
     },
     "Dev": {
         "v0": ["https://v0.dev/","AI的UI",""],
+        "设计导航": ["https://hao.shejidaren.com/","shejidaren",""],
         "vercel": ["https://vercel.com/","静态页面搭建",""],
         "anaconda": ["https://anaconda.cloud/","anaconda云平台",""],
     },
