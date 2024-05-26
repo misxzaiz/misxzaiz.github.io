@@ -10,7 +10,7 @@ export let reads = {
         "oschina": ["https://www.oschina.net/","开源中国",""],
     },
     "DGUT": {
-        "毕设": ["http://dgut.co.cnki.net/","dgut毕设",""],
+        "东莞理工学院校务处": ["https://jwc.dgut.edu.cn/","东莞理工学院校务处",""],
         "论文": ["https://www.semanticscholar.org/","semanticscholar",""],
         "写作猫": ["https://xiezuocat.com/","写作猫",""],
         "行行查": ["https://www.hanghangcha.com/","数据",""],
