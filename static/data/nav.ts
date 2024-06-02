@@ -22,6 +22,7 @@ export let navs = {
         "hanlp": ["https://www.hanlp.com/","hanlp",""]
     },
     "V": {
+        "跨境电商卖家导航": ["http://www.diy10.com/","跨境电商卖家导航",""],
         "美团技术团队": ["https://tech.meituan.com/","美团技术团队",""],
         "发现报告": ["https://www.fxbaogao.com/","发现报告",""],
     },
