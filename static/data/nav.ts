@@ -112,5 +112,6 @@ export let navs = {
         "devopscube": ["https://devopscube.com/","devopscube",""],
         "stackoverflow": ["https://stackoverflow.co/","stackoverflow",""],
         "qiniu": ["https://www.qiniu.com/","七牛云",""],
+        "textin": ["https://tools.textin.com/text_recognize","文字识别",""],
     }
 }
