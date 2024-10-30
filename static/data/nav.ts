@@ -2,15 +2,9 @@ export let navs = {
     "常用": {
         "答案之书": ["https://toolwa.com/book-of-answers/","答案之书",""],
         "gitstar-ranking": ["https://gitstar-ranking.com/","gitstar-ranking",""],
-        "sa-token": ["https://sa-token.cc/doc.html#/more/link","sa-token",""],
-        "MST": ["https://mst.ai/", "AIS（基础GPT、AI画图）GPT较慢（要登录）","https://img.mst.xyz/assets/favicon-8f9e8d04.ico"],
-        "RightBrain": ["https://rightbrain.art/store","AI绘画",""],
+        "书栈网": ["https://www.bookstack.cn/","bookstack",""],
         "Wiki": ["https://openai.wiki/", "openai.wiki","https://openai.wiki/wp-content/uploads/cropped-logo-192x192.png"],
-        "AgentGpt": ["https://agentgpt.reworkd.ai/", "AgentGpt",""],
         "CXY521": ["http://www.cxy521.com/ai.html","程序员导航（AI部分）",""],
-        "Claude": ["https://misxzaiz.slack.com/", "Claude",""],
-        "new Bing": ["https://www.bing.com/","new Bing",""],
-        "Bito": ["https://marketplace.visualstudio.com/items?itemName=Bito.bito", "Bito - GPT-4 and ChatGPT to write code, explain code, create tests",""],
         "hanlp": ["https://www.hanlp.com/","hanlp",""]
     },
     "V": {
@@ -97,9 +91,15 @@ export let navs = {
         "semi": ["https://semi.design/zh-CN/navigation/tree", "semi.design", ""]
     },
     "中间件": {
+        "sa-token": ["https://sa-token.cc/doc.html#/more/link","sa-token",""],
         "druid": ["https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98","druid",""],
         "rocketmq": ["https://rocketmq.apache.org/","消息队列",""],
         "elasticsearch": ["https://www.elastic.co/cn/elasticsearch/","搜索",""],
+    },
+    "AI": {
+       "AgentGpt": ["https://agentgpt.reworkd.ai/", "AgentGpt",""],
+        "MST": ["https://mst.ai/", "AIS（基础GPT、AI画图）GPT较慢（要登录）","https://img.mst.xyz/assets/favicon-8f9e8d04.ico"],
+        "RightBrain": ["https://rightbrain.art/store","AI绘画",""],
     },
     "其他": {
         "plantuml": ["https://plantuml.com/zh/","plantuml",""],
