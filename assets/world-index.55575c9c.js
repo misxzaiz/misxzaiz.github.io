@@ -1,1 +1,0 @@
-import{_ as a,o as r,c as s,b as o,w as e,j as l,g as n,y as t}from"./index-c4c4a136.js";const d=a({},[["render",function(a,d){const u=t,c=l;return r(),s("div",null,[o(c,{url:"/world/rpc/card","hover-class":"navigator-hover"},{default:e((()=>[o(u,null,{default:e((()=>[n("C-RPC")])),_:1})])),_:1})])}]]);export{d as default};
