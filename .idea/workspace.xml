@@ -4,8 +4,76 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68704f37-7a61-4d5c-b7e0-573b04dc9447" name="Changes" comment="V1.1">
+    <list default="true" id="68704f37-7a61-4d5c-b7e0-573b04dc9447" name="Changes" comment="docs(message-queue): 更新消息队列相关文档&#10;&#10;- 新增三章消息队列文档：基础概念、工作流程、应用实践&#10;- 更新 HTML 文件中的资源引用&#10;- 修改工作区配置，增加 V1.1 版本任务">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/3DModelGame-BQa4kYCA.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/3DModelGame-Dk0RxJs7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ArticleTemplate-BxGJZ4Y5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ArticleTemplate-C-JJqw8r.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ArticleTemplate-DocO-uy5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EmpireRise-CxRAc8xU.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EmpireRise-DERYzfzU.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MqDiagramNew-DNDWfo8G.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/MqDiagramNew-DZszpAQB.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/OrbitControls-Bho-J9CF.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter1-CERMMwFe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter1-DWDnK1by.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter1-DaZQ3k6Y.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter1-QMKgEkfl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter1-tn0RQdqM.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter2-BvpvVMem.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter2-C0DrmaYi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter2-C2JFOU92.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter2-CNoBjqAa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter3-BsdADwRS.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/chapter3-ukwyG9kQ.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-0g_e_Ani.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-1fTAen2A.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-B4Xle7Ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-B70cRHZu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-B7jrTWi_.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-B9shpq4k.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BAWk2CG0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BDCnwAIM.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BHDmCF9p.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-B_6Y7cZ7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-Ba0Uozua.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BfRxaVdO.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BiDrAosQ.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BiLzB56E.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BkEZAijf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-BoN15hdf.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CI8ZozNg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CIBZtWiN.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CIdMAWZZ.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CPxPijgG.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CcJY19Bl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-Cfqv7FLn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-Cmyu68fm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CoPU9jVz.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-CxsKBYxG.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DAV9zvBp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DB5kjS5Z.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DEJ29oFc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DFTYZHus.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DGzKPSIz.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DNAwW0iO.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DgEEZyyh.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DigT_qEO.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DnVI3Kp6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-Dqy_fMFF.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-DytdgEA9.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-G4Ojak-y.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-P6Ub4rqw.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-Q0rv3P4U.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-S2wPo3SG.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-dqY8vgAl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/index-v4GQ-LPQ.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/reflection-BARn7nQ8.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/reflection-DqSoAA--.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +96,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="erbai" />
+        <entry key="$PROJECT_DIR$" value="qusc-one" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -88,7 +156,8 @@
       <workItem from="1696839832088" duration="238000" />
       <workItem from="1697247166025" duration="1194000" />
       <workItem from="1749990988934" duration="488000" />
-      <workItem from="1750267139214" duration="468000" />
+      <workItem from="1750267139214" duration="2364000" />
+      <workItem from="1751181258922" duration="1587000" />
     </task>
     <task id="LOCAL-00001" summary="fix 404html">
       <option name="closed" value="true" />
@@ -122,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750011952591</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="docs(message-queue): 更新消息队列相关文档&#10;&#10;- 新增三章消息队列文档：基础概念、工作流程、应用实践&#10;- 更新 HTML 文件中的资源引用&#10;- 修改工作区配置，增加 V1.1 版本任务">
+      <option name="closed" value="true" />
+      <created>1750267714241</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1750267714241</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +238,7 @@
     <MESSAGE value="add nav.js" />
     <MESSAGE value="V1" />
     <MESSAGE value="V1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.1" />
+    <MESSAGE value="docs(message-queue): 更新消息队列相关文档&#10;&#10;- 新增三章消息队列文档：基础概念、工作流程、应用实践&#10;- 更新 HTML 文件中的资源引用&#10;- 修改工作区配置，增加 V1.1 版本任务" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs(message-queue): 更新消息队列相关文档&#10;&#10;- 新增三章消息队列文档：基础概念、工作流程、应用实践&#10;- 更新 HTML 文件中的资源引用&#10;- 修改工作区配置，增加 V1.1 版本任务" />
   </component>
 </project>
